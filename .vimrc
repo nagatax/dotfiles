@@ -99,3 +99,8 @@ NeoBundleCheck
 if !has('vim_starting')
     call neobundle#call_hook('on_source')
 endif
+
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END

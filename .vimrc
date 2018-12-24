@@ -84,8 +84,14 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'thinca/vim-quickrun'
 
+" # vimproc
 NeoBundle 'Shougo/vimproc.vim'
+
+" # vimshell
 NeoBundle 'Shougo/vimshell.vim'
+
+" # Editorconfig
+NeoBundle 'editorconfig/editorconfig-vim'
 
 " neobundle.vimの設定終了
 call neobundle#end()

@@ -1,10 +1,12 @@
-# 設定ファイル集
+# Description of dotfiles project
 
-## はじめに
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
+
+## Overview
 
 ドットファイルをまとめました。
 
-## 前提条件
+## How to use
 
 NeoBundleとmolokaiがインストール済みであること。
 
@@ -24,3 +26,7 @@ git clone https://github.com/tomasr/molokai
 mv ~/.vim/molokai/colors/molokai.vim ~/.vim/colors/
 rm -rf ~/.vim/molokai
 ```
+
+## License
+
+This software is released under the MIT License, see [LICENSE](https://github.com/nagatax/dotfiles/blob/master/LICENSE).

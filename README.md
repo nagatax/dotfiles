@@ -1,10 +1,10 @@
 # 設定ファイル集
 
-# はじめに
+## はじめに
 
 ドットファイルをまとめました。
 
-# 前提条件
+## 前提条件
 
 NeoBundleとmolokaiがインストール済みであること。
 
@@ -19,6 +19,7 @@ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 ```bash
 mkdir -p ~/.vim/colors
+cd .vim
 git clone https://github.com/tomasr/molokai
 mv ~/.vim/molokai/colors/molokai.vim ~/.vim/colors/
 rm -rf ~/.vim/molokai

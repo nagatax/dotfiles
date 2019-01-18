@@ -21,8 +21,7 @@ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 ```bash
 mkdir -p ~/.vim/colors
-cd .vim
-git clone https://github.com/tomasr/molokai
+git clone https://github.com/tomasr/molokai ~/.vim/molokai
 mv ~/.vim/molokai/colors/molokai.vim ~/.vim/colors/
 rm -rf ~/.vim/molokai
 ```

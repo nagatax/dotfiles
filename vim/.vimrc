@@ -93,6 +93,9 @@ NeoBundle 'Shougo/vimshell.vim'
 " # Editorconfig
 NeoBundle 'editorconfig/editorconfig-vim'
 
+" # TypeScript
+NeoBundle 'leafgarland/typescript-vim'
+
 " neobundle.vimの設定終了
 call neobundle#end()
 

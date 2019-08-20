@@ -96,6 +96,9 @@ NeoBundle 'editorconfig/editorconfig-vim'
 " # TypeScript
 NeoBundle 'leafgarland/typescript-vim'
 
+" # vim-go
+NeoBundle 'fatih/vim-go'
+
 " neobundle.vimの設定終了
 call neobundle#end()
 

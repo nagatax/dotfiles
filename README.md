@@ -20,6 +20,12 @@ mkdir -p ~/.vim/colors \
 && rm -rf ~/.vim/molokai
 ```
 
+3. Set up vim-go
+
+```bash
+vim -c GoInstallBinaries -c q
+```
+
 ## License
 
 This software is released under the MIT License, see [LICENSE](https://github.com/nagatax/dotfiles/blob/master/LICENSE).

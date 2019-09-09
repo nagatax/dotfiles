@@ -1,14 +1,16 @@
 # 現在のディレクトリ位置をrootとする
 root = true
 
+##################################################
+# 共通の定義
+##################################################
+
 # 全てのファイルに対する設定
 [*]
 # 改行コード
 end_of_line = lf
 # 文字コード
 charset = utf-8
-# ファイル末尾に空行を追加する
-insert_final_newline = true
 # 行末尾の空白文字を削除する
 trim_trailing_whitespace = true
 # 最終行に空行を挿入する
@@ -16,10 +18,71 @@ insert_final_newline = true
 # インデント指定
 indent_style = space
 # インデントの幅
+indent_size = 4
+
+##################################################
+# プログラミング言語に関する定義
+##################################################
+
+# HTML/CSS/Java Scriptに対する設定
+[*.{html,css,js}]
+# インデント指定
+indent_style = space
+# インデントの幅
 indent_size = 2
+
+# PHP/C言語/C++言語/Ruby/Java/Pythonに対する設定
+[*.{php,c,cpp,rb,java,py}]
+# インデント指定
+indent_style = space
+# インデントの幅
+indent_size = 4
+
+# シェルスクリプトに対する設定
+[*.sh]
+# インデント指定
+indent_style = space
+# インデントの幅
+indent_size = 2
+
+# golangに対する設定
+[*.go]
+# インデント指定
+indent_style = tab
+# インデントの幅
+indent_size = 4
+
+##################################################
+# ファイルに関する定義
+##################################################
 
 # Markdownに対する設定
 [*.md]
 # 行末尾の空白文字を削除しない
 # markdownでは行末のスペース2つが改行を表すため
 trim_trailing_whitespace = false
+# インデント指定
+indent_style = space
+# インデントの幅
+indent_size = 2
+
+# XML/YAMLに対する設定
+[*.{xml,yml,json}]
+# インデント指定
+indent_style = space
+# インデントの幅
+indent_size = 2
+
+# Dockerfileに対する設定
+[Dockerfile*]
+# インデント指定
+indent_style = space
+# インデントの幅
+indent_size = 2
+
+# Makefileに対する設定
+[Makefile]
+# インデント指定
+indent_style = tab
+# インデントの幅
+indent_size = 4

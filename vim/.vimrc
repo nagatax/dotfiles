@@ -99,6 +99,9 @@ NeoBundle 'leafgarland/typescript-vim'
 " # vim-go
 NeoBundle 'fatih/vim-go'
 
+" # vim-toml
+NeoBundle 'cespare/vim-toml'
+
 " neobundle.vimの設定終了
 call neobundle#end()
 

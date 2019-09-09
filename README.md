@@ -4,6 +4,8 @@
 
 ## How to use
 
+### vim
+
 1. Install NeoBundle
 
 ```bash
@@ -11,7 +13,13 @@ mkdir -p ~/.vim/bundle \
 && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 ```
 
-2. Install molokai
+2. Create .vimrc
+
+```bash
+touch ~/.vimrc
+```
+
+3. Install molokai
 
 ```bash
 mkdir -p ~/.vim/colors \
@@ -20,10 +28,32 @@ mkdir -p ~/.vim/colors \
 && rm -rf ~/.vim/molokai
 ```
 
-3. Set up vim-go
+4. Set up vim-go
 
 ```bash
 vim -c GoInstallBinaries -c q
+```
+
+### neovim
+
+1. Install dein.vim
+
+```bash
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh \
+&& sh ./installer.sh ~/.cache/dein
+```
+
+2. Create init.vim
+
+```bash
+mkdir -p ~/.config/nvim \
+&& touch ~/.config/nvim/init.vim
+```
+
+3. Set up vim-go
+
+```bash
+nvim -c GoInstallBinaries -c q
 ```
 
 ## License

@@ -3,22 +3,49 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=/Users/nagata/.cache/dein/./repos/github.com/Shougo/dein.vim
+" ##### Backspace #####
+set backspace=indent,eol,start
+
+" ##### whichwrap #####
+set whichwrap=b,s,[,],<,>,~
+
+" ##### mouse #####
+set mouse=
+
+" ##### 検索 #####
+set hlsearch
+
+" ##### cursorlineの有効化 #####
+set cursorline
+
+" ##### タブをスペースにする #####
+set expandtab
+
+" ##### タブ長 #####
+set tabstop=4
+
+" ##### オートインデント #####
+"set autoindent
+
+" ##### オートインデントの長さ #####
+set shiftwidth=4
+
+" ##### 行番号を表示する #####
+set number
 
 " Required:
-if dein#load_state('/Users/nagata/.cache/dein/.')
-  call dein#begin('/Users/nagata/.cache/dein/.')
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('~/.cache/dein/.')
+  call dein#begin('~/.cache/dein/.')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/nagata/.cache/dein/./repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-  " Add or remove your plugins here like this:
-  "call dein#add('Shougo/neosnippet.vim')
-  "call dein#add('Shougo/neosnippet-snippets')
+  " # molokai
   call dein#add('tomasr/molokai')
-  "call dein#add('nathanaelkane/vim-indent-guides')
 
   " # bundle
   " neobundle.vimを更新するための設定
@@ -30,7 +57,6 @@ if dein#load_state('/Users/nagata/.cache/dein/.')
 
   " # vim indent guides
   call dein#add('nathanaelkane/vim-indent-guides')
-
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_auto_colors = 0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
@@ -68,6 +94,15 @@ if dein#load_state('/Users/nagata/.cache/dein/.')
 
   " # Editorconfig
   call dein#add('editorconfig/editorconfig-vim')
+
+  " # TypeScript
+  call dein#add('leafgarland/typescript-vim')
+
+  " # vim-go
+  call dein#add('fatih/vim-go')
+
+  " # vim-toml
+  call dein#add('cespare/vim-toml')
 
   " Required:
   call dein#end()

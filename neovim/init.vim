@@ -18,7 +18,7 @@ if dein#load_state('/Users/nagata/.cache/dein/.')
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
   call dein#add('tomasr/molokai')
-  "call dein#add('nathanaelkane/vim-indent-guides') 
+  "call dein#add('nathanaelkane/vim-indent-guides')
 
   " # bundle
   " neobundle.vimを更新するための設定
@@ -42,17 +42,17 @@ if dein#load_state('/Users/nagata/.cache/dein/.')
     " uniteでスペースが表示されるので、設定でOFFにする
     let g:extra_whitespace_ignored_filetypes = ['unite']
   endif
- 
+
   " # tcomment vim
   call dein#add('tomtom/tcomment_vim')
 
   " # emmet-vim
   call dein#add('mattn/emmet-vim')
 
-  " vim css3 syntax
+  " # vim-css3-syntax
   call dein#add('hail2u/vim-css3-syntax')
-  
-  "  NERDtree
+
+  " # NERDtree
   call dein#add('scrooloose/nerdtree')
 
   " # Markdown

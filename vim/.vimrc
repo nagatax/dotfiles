@@ -73,7 +73,7 @@ NeoBundle 'tomtom/tcomment_vim'
 " # emmet-vim
 NeoBundle 'mattn/emmet-vim'
 
-" vim css3 syntax
+" # vim-css3-syntax
 NeoBundle 'hail2u/vim-css3-syntax'
 
 " # NERDtree

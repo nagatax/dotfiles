@@ -31,6 +31,9 @@ set shiftwidth=4
 " ##### 行番号を表示する #####
 set number
 
+" ##### incsearch #####
+set incsearch
+
 " ##### Molokai #####
 syntax on
 colorscheme molokai

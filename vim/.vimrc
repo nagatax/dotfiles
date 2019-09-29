@@ -1,5 +1,3 @@
-" ##### nocompatible #####
-set nocompatible
 " ##### encoding #####
 if has('win32')
     set encoding=cp932
@@ -8,8 +6,8 @@ else
 endif
 scriptencoding utf-8
 
-" ##### Backspace #####
-set backspace=indent,eol,start
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
 
 " ##### whichwrap #####
 set whichwrap=b,s,[,],<,>,~
@@ -37,9 +35,6 @@ set shiftwidth=4
 
 " ##### 行番号を表示する #####
 set number
-
-" ##### incsearch #####
-set incsearch
 
 " ##### Molokai #####
 syntax on

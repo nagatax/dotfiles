@@ -1,5 +1,12 @@
 " ##### nocompatible #####
 set nocompatible
+" ##### encoding #####
+if has('win32')
+    set encoding=cp932
+else
+    set encoding=utf-8
+endif
+scriptencoding utf-8
 
 " ##### Backspace #####
 set backspace=indent,eol,start

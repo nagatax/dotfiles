@@ -1,4 +1,3 @@
-"dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -33,6 +32,7 @@ set shiftwidth=4
 " ##### 行番号を表示する #####
 set number
 
+"dein Scripts-----------------------------
 " Required:
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 

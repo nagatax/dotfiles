@@ -6,20 +6,26 @@
 
 ### vim
 
-1. Install NeoBundle
+1. Clone this repository
+
+```bash
+git clone https://github.com/nagatax/dotfiles.git
+```
+
+2. Install NeoBundle
 
 ```bash
 mkdir -p ~/.vim/bundle \
 && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 ```
 
-2. Create .vimrc
+3. Create .vimrc
 
 ```bash
-touch ~/.vimrc
+ln -s ~/Documents/dotfiles/vim/.vimrc ~/.vimrc
 ```
 
-3. Install molokai
+4. Install molokai
 
 ```bash
 mkdir -p ~/.vim/colors \
@@ -28,7 +34,7 @@ mkdir -p ~/.vim/colors \
 && rm -rf ~/.vim/molokai
 ```
 
-4. Set up vim-go
+5. Set up vim-go
 
 ```bash
 vim -c GoInstallBinaries -c q
@@ -36,22 +42,28 @@ vim -c GoInstallBinaries -c q
 
 ### neovim
 
-1. Install dein.vim
+1. Clone this repository
+
+```bash
+git clone https://github.com/nagatax/dotfiles.git
+```
+
+2. Install dein.vim
 
 ```bash
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh \
-&& sh ./installer.sh ~/.cache/dein
+&& sh ./installer.sh ~/.cache/dein \
 && rm installer.sh 
 ```
 
-2. Create init.vim
+3. Create init.vim
 
 ```bash
 mkdir -p ~/.config/nvim \
-&& touch ~/.config/nvim/init.vim
+&& ln -s ~/Documents/dotfiles/neovim/init.vim ~/.config/nvim/init.vim
 ```
 
-3. Set up vim-go
+4. Set up vim-go
 
 ```bash
 nvim -c GoInstallBinaries -c q

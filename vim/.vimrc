@@ -107,6 +107,12 @@ NeoBundle 'fatih/vim-go'
 " # vim-toml
 NeoBundle 'cespare/vim-toml'
 
+" # vim-unimpaired
+NeoBundle 'tpope/vim-unimpaired'
+
+" # vim-easymotion
+NeoBundle 'easymotion/vim-easymotion'
+
 " neobundle.vimの設定終了
 call neobundle#end()
 

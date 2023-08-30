@@ -32,90 +32,64 @@ set shiftwidth=4
 " ##### 行番号を表示する #####
 set number
 
-"dein Scripts-----------------------------
-" Required:
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+" ##### Molokai #####
+syntax on
+colorscheme molokai
+set t_Co=256
 
-" Required:
-if dein#load_state('~/.cache/dein/.')
-  call dein#begin('~/.cache/dein/.')
+"vim-plug Scripts-----------------------------
+call plug#begin()
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+" # lightline
+Plug 'itchyny/lightline.vim'
+set laststatus=2
 
-  " # molokai
-  call dein#add('tomasr/molokai')
+" # vim indent guides
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
-  " # bundle
-  " neobundle.vimを更新するための設定
-  call dein#add('Shougo/neobundle.vim')
+" # vim trailing whitespace
+Plug 'bronson/vim-trailing-whitespace'
+" uniteでスペースが表示されるので、設定でOFFにする
+let g:extra_whitespace_ignored_filetypes = ['unite']
 
-  " # lightline
-  call dein#add('itchyny/lightline.vim')
-  set laststatus=2
+" # tcomment vim
+Plug 'tomtom/tcomment_vim'
 
-  " # vim indent guides
-  call dein#add('nathanaelkane/vim-indent-guides')
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+" # emmet-vim
+Plug 'mattn/emmet-vim'
 
-  " # vim trailing whitespace
-  call dein#add('bronson/vim-trailing-whitespace')
-  if dein#tap('vim-trailing-whitespace')
-    " uniteでスペースが表示されるので、設定でOFFにする
-    let g:extra_whitespace_ignored_filetypes = ['unite']
-  endif
+" # vim-css3-syntax
+Plug 'hail2u/vim-css3-syntax'
 
-  " # tcomment vim
-  call dein#add('tomtom/tcomment_vim')
+" # NERDtree
+Plug 'scrooloose/nerdtree'
 
-  " # emmet-vim
-  call dein#add('mattn/emmet-vim')
+" # Markdown
+Plug 'tpope/vim-markdown'
+Plug 'tyru/open-browser.vim'
+Plug 'thinca/vim-quickrun'
 
-  " # vim-css3-syntax
-  call dein#add('hail2u/vim-css3-syntax')
+" # vimproc
+Plug 'Shougo/vimproc.vim'
 
-  " # NERDtree
-  call dein#add('scrooloose/nerdtree')
+" # vimshell
+Plug 'Shougo/vimshell.vim'
 
-  " # Markdown
-  call dein#add('tpope/vim-markdown')
-  call dein#add('tyru/open-browser.vim')
-  call dein#add('thinca/vim-quickrun')
+" # Editorconfig
+Plug 'editorconfig/editorconfig-vim'
 
-  " # vimproc
-  call dein#add('Shougo/vimproc.vim')
+" # TypeScript
+Plug 'leafgarland/typescript-vim'
 
-  " # vimshell
-  call dein#add('Shougo/vimshell.vim')
+" # vim-go
+Plug 'fatih/vim-go'
 
-  " # Editorconfig
-  call dein#add('editorconfig/editorconfig-vim')
+" # vim-toml
+Plug 'cespare/vim-toml'
 
-  " # TypeScript
-  call dein#add('leafgarland/typescript-vim')
-
-  " # vim-go
-  call dein#add('fatih/vim-go')
-
-  " # vim-toml
-  call dein#add('cespare/vim-toml')
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
-
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-"End dein Scripts-------------------------
-
+call plug#end()
+"End vim-plug Scripts-------------------------

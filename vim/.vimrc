@@ -127,10 +127,6 @@ Plug 'easymotion/vim-easymotion'
 " vim-plugの設定終了
 call plug#end()
 
-" 読み込んだプラグインを含め、ファイルタイプの検出、
-" ファイルタイプ別プラグイン/インデントを有効化する
-filetype plugin indent on
-
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.sh setlocal tabstop=2 softtabstop=2 shiftwidth=2

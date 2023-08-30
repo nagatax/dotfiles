@@ -100,6 +100,10 @@ NeoBundle 'hail2u/vim-css3-syntax'
 
 " # NERDtree
 NeoBundle 'scrooloose/nerdtree'
+" 起動時にブックマークを表示
+" let NERDTreeShowBookmarks = 1
+" 起動時にNERDTreeを開く
+" autocmd VimEnter * NERDTree
 
 " # Markdown
 NeoBundle 'tpope/vim-markdown'

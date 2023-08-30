@@ -58,94 +58,74 @@ set undodir=$HOME/.vim/undodir
 set wildmenu
 set wildmode=list:longest,full
 
-" ##### NeoBundle #####
-" vim起動時のみruntimeにneobundle.vimを追加
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-endif
+" ##### vim-plug #####
 
-" neobundle.vimの初期化と設定開始
-call neobundle#begin(expand('~/.vim/bundle'))
-
-" # bundle
-" neobundle.vimを更新するための設定
-NeoBundleFetch 'Shougo/neobundle.vim'
+" vim-plugの初期化と設定開始
+call plug#begin()
 
 " # lightline
-NeoBundle 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 set laststatus=2
 
 " # vim indent guides
-NeoBundle 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 " # vim trailing whitespace
-NeoBundle 'bronson/vim-trailing-whitespace'
-if neobundle#tap('vim-trailing-whitespace')
+Plug 'bronson/vim-trailing-whitespace'
 " uniteでスペースが表示されるので、設定でOFFにする
-  let g:extra_whitespace_ignored_filetypes = ['unite']
-endif
+let g:extra_whitespace_ignored_filetypes = ['unite']
 
 " # tcomment vim
-NeoBundle 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 
 " # emmet-vim
-NeoBundle 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 " # vim-css3-syntax
-NeoBundle 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax'
 
 " # NERDtree
-NeoBundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " 起動時にブックマークを表示
 " let NERDTreeShowBookmarks = 1
 " 起動時にNERDTreeを開く
 " autocmd VimEnter * NERDTree
 
 " # Markdown
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'thinca/vim-quickrun'
+Plug 'tpope/vim-markdown'
+Plug 'tyru/open-browser.vim'
+Plug 'thinca/vim-quickrun'
 
 " # vimproc
-NeoBundle 'Shougo/vimproc.vim'
+Plug 'Shougo/vimproc.vim'
 
 " # vimshell
-NeoBundle 'Shougo/vimshell.vim'
+Plug 'Shougo/vimshell.vim'
 
 " # Editorconfig
-NeoBundle 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " # TypeScript
-NeoBundle 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 
 " # vim-go
-NeoBundle 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " # vim-toml
-NeoBundle 'cespare/vim-toml'
+Plug 'cespare/vim-toml'
 
 " # vim-unimpaired
-NeoBundle 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " # vim-easymotion
-NeoBundle 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
-" neobundle.vimの設定終了
-call neobundle#end()
-
-" 読み込んだプラグインを含め、ファイルタイプの検出、
-" ファイルタイプ別プラグイン/インデントを有効化する
-filetype plugin indent on
-
-NeoBundleCheck
-
-if !has('vim_starting')
-    call neobundle#call_hook('on_source')
-endif
+" vim-plugの設定終了
+call plug#end()
 
 augroup fileTypeIndent
     autocmd!

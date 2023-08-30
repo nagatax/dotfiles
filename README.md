@@ -44,12 +44,11 @@ mkdir -p ~/.vim/colors \
 git clone https://github.com/nagatax/dotfiles.git
 ```
 
-2. Install dein.vim
+2. Install vim-plug
 
 ```bash
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh \
-&& sh ./installer.sh ~/.cache/dein \
-&& rm installer.sh 
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
 3. Create init.vim
@@ -59,11 +58,16 @@ mkdir -p ~/.config/nvim \
 && ln -s ~/Documents/dotfiles/neovim/init.vim ~/.config/nvim/init.vim
 ```
 
-4. Set up vim-go
+4. Install molokai
 
 ```bash
-nvim -c GoInstallBinaries -c q
+mkdir -p ~/.config/nvim/colors \
+&& git clone https://github.com/tomasr/molokai ~/.config/nvim/molokai \
+&& mv ~/.config/nvim/molokai/colors/molokai.vim ~/.config/nvim/colors/ \
+&& rm -rf ~/.config/nvim/molokai
 ```
+
+5. Reload init.vim and :PlugInstall to install plugins.
 
 ## License
 

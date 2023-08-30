@@ -12,7 +12,7 @@
 git clone https://github.com/nagatax/dotfiles.git
 ```
 
-2. Install NeoBundle
+2. Install vim-plug
 
 ```bash
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

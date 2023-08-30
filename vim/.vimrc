@@ -41,6 +41,23 @@ syntax on
 colorscheme molokai
 set t_Co=256
 
+" すべてのswapファイルを同じディレクトリに出力する
+if !isdirectory(expand("$HOME/.vim/swap"))
+    call mkdir(expand("$HOME/.vim/swap"), "p")
+endif
+set directory=$HOME/.vim/swap//
+
+" すべてのファイルの永続アンドゥを有効にする
+set undofile
+if !isdirectory(expand("$HOME/.vim/undodir"))
+    call mkdir(expand("$HOME/.vim/undodir"), "p")
+endif
+set undodir=$HOME/.vim/undodir
+
+" wildmenuの有効化
+set wildmenu
+set wildmode=list:longest,full
+
 " ##### NeoBundle #####
 " vim起動時のみruntimeにneobundle.vimを追加
 if has('vim_starting')

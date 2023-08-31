@@ -1,66 +1,82 @@
-" ##### encoding #####
+" # set nocompatible
+if !has('nvim')
+    " setting for vim
+    set nocompatible
+endif
+
+" # encoding
 if has('win32')
     set encoding=cp932
 else
     set encoding=utf-8
 endif
-scriptencoding utf-8
+if !has('nvim')
+    " setting for vim
+    scriptencoding utf-8
+endif
 
-unlet! skip_defaults_vim
-source $VIMRUNTIME/defaults.vim
+" # load the default setting
+if !has('nvim')
+    " setting for vim
+    unlet! skip_defaults_vim
+    source $VIMRUNTIME/defaults.vim
+endif
 
-" ##### whichwrap #####
+" # whichwrap
 set whichwrap=b,s,[,],<,>,~
 
-" ##### mouse #####
+" # clear mouse setting
 set mouse=
 
-" ##### 検索 #####
+" # enable hlsearch
 set hlsearch
 
-" ##### cursorlineの有効化 #####
+" # enable cursorline
 set cursorline
 
-" ##### タブをスペースにする #####
+" # convert tab to space
 set expandtab
 
-" ##### タブ長 #####
+" # set tabstop
 set tabstop=4
 
-" ##### オートインデント #####
-"set autoindent
+" # enable autoindent
+if !has('nvim')
+    " setting for vim
+   set autoindent
+endif
 
-" ##### オートインデントの長さ #####
+" # set autoindent width
 set shiftwidth=4
 
-" ##### 行番号を表示する #####
+" # set printing line number
 set number
 
-" ##### Molokai #####
+" # set color scheme
 syntax on
 colorscheme molokai
 set t_Co=256
 
-" すべてのswapファイルを同じディレクトリに出力する
+" # set swap directory
 if !isdirectory(expand("$HOME/.vim/swap"))
     call mkdir(expand("$HOME/.vim/swap"), "p")
 endif
 set directory=$HOME/.vim/swap//
 
-" すべてのファイルの永続アンドゥを有効にする
+" # set undo directory
 set undofile
-if !isdirectory(expand("$HOME/.vim/undodir"))
-    call mkdir(expand("$HOME/.vim/undodir"), "p")
+if !isdirectory(expand("$HOME/.vim/undo"))
+    call mkdir(expand("$HOME/.vim/undo"), "p")
 endif
-set undodir=$HOME/.vim/undodir
+set undodir=$HOME/.vim/undo
 
-" wildmenuの有効化
+" # enable wildmenu
 set wildmenu
 set wildmode=list:longest,full
 
 " ##### vim-plug #####
 
-" vim-plugの初期化と設定開始
+" # begin vim-plug
 call plug#begin()
 
 " # lightline
@@ -124,7 +140,7 @@ Plug 'tpope/vim-unimpaired'
 " # vim-easymotion
 Plug 'easymotion/vim-easymotion'
 
-" vim-plugの設定終了
+" # end vim-plug
 call plug#end()
 
 augroup fileTypeIndent

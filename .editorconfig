@@ -86,3 +86,10 @@ indent_size = 2
 indent_style = tab
 # インデントの幅
 indent_size = 4
+
+# .vimscriptに対する設定
+[*.{vimrc,vim}]
+# インデント指定
+indent_style = space
+# インデントの幅
+indent_size = 2

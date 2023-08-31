@@ -55,7 +55,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 ```bash
 mkdir -p ~/.config/nvim \
-&& ln -s ~/Documents/dotfiles/neovim/init.vim ~/.config/nvim/init.vim
+&& ln -s ~/Documents/dotfiles/vim/.vimrc ~/.config/nvim/init.vim
 ```
 
 4. Install molokai

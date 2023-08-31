@@ -1,25 +1,25 @@
 " # set nocompatible
 if !has('nvim')
-    " setting for vim
-    set nocompatible
+  " setting for vim
+  set nocompatible
 endif
 
 " # encoding
 if has('win32')
-    set encoding=cp932
+  set encoding=cp932
 else
-    set encoding=utf-8
+  set encoding=utf-8
 endif
 if !has('nvim')
-    " setting for vim
-    scriptencoding utf-8
+  " setting for vim
+  scriptencoding utf-8
 endif
 
 " # load the default setting
 if !has('nvim')
-    " setting for vim
-    unlet! skip_defaults_vim
-    source $VIMRUNTIME/defaults.vim
+  " setting for vim
+  unlet! skip_defaults_vim
+  source $VIMRUNTIME/defaults.vim
 endif
 
 " # whichwrap
@@ -42,7 +42,7 @@ set tabstop=4
 
 " # enable autoindent
 if !has('nvim')
-    " setting for vim
+  " setting for vim
    set autoindent
 endif
 
@@ -59,14 +59,14 @@ set t_Co=256
 
 " # set swap directory
 if !isdirectory(expand("$HOME/.vim/swap"))
-    call mkdir(expand("$HOME/.vim/swap"), "p")
+  call mkdir(expand("$HOME/.vim/swap"), "p")
 endif
 set directory=$HOME/.vim/swap//
 
 " # set undo directory
 set undofile
 if !isdirectory(expand("$HOME/.vim/undo"))
-    call mkdir(expand("$HOME/.vim/undo"), "p")
+  call mkdir(expand("$HOME/.vim/undo"), "p")
 endif
 set undodir=$HOME/.vim/undo
 
@@ -144,6 +144,6 @@ Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 augroup fileTypeIndent
-    autocmd!
-    autocmd BufNewFile,BufRead *.sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd!
+  autocmd BufNewFile,BufRead *.sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END

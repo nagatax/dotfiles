@@ -151,8 +151,3 @@ Plug 'dense-analysis/ale'
 
 " # end vim-plug
 call plug#end()
-
-augroup fileTypeIndent
-  autocmd!
-  autocmd BufNewFile,BufRead *.sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
-augroup END

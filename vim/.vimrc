@@ -140,6 +140,15 @@ Plug 'tpope/vim-unimpaired'
 " # vim-easymotion
 Plug 'easymotion/vim-easymotion'
 
+" # vim-fugitive
+Plug 'tpope/vim-fugitive'
+
+" # vim-test
+Plug 'janko-m/vim-test'
+
+" # ale
+Plug 'dense-analysis/ale'
+
 " # end vim-plug
 call plug#end()
 

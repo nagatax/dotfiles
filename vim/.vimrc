@@ -161,6 +161,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " # lexima.vim
 Plug 'cohama/lexima.vim'
 
+" # copilot.vim
+Plug 'github/copilot.vim'
+
 " # end vim-plug
 call plug#end()
 

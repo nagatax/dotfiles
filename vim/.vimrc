@@ -161,6 +161,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " # lexima.vim
 Plug 'cohama/lexima.vim'
 
+" # copilot.vim
+Plug 'github/copilot.vim'
+
 " # end vim-plug
 call plug#end()
 
@@ -174,7 +177,7 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal signcolumn=yes
 
   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-  
+
   nmap <buffer> gd <plug>(lsp-definition)
   nmap <buffer> gr <plug>(lsp-references)
   nmap <buffer> gi <plug>(lsp-implementation)
@@ -183,7 +186,7 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
   nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
-  
+
   let g:lsp_format_sync_timeout = 1000
   autocmd BufWritePre *.go call execute(['LspCodeActionSync source.organizeImports', 'LspDocumentFormatSync'])
 endfunction

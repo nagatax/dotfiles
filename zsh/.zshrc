@@ -4,6 +4,15 @@
 # Configuring Sheldon
 eval "$(sheldon source)"
 
+# Homebrew’s completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 # Configuring Completions
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit

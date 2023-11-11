@@ -191,6 +191,10 @@ function! s:on_lsp_buffer_enabled() abort
   autocmd BufWritePre *.go call execute(['LspCodeActionSync source.organizeImports', 'LspDocumentFormatSync'])
 endfunction
 
+" # Language Server Protocol setting(for TypeScript)
+let g:markdown_fenced_languages = ['ts=typescript']
+let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server', 'deno']
+
 augroup vimrc_lsp_install
   autocmd!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()

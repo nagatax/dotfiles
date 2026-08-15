@@ -1,25 +1,75 @@
-# Configuring Rust
-. "$HOME/.cargo/env"
+##################################################
+# Environment / PATH
+# Environment variables and command search paths.
+##################################################
 
-# Configuring Sheldon
-eval "$(sheldon source)"
-
-# Homebrew’s completions
+# Homebrew
+# Add Homebrew's Zsh completions to the function search path.
 if type brew &>/dev/null
 then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  BREW_PREFIX="$(brew --prefix)"
 
-  autoload -Uz compinit
-  compinit
+  # Make Homebrew-installed Zsh completion functions available.
+  FPATH="${BREW_PREFIX}/share/zsh/site-functions:${FPATH}"
 fi
 
-# Configuring Completions
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
+##################################################
+# History
+# Configure command history behavior.
+##################################################
 
-# Configuring zsh history
+# History file
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+
+# Maximum number of history entries kept in memory and saved to disk.
 HISTSIZE=10000
 SAVEHIST=10000
+
+# Save additional information, such as timestamps, in the history file.
 setopt extended_history
-alias history="history -i"
+
+# Do not save consecutive duplicate commands.
+setopt hist_ignore_dups
+
+# Show timestamps when displaying command history.
+alias history='history -i'
+
+##################################################
+# Shell options
+# Configure Zsh's interactive shell behavior.
+##################################################
+
+##################################################
+# Aliases
+# Define shortcuts for frequently used commands.
+##################################################
+
+alias ls='ls -G'
+
+##################################################
+# Sheldon / plugins
+# Load Zsh plugins managed by Sheldon.
+##################################################
+
+if type sheldon &>/dev/null
+then
+  eval "$(sheldon source)"
+fi
+
+##################################################
+# Completion
+# Enable Zsh's command and argument completion.
+##################################################
+
+autoload -Uz compinit
+compinit
+
+##################################################
+# Functions
+# Define custom shell functions.
+##################################################
+
+##################################################
+# Prompt
+# Configure the shell prompt.
+##################################################

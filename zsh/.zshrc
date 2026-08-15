@@ -73,3 +73,8 @@ compinit
 # Prompt
 # Configure the shell prompt.
 ##################################################
+
+if type starship &>/dev/null
+then
+  eval "$(starship init zsh)"
+fi

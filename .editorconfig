@@ -93,3 +93,10 @@ indent_size = 4
 indent_style = space
 # インデントの幅
 indent_size = 2
+
+# Luaに対する設定
+[*.lua]
+# インデント指定
+indent_style = space
+# インデントの幅
+indent_size = 2

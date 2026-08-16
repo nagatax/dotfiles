@@ -38,36 +38,36 @@ mkdir -p ~/.vim/colors \
 
 ### neovim
 
+Requires Neovim 0.11 or later (uses `vim.lsp.enable()` and the `lsp/` directory layout).
+
 1. Clone this repository
 
 ```bash
 git clone https://github.com/nagatax/dotfiles.git
 ```
 
-2. Install vim-plug
+2. Link the config directory
 
 ```bash
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+mkdir -p ~/.config \
+&& ln -s ~/Documents/dotfiles/neovim ~/.config/nvim
 ```
 
-3. Create init.vim
+3. Launch nvim
+
+[lazy.nvim](https://github.com/folke/lazy.nvim) bootstraps itself on the first
+launch and installs the plugins pinned in `neovim/lazy-lock.json`.
 
 ```bash
-mkdir -p ~/.config/nvim \
-&& ln -s ~/Documents/dotfiles/vim/.vimrc ~/.config/nvim/init.vim
+nvim
 ```
 
-4. Install molokai
+#### Optional dependencies
 
-```bash
-mkdir -p ~/.config/nvim/colors \
-&& git clone https://github.com/tomasr/molokai ~/.config/nvim/molokai \
-&& mv ~/.config/nvim/molokai/colors/molokai.vim ~/.config/nvim/colors/ \
-&& rm -rf ~/.config/nvim/molokai
-```
-
-5. Reload init.vim and :PlugInstall to install plugins.
+| Tool | Used by |
+| --- | --- |
+| [clangd](https://clangd.llvm.org/) | C/C++ LSP (`neovim/lsp/clangd.lua`) |
+| [gh](https://cli.github.com/) | `<leader>gi` / `<leader>gp` GitHub pickers |
 
 ## License
 

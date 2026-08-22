@@ -70,6 +70,7 @@ return {
       -- LSP
       { "K", function() vim.lsp.buf.hover() end, desc = "Hover Documentation" },
       { "<leader>ca", function() vim.lsp.buf.code_action() end, desc = "Code Action" },
+      { "<leader>cf", function() vim.lsp.buf.format() end, desc = "Format Buffer" },
       { "<leader>cr", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },
       { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
       { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },

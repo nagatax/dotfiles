@@ -21,6 +21,7 @@ return {
     vim.lsp.enable("rust_analyzer")
     vim.lsp.enable("gopls")
     vim.lsp.enable("terraformls")
+    vim.lsp.enable("intelephense")
 
     -- 診断表示
     vim.diagnostic.config({

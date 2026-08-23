@@ -22,6 +22,7 @@ return {
     vim.lsp.enable("gopls")
     vim.lsp.enable("terraformls")
     vim.lsp.enable("intelephense")
+    vim.lsp.enable("basedpyright")
 
     -- 診断表示
     vim.diagnostic.config({

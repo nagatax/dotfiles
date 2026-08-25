@@ -128,6 +128,8 @@ return {
       { "<C-l>", "<C-w>l", desc = "Go to Right Window" },
 
       -- File & Editor
+      { "<leader>dt", ":DiffTool ", desc = "Diff Tool" },
+      { "<leader>ds", ":diffsplit ", desc = "Diff Split" },
       { "<leader>w", "<cmd>write<cr>", desc = "Save File" },
       { "<leader>q", "<cmd>quit<cr>", desc = "Quit Window" },
       { "<leader>qq", "<cmd>qa<cr>", desc = "Quit All" },

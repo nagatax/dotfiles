@@ -67,21 +67,13 @@ fi
 
 ##################################################
 # Sheldon / plugins
-# Load Zsh plugins managed by Sheldon.
+# Load Zsh plugins and initialize completion in the configured order.
 ##################################################
 
 if type sheldon &>/dev/null
 then
   eval "$(sheldon source)"
 fi
-
-##################################################
-# Completion
-# Enable Zsh's command and argument completion.
-##################################################
-
-autoload -Uz compinit
-compinit
 
 ##################################################
 # Functions

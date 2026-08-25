@@ -48,8 +48,12 @@ brew install eza fd fzf gh lazygit ripgrep
 
 ### 2. Clone the repository
 
+Set `DOTFILES_DIR` to the directory where you want to keep the repository. It
+defaults to `~/dotfiles`.
+
 ```bash
-git clone https://github.com/nagatax/dotfiles.git ~/Documents/dotfiles
+export DOTFILES_DIR="${DOTFILES_DIR:-${HOME}/dotfiles}"
+git clone https://github.com/nagatax/dotfiles.git "${DOTFILES_DIR}"
 ```
 
 ### 3. Link the configurations
@@ -60,12 +64,12 @@ creating the symbolic links.
 ```bash
 mkdir -p ~/.config/sheldon
 
-ln -s ~/Documents/dotfiles/zsh/.zshrc ~/.zshrc
-ln -s ~/Documents/dotfiles/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
-ln -s ~/Documents/dotfiles/starship/starship.toml ~/.config/starship.toml
-ln -s ~/Documents/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-ln -s ~/Documents/dotfiles/vim/.vimrc ~/.vimrc
-ln -s ~/Documents/dotfiles/neovim ~/.config/nvim
+ln -s "${DOTFILES_DIR}/zsh/.zshrc" ~/.zshrc
+ln -s "${DOTFILES_DIR}/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
+ln -s "${DOTFILES_DIR}/starship/starship.toml" ~/.config/starship.toml
+ln -s "${DOTFILES_DIR}/tmux/.tmux.conf" ~/.tmux.conf
+ln -s "${DOTFILES_DIR}/vim/.vimrc" ~/.vimrc
+ln -s "${DOTFILES_DIR}/neovim" ~/.config/nvim
 ```
 
 ## Zsh, Sheldon, and Starship

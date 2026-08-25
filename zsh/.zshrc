@@ -8,15 +8,14 @@ typeset -U path fpath
 
 # Homebrew
 # Add Homebrew's Zsh completions to the function search path.
-if type brew &>/dev/null
-then
-  BREW_PREFIX="$(brew --prefix)"
+if type brew &>/dev/null; then
+  brew_prefix="$(brew --prefix)"
 
   # Make Homebrew-installed Zsh completion functions available.
-  FPATH="${BREW_PREFIX}/share/zsh/site-functions:${FPATH}"
+  FPATH="${brew_prefix}/share/zsh/site-functions:${FPATH}"
 
   # Add Rustup-managed toolchains installed through Homebrew to PATH.
-  export PATH="${BREW_PREFIX}/opt/rustup/bin:${PATH}"
+  export PATH="${brew_prefix}/opt/rustup/bin:${PATH}"
 fi
 
 # Add user-installed Go binaries to PATH.
@@ -28,7 +27,7 @@ export PATH="${HOME}/go/bin:${PATH}"
 ##################################################
 
 # History file
-HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+HISTFILE="${ZDOTDIR:-${HOME}}/.zsh_history"
 
 # Maximum number of history entries kept in memory and saved to disk.
 HISTSIZE=10000
@@ -59,10 +58,9 @@ alias history='history -i'
 alias ls='ls -G'
 
 # Define enhanced directory-listing aliases when eza is available.
-if type eza &>/dev/null
-then
-    alias ll="eza -la --icons --git --group-directories-first"
-    alias lt="eza --tree --icons --level=2"
+if type eza &>/dev/null; then
+  alias ll='eza -la --icons --git --group-directories-first'
+  alias lt='eza --tree --icons --level=2'
 fi
 
 ##################################################
@@ -70,8 +68,7 @@ fi
 # Load Zsh plugins and initialize completion in the configured order.
 ##################################################
 
-if type sheldon &>/dev/null
-then
+if type sheldon &>/dev/null; then
   eval "$(sheldon source)"
 fi
 
@@ -85,7 +82,6 @@ fi
 # Configure the shell prompt.
 ##################################################
 
-if type starship &>/dev/null
-then
+if type starship &>/dev/null; then
   eval "$(starship init zsh)"
 fi

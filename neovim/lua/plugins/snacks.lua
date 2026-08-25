@@ -81,7 +81,6 @@ return {
       { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
 
       -- LSP
-      { "K", function() vim.lsp.buf.hover() end, desc = "Hover Documentation" },
       { "<leader>ca", function() vim.lsp.buf.code_action() end, desc = "Code Action" },
       { "<leader>cf", function() vim.lsp.buf.format() end, desc = "Format Buffer" },
       { "<leader>cr", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },

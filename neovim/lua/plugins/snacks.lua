@@ -1,3 +1,16 @@
+local function jump_diagnostic(count)
+  vim.diagnostic.jump({
+    count = count,
+    on_jump = function(_, bufnr)
+      vim.diagnostic.open_float({
+        bufnr = bufnr,
+        scope = "cursor",
+        focus = false,
+      })
+    end,
+  })
+end
+
 return {
   {
     "folke/snacks.nvim",
@@ -85,8 +98,8 @@ return {
       -- Diagnostics
       { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
       { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
-      { "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, desc = "Previous Diagnostic" },
-      { "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, desc = "Next Diagnostic" },
+      { "[d", function() jump_diagnostic(-1) end, desc = "Previous Diagnostic" },
+      { "]d", function() jump_diagnostic(1) end, desc = "Next Diagnostic" },
 
       -- Quickfix
       { "[q", "<cmd>cprev<cr>", desc = "Previous Quickfix" },

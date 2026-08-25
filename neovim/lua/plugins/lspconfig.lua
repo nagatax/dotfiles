@@ -1,11 +1,8 @@
 return {
   "neovim/nvim-lspconfig",
+  dependencies = { "saghen/blink.cmp" },
   config = function()
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-    vim.lsp.config("clangd", { capabilities = capabilities })
     vim.lsp.config("rust_analyzer", {
-      capabilities = capabilities,
       settings = {
         ["rust-analyzer"] = {
           check = {
@@ -14,8 +11,7 @@ return {
         },
       }
     })
-    vim.lsp.config("gopls", { capabilities = capabilities })
-    vim.lsp.config("terraformls", { capabilities = capabilities, filetypes = { "tf", "terraform", "terraform-vars" } })
+    vim.lsp.config("terraformls", { filetypes = { "tf", "terraform", "terraform-vars" } })
 
     vim.lsp.enable("clangd")
     vim.lsp.enable("rust_analyzer")

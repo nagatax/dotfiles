@@ -1,0 +1,112 @@
+# ==================================================
+# Font
+# Configure the terminal font and text size.
+# ==================================================
+
+font-family = JetBrains Mono
+font-size = 18
+
+
+# ==================================================
+# Theme
+# Set the terminal color scheme.
+# ==================================================
+
+theme = Catppuccin Frappe
+
+
+# ==================================================
+# Cursor / Mouse
+# Configure cursor animation and pointer visibility.
+# ==================================================
+
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+
+# ==================================================
+# Window / Splits
+# Configure window spacing, persistence, and split appearance.
+# ==================================================
+
+window-padding-x = 8
+window-padding-y = 8
+window-padding-balance = true
+
+# Restore the previous window state when Ghostty starts.
+window-save-state = always
+
+# Make the focused split visually stand out.
+unfocused-split-opacity = 0.85
+split-divider-color = #626880
+
+
+# ==================================================
+# Clipboard
+# Copy selected text directly to the system clipboard.
+# ==================================================
+
+copy-on-select = clipboard
+
+
+# ==================================================
+# Terminal / Shell Integration
+# Configure terminal history and shell-provided features.
+# ==================================================
+
+scrollback-limit = 20000000
+
+# Enable prompt navigation, title updates, and SSH environment integration.
+shell-integration-features = cursor,title,ssh-env,ssh-terminfo,path
+
+
+# ==================================================
+# Notifications
+# Notify when a long-running command finishes in an unfocused terminal.
+# ==================================================
+
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 30s
+
+
+# ==================================================
+# macOS
+# Use the Option key as Alt for terminal shortcuts.
+# ==================================================
+
+macos-option-as-alt = true
+
+
+# ==================================================
+# Keybindings
+# Configure split management and prompt navigation shortcuts.
+# ==================================================
+
+# Navigate between splits.
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:down
+keybind = alt+k=goto_split:up
+keybind = alt+l=goto_split:right
+keybind = alt+tab=goto_split:next
+keybind = alt+shift+tab=goto_split:previous
+
+# Create splits in a specific direction.
+keybind = alt+shift+h=new_split:left
+keybind = alt+shift+j=new_split:down
+keybind = alt+shift+k=new_split:up
+keybind = alt+shift+l=new_split:right
+
+# Manage the active split layout.
+keybind = alt+shift+z=toggle_split_zoom
+keybind = alt+shift+e=equalize_splits
+
+# Resize the active split in ten-cell increments.
+keybind = alt+ctrl+h=resize_split:left,10
+keybind = alt+ctrl+j=resize_split:down,10
+keybind = alt+ctrl+k=resize_split:up,10
+keybind = alt+ctrl+l=resize_split:right,10
+
+# Jump between shell prompts recorded by shell integration.
+keybind = alt+u=jump_to_prompt:-1
+keybind = alt+d=jump_to_prompt:1

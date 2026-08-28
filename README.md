@@ -2,8 +2,8 @@
 
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
 
-Personal dotfiles for macOS. This repository contains configuration for Zsh,
-Sheldon, Starship, tmux, Vim, and Neovim.
+Personal dotfiles for macOS. This repository contains configuration for Ghostty,
+Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
 
 ## Contents
 
@@ -11,6 +11,7 @@ Sheldon, Starship, tmux, Vim, and Neovim.
 | --- | --- |
 | `.editorconfig` | Shared editor formatting rules for this repository |
 | `.vscode/extensions.json` | Recommended VS Code extensions for this repository |
+| `ghostty/config` | Ghostty terminal appearance, integration, and keybindings |
 | `zsh/.zshrc` | Zsh environment, history, aliases, plugins, and prompt initialization |
 | `sheldon/plugins.toml` | Zsh plugins managed by Sheldon |
 | `starship/starship.toml` | Starship prompt configuration |
@@ -28,6 +29,7 @@ are not installed.
 
 ```bash
 brew install neovim sheldon starship tmux tree-sitter-cli vim
+brew install --cask ghostty
 ```
 
 These optional tools enable additional shell and Neovim features:
@@ -62,8 +64,9 @@ Back up or remove any files that already exist at these destinations before
 creating the symbolic links.
 
 ```bash
-mkdir -p ~/.config/sheldon
+mkdir -p ~/.config/ghostty ~/.config/sheldon
 
+ln -s "${DOTFILES_DIR}/ghostty/config" ~/.config/ghostty/config
 ln -s "${DOTFILES_DIR}/zsh/.zshrc" ~/.zshrc
 ln -s "${DOTFILES_DIR}/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
 ln -s "${DOTFILES_DIR}/starship/starship.toml" ~/.config/starship.toml
@@ -71,6 +74,12 @@ ln -s "${DOTFILES_DIR}/tmux/.tmux.conf" ~/.tmux.conf
 ln -s "${DOTFILES_DIR}/vim/.vimrc" ~/.vimrc
 ln -s "${DOTFILES_DIR}/neovim" ~/.config/nvim
 ```
+
+## Ghostty
+
+Ghostty reads its configuration from `~/.config/ghostty/config`. This
+configuration uses JetBrains Mono with the Catppuccin Frappe theme and defines
+clipboard, cursor, window, shell integration, and split navigation behavior.
 
 ## Zsh, Sheldon, and Starship
 

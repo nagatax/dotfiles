@@ -88,8 +88,8 @@ keybind = alt+h=goto_split:left
 keybind = alt+j=goto_split:down
 keybind = alt+k=goto_split:up
 keybind = alt+l=goto_split:right
-keybind = alt+tab=goto_split:next
-keybind = alt+shift+tab=goto_split:previous
+keybind = ctrl+tab=goto_split:next
+keybind = ctrl+shift+tab=goto_split:previous
 
 # Create splits in a specific direction.
 keybind = alt+shift+h=new_split:left

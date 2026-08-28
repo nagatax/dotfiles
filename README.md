@@ -81,6 +81,22 @@ Ghostty reads its configuration from `~/.config/ghostty/config`. This
 configuration uses JetBrains Mono with the Catppuccin Frappe theme and defines
 clipboard, cursor, window, shell integration, and split navigation behavior.
 
+### Split keybindings
+
+Ghostty, Neovim, and tmux use the same action grammar for split management.
+These bindings work with the Advantage360 Limited's standard layout and do
+not require a SmartSet or ZMK remap.
+
+| Action | Ghostty | Neovim | tmux |
+| --- | --- | --- | --- |
+| Focus left/down/up/right | `Alt+h/j/k/l` | `Space`, then `h/j/k/l` | `Ctrl-b`, then `h/j/k/l` |
+| Split left/down/up/right | `Alt+s`, then `h/j/k/l` | `Space`, `s`, then `h/j/k/l` | `Ctrl-b`, `s`, then `h/j/k/l` |
+| Resize left/down/up/right by 5 cells | `Alt+r`, then `h/j/k/l` | `Space`, `r`, then `h/j/k/l` | `Ctrl-b`, `r`, then `h/j/k/l` |
+| Toggle zoom | `Alt+z` | `Space`, then `z` | `Ctrl-b`, then `z` |
+
+Ghostty also uses `Alt+n`/`Alt+p` to cycle splits, `Alt+e` to equalize them,
+and `Alt+u`/`Alt+d` to jump to the previous or next shell prompt.
+
 ## Zsh, Sheldon, and Starship
 
 The Zsh configuration loads Sheldon and Starship only when their executables

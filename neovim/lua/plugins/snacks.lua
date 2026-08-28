@@ -50,12 +50,12 @@ return {
       { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
       { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
       { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
-      { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
+      { "<leader>fh", function() Snacks.picker.help() end, desc = "Help Pages" },
       { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
       { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
-      { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
-      { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-      { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
+      { "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+      { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      { "<leader>fl", function() Snacks.picker.loclist() end, desc = "Location List" },
       { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
       { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
       { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
@@ -106,8 +106,7 @@ return {
 
       -- Configure appearance keymaps.
       { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
-      { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-      { "<leader>Z", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
+      { "<leader>uz", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
 
       -- Configure scratch-buffer keymaps.
       { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
@@ -120,11 +119,20 @@ return {
       -- Configure terminal keymaps.
       { "<leader>tt", function() Snacks.terminal() end, desc = "Terminal" },
 
-      -- Configure window-navigation keymaps.
-      { "<C-h>", "<C-w>h", desc = "Go to Left Window" },
-      { "<C-j>", "<C-w>j", desc = "Go to Lower Window" },
-      { "<C-k>", "<C-w>k", desc = "Go to Upper Window" },
-      { "<C-l>", "<C-w>l", desc = "Go to Right Window" },
+      -- Configure window navigation and split-management keymaps.
+      { "<leader>h", "<C-w>h", desc = "Go to Left Window" },
+      { "<leader>j", "<C-w>j", desc = "Go to Lower Window" },
+      { "<leader>k", "<C-w>k", desc = "Go to Upper Window" },
+      { "<leader>l", "<C-w>l", desc = "Go to Right Window" },
+      { "<leader>sh", "<cmd>leftabove vsplit<cr>", desc = "Split Window Left" },
+      { "<leader>sj", "<cmd>rightbelow split<cr>", desc = "Split Window Down" },
+      { "<leader>sk", "<cmd>leftabove split<cr>", desc = "Split Window Up" },
+      { "<leader>sl", "<cmd>rightbelow vsplit<cr>", desc = "Split Window Right" },
+      { "<leader>rh", "<cmd>vertical resize -5<cr>", desc = "Resize Window Left" },
+      { "<leader>rj", "<cmd>resize -5<cr>", desc = "Resize Window Down" },
+      { "<leader>rk", "<cmd>resize +5<cr>", desc = "Resize Window Up" },
+      { "<leader>rl", "<cmd>vertical resize +5<cr>", desc = "Resize Window Right" },
+      { "<leader>z", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
 
       -- Configure file and editor keymaps.
       { "<leader>dt", ":DiffTool ", desc = "Diff Tool" },

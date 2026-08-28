@@ -37,7 +37,7 @@ window-padding-balance = true
 window-save-state = always
 
 # Make the focused split visually stand out.
-unfocused-split-opacity = 0.85
+unfocused-split-opacity = 0.70
 split-divider-color = #626880
 
 

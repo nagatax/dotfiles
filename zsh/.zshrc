@@ -1,13 +1,12 @@
-##################################################
+# ==================================================
 # Environment / PATH
-# Environment variables and command search paths.
-##################################################
+# Configure environment variables and command search paths.
+# ==================================================
 
 # Keep command and completion search paths idempotent when reloading this file.
 typeset -U path fpath
 
-# Homebrew
-# Add Homebrew's Zsh completions to the function search path.
+# Configure Homebrew-provided completion and tool paths.
 if type brew &>/dev/null; then
   brew_prefix="$(brew --prefix)"
 
@@ -21,15 +20,15 @@ fi
 # Add user-installed Go binaries to PATH.
 export PATH="${HOME}/go/bin:${PATH}"
 
-##################################################
+# ==================================================
 # History
 # Configure command history behavior.
-##################################################
+# ==================================================
 
-# History file
+# Store command history in ZDOTDIR when set, otherwise in the home directory.
 HISTFILE="${ZDOTDIR:-${HOME}}/.zsh_history"
 
-# Maximum number of history entries kept in memory and saved to disk.
+# Keep up to 10,000 history entries in memory and on disk.
 HISTSIZE=10000
 SAVEHIST=10000
 
@@ -45,15 +44,15 @@ setopt append_history
 # Show timestamps when displaying command history.
 alias history='history -i'
 
-##################################################
+# ==================================================
 # Shell options
 # Configure Zsh's interactive shell behavior.
-##################################################
+# ==================================================
 
-##################################################
+# ==================================================
 # Aliases
 # Define shortcuts for frequently used commands.
-##################################################
+# ==================================================
 
 alias ls='ls -G'
 
@@ -63,24 +62,24 @@ if type eza &>/dev/null; then
   alias lt='eza --tree --icons --level=2'
 fi
 
-##################################################
+# ==================================================
 # Sheldon / plugins
 # Load Zsh plugins and initialize completion in the configured order.
-##################################################
+# ==================================================
 
 if type sheldon &>/dev/null; then
   eval "$(sheldon source)"
 fi
 
-##################################################
+# ==================================================
 # Functions
 # Define custom shell functions.
-##################################################
+# ==================================================
 
-##################################################
+# ==================================================
 # Prompt
 # Configure the shell prompt.
-##################################################
+# ==================================================
 
 if type starship &>/dev/null; then
   eval "$(starship init zsh)"

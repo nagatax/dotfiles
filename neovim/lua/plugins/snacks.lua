@@ -19,14 +19,14 @@ return {
     ---@type snacks.Config
     opts = {
       explorer = {
-        replace_netrw = true, -- netrwをsnacksのexplorerで置き換える
-        trash = true, -- ファイル削除時にシステムのゴミ箱を使う
+        replace_netrw = true, -- Replace netrw with the Snacks explorer.
+        trash = true, -- Move deleted files to the system trash.
       },
       picker = {},
-      notifier = {}, -- vim.notifyを置き換え、<leader>nで履歴を参照できるようにする
+      notifier = {}, -- Replace vim.notify and expose notification history through <leader>n.
     },
     keys = {
-      -- Files & Explorer
+      -- Configure file and explorer keymaps.
       { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
       { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
       { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -36,11 +36,11 @@ return {
       { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
       { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
 
-      -- Buffers
+      -- Configure buffer keymaps.
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
 
-      -- Search & Navigation
+      -- Configure search and navigation keymaps.
       { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
       { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
       { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
@@ -63,7 +63,7 @@ return {
       { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
       { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
 
-      -- Git
+      -- Configure Git keymaps.
       { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
       { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
       { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
@@ -74,13 +74,13 @@ return {
       { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
       { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
 
-      -- GitHub
+      -- Configure GitHub keymaps.
       { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
       { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
       { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
       { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
 
-      -- LSP
+      -- Configure LSP keymaps.
       { "<leader>ca", function() vim.lsp.buf.code_action() end, desc = "Code Action" },
       { "<leader>cf", function() vim.lsp.buf.format() end, desc = "Format Buffer" },
       { "<leader>cr", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },
@@ -94,39 +94,39 @@ return {
       { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
       { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 
-      -- Diagnostics
+      -- Configure diagnostic keymaps.
       { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
       { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
       { "[d", function() jump_diagnostic(-1) end, desc = "Previous Diagnostic" },
       { "]d", function() jump_diagnostic(1) end, desc = "Next Diagnostic" },
 
-      -- Quickfix
+      -- Configure quickfix keymaps.
       { "[q", "<cmd>cprev<cr>", desc = "Previous Quickfix" },
       { "]q", "<cmd>cnext<cr>", desc = "Next Quickfix" },
 
-      -- Appearance
+      -- Configure appearance keymaps.
       { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
       { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
       { "<leader>Z", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
 
-      -- Scratch Buffers
+      -- Configure scratch-buffer keymaps.
       { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
       { "<leader>S", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
 
-      -- Notifications
+      -- Configure notification keymaps.
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 
-      -- Terminal
+      -- Configure terminal keymaps.
       { "<leader>tt", function() Snacks.terminal() end, desc = "Terminal" },
 
-      -- Window Navigation
+      -- Configure window-navigation keymaps.
       { "<C-h>", "<C-w>h", desc = "Go to Left Window" },
       { "<C-j>", "<C-w>j", desc = "Go to Lower Window" },
       { "<C-k>", "<C-w>k", desc = "Go to Upper Window" },
       { "<C-l>", "<C-w>l", desc = "Go to Right Window" },
 
-      -- File & Editor
+      -- Configure file and editor keymaps.
       { "<leader>dt", ":DiffTool ", desc = "Diff Tool" },
       { "<leader>ds", ":diffsplit ", desc = "Diff Split" },
       { "<leader>w", "<cmd>write<cr>", desc = "Save File" },

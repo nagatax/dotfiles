@@ -20,7 +20,7 @@ return {
     vim.lsp.enable("intelephense")
     vim.lsp.enable("basedpyright")
 
-    -- 診断表示
+    -- Configure diagnostic display.
     vim.diagnostic.config({
       virtual_text = true,
       signs = true,
@@ -33,7 +33,7 @@ return {
       },
     })
 
-    -- Rustファイル保存時にrustfmt
+    -- Format Rust files with rustfmt before saving.
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "*.rs",
       callback = function(args)

@@ -1,8 +1,7 @@
--- ~/.config/nvim/init.lua
-
-------------------------------------------------------------
--- 基本設定
-------------------------------------------------------------
+-- ==================================================
+-- Core settings
+-- Configure core editor behavior.
+-- ==================================================
 
 vim.opt.whichwrap = "b,s,[,],<,>,~"
 vim.opt.mouse = ""
@@ -10,33 +9,31 @@ vim.opt.mouse = ""
 vim.opt.hlsearch = true
 vim.opt.cursorline = true
 
--- インデント
+-- Configure indentation behavior.
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.autoindent = true
 
--- 行番号
 vim.opt.number = true
 
--- wildmenu
+-- Configure command-line completion behavior.
 vim.opt.wildmenu = true
 vim.opt.wildmode = "list:longest,full"
 
--- 最終ステータスラインを常に表示
 vim.opt.laststatus = 2
 
-
-------------------------------------------------------------
--- encoding
-------------------------------------------------------------
+-- ==================================================
+-- Encoding
+-- Configure preferred file encodings.
+-- ==================================================
 
 vim.opt.fileencodings = "utf-8,cp932,euc-jp"
 
-
-------------------------------------------------------------
--- swap
-------------------------------------------------------------
+-- ==================================================
+-- Swap files
+-- Store swap files outside working directories.
+-- ==================================================
 
 local swap_dir = vim.fn.expand("$HOME/.vim/swap")
 
@@ -46,10 +43,10 @@ end
 
 vim.opt.directory = swap_dir .. "//"
 
-
-------------------------------------------------------------
--- undo
-------------------------------------------------------------
+-- ==================================================
+-- Undo history
+-- Persist undo history outside working directories.
+-- ==================================================
 
 local undo_dir = vim.fn.expand("$HOME/.vim/undo")
 
@@ -60,23 +57,23 @@ end
 vim.opt.undofile = true
 vim.opt.undodir = undo_dir
 
-
-------------------------------------------------------------
--- syntax
-------------------------------------------------------------
+-- ==================================================
+-- Syntax highlighting
+-- Enable built-in syntax highlighting.
+-- ==================================================
 
 vim.cmd("syntax enable")
 
-
-------------------------------------------------------------
--- lazy.nvim
-------------------------------------------------------------
+-- ==================================================
+-- Plugin manager
+-- Load the lazy.nvim plugin configuration.
+-- ==================================================
 
 require("config.lazy")
 
-
-------------------------------------------------------------
--- 組み込みプラグイン
-------------------------------------------------------------
+-- ==================================================
+-- Built-in plugins
+-- Load optional plugins distributed with Neovim.
+-- ==================================================
 
 vim.cmd.packadd("nvim.difftool")

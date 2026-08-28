@@ -1,4 +1,4 @@
--- Bootstrap lazy.nvim
+-- Bootstrap lazy.nvim when it is not installed.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -15,23 +15,19 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
+-- Define leaders before loading plugins so their mappings use the correct keys.
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
+    -- Import plugin specifications from the plugins module.
     { import = "plugins" },
   },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
+  -- Use this colorscheme while installing plugins.
   install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
+  -- Check for plugin updates automatically.
   checker = { enabled = true },
-  -- disable LuaRocks support because no configured plugins require it
+  -- Disable LuaRocks because no configured plugin requires it.
   rocks = { enabled = false },
 })

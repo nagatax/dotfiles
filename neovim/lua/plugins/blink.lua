@@ -1,7 +1,7 @@
 return {
   "saghen/blink.cmp",
 
-  -- use a release tag to download pre-built binaries
+  -- Use a release tag to download pre-built binaries.
   version = "1.*",
 
   ---@module 'blink.cmp'
@@ -16,8 +16,7 @@ return {
       },
     },
 
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
+    -- Declare default providers here so opts_extend can extend them elsewhere.
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },

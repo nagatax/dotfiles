@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# 左側に表示する主要なプロンプト要素。
+# Display the main prompt components on the left.
 format = """
 $directory\
 $git_branch\
@@ -10,7 +10,7 @@ $git_status\
 $line_break\
 $character"""
 
-# 右側に補助情報と、現在利用中の開発環境を表示する。
+# Display supporting information and active development environments on the right.
 right_format = """
 $cmd_duration\
 $status\
@@ -30,10 +30,10 @@ $gcloud\
 $docker_context\
 $container"""
 
-# 遅い外部コマンドによるプロンプト表示の待ち時間を抑える。
+# Limit how long slow external commands may delay prompt rendering.
 command_timeout = 750
 
-# 入力欄を見やすくするため、プロンプトの前に空行を入れる。
+# Insert a blank line before the prompt to make the input area easier to read.
 add_newline = true
 
 [aws]
@@ -59,7 +59,7 @@ symbol = " "
 symbol = " "
 
 [cmd_duration]
-# 実行時間が表示される場合は、黄色で強調する。
+# Highlight command duration in yellow when it is displayed.
 format = 'took [$duration](yellow) '
 
 [cpp]
@@ -91,12 +91,12 @@ symbol = " "
 symbol = " "
 
 [directory]
-# 現在の作業ディレクトリを読み取り専用状態も含めて強調表示する。
+# Highlight the current directory, including its read-only state.
 style = 'bold blue'
 read_only = " 󰌾"
 
 [docker_context]
-# Docker の接続先をディレクトリ表示と区別しやすい青で表示する。
+# Display the Docker context in blue to distinguish it from the directory.
 symbol = " "
 style = 'blue'
 
@@ -125,7 +125,7 @@ symbol = " "
 symbol = " "
 
 [gcloud]
-# 使用中の Google Cloud プロジェクトを環境変数から検出して表示する。
+# Detect and display the active Google Cloud project from environment variables.
 symbol = "󱇶 "
 format = 'on [$symbol(\($project\))]($style) '
 detect_env_vars = ["CLOUDSDK_ACTIVE_CONFIG_NAME", "GOOGLE_CLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT"]
@@ -137,16 +137,16 @@ symbol = " "
 symbol = " "
 
 [git_commit]
-# タグ付きコミットではタグ名も表示する。
+# Display tag names for tagged commits.
 tag_disabled = false
 tag_symbol = '  '
 
 [git_metrics]
-# Git の追加・削除行数をプロンプトに表示する。
+# Display counts of added and deleted lines in Git repositories.
 disabled = false
 
 [git_status]
-# 作業ツリーの状態とリモートとの差分をひとまとまりで表示する。
+# Display the worktree state and remote divergence as a single group.
 format = '([$all_status$ahead_behind]($style) )'
 
 [golang]
@@ -342,7 +342,7 @@ symbol = " "
 symbol = " "
 
 [status]
-# 直前のコマンドが失敗した場合に終了情報を表示する。
+# Display exit information when the previous command fails.
 symbol = " "
 format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
 map_symbol = true
@@ -358,7 +358,7 @@ symbol = " "
 symbol = " "
 
 [time]
-# 右側にローカル時刻を常時表示する。
+# Always display the local time on the right.
 disabled = false
 format = '🕙[\[ $time \]]($style) '
 time_format = '%T'

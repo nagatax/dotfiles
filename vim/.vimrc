@@ -1,173 +1,162 @@
-" # set nocompatible
+" ==================================================
+" Core settings
+" Configure Vim editing, display, and persistence behavior.
+" ==================================================
+
+" Disable Vi compatibility when running Vim.
 if !has('nvim')
-  " setting for vim
   set nocompatible
 endif
 
-" # encoding
+" Configure text encoding for the current platform.
 if has('win32')
   set encoding=cp932
 else
   set encoding=utf-8
 endif
 if !has('nvim')
-  " setting for vim
   scriptencoding utf-8
 endif
 
-" # load the default setting
+" Load Vim's default configuration when running Vim.
 if !has('nvim')
-  " setting for vim
   unlet! skip_defaults_vim
   source $VIMRUNTIME/defaults.vim
 endif
 
-" # whichwrap
+" Allow cursor movement to wrap across line boundaries.
 set whichwrap=b,s,[,],<,>,~
 
-" # clear mouse setting
+" Disable mouse input.
 set mouse=
 
-" # enable hlsearch
+" Highlight search matches.
 set hlsearch
 
-" # enable cursorline
+" Highlight the current cursor line.
 set cursorline
 
-" # convert tab to space
+" Insert spaces when the Tab key is pressed.
 set expandtab
 
-" # set tabstop
+" Use four-column tab stops.
 set tabstop=4
 
-" # enable autoindent
+" Preserve indentation when starting a new line in Vim.
 if !has('nvim')
-  " setting for vim
    set autoindent
 endif
 
-" # set autoindent width
+" Use four columns for automatic indentation.
 set shiftwidth=4
 
-" # set printing line number
+" Display absolute line numbers.
 set number
 
-" # set color scheme
+" Enable syntax highlighting with the Molokai color scheme.
 syntax on
 colorscheme molokai
 set t_Co=256
 
-" # set swap directory
+" Store swap files outside working directories.
 if !isdirectory(expand("$HOME/.vim/swap"))
   call mkdir(expand("$HOME/.vim/swap"), "p")
 endif
 set directory=$HOME/.vim/swap//
 
-" # set undo directory
+" Persist undo history outside working directories.
 set undofile
 if !isdirectory(expand("$HOME/.vim/undo"))
   call mkdir(expand("$HOME/.vim/undo"), "p")
 endif
 set undodir=$HOME/.vim/undo
 
-" # enable wildmenu
+" Complete command-line entries with a longest-match menu.
 set wildmenu
 set wildmode=list:longest,full
 
-" ##### vim-plug #####
+" ==================================================
+" Plugins
+" Configure plugins managed by vim-plug.
+" ==================================================
 
-" # begin vim-plug
 call plug#begin()
 
-" # lightline
 Plug 'itchyny/lightline.vim'
+" Keep the status line visible for lightline.
 set laststatus=2
 
-" # vim indent guides
 Plug 'nathanaelkane/vim-indent-guides'
+" Configure indent-guide startup behavior and colors.
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
-" # vim trailing whitespace
 Plug 'bronson/vim-trailing-whitespace'
-" uniteでスペースが表示されるので、設定でOFFにする
+" Ignore Unite buffers because Unite renders spaces as part of its interface.
 let g:extra_whitespace_ignored_filetypes = ['unite']
 
-" # tcomment vim
 Plug 'tomtom/tcomment_vim'
 
-" # emmet-vim
 Plug 'mattn/emmet-vim'
 
-" # vim-css3-syntax
 Plug 'hail2u/vim-css3-syntax'
 
-" # NERDtree
 Plug 'scrooloose/nerdtree'
-" 起動時にブックマークを表示
+" Display NERDTree bookmarks on startup.
 " let NERDTreeShowBookmarks = 1
-" 起動時にNERDTreeを開く
+" Open NERDTree on startup.
 " autocmd VimEnter * NERDTree
 
-" # Markdown
+" Configure Markdown editing, browser integration, and command execution.
 Plug 'tpope/vim-markdown'
 Plug 'tyru/open-browser.vim'
 Plug 'thinca/vim-quickrun'
 
-" # vimproc
 Plug 'Shougo/vimproc.vim'
 
-" # vimshell
 Plug 'Shougo/vimshell.vim'
 
-" # Editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
-" # TypeScript
 Plug 'leafgarland/typescript-vim'
 
-" # vim-toml
 Plug 'cespare/vim-toml'
 
-" # vim-unimpaired
 Plug 'tpope/vim-unimpaired'
 
-" # vim-easymotion
 Plug 'easymotion/vim-easymotion'
 
-" # vim-fugitive
 Plug 'tpope/vim-fugitive'
 
-" # vim-test
 Plug 'janko-m/vim-test'
 
-" # ale
 Plug 'dense-analysis/ale'
 
-" # vim-lsp-settings
+" Configure Vim LSP support.
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
-" # vim-vsnip
+" Configure snippet support.
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
-" # asyncomplete.vim
+" Configure asynchronous LSP completion.
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-" # lexima.vim
 Plug 'cohama/lexima.vim'
 
-" # copilot.vim
 Plug 'github/copilot.vim'
 
-" # end vim-plug
 call plug#end()
 
-" # Language Server Protocol setting
+" ==================================================
+" Language Server Protocol
+" Configure buffer-local LSP behavior and TypeScript servers.
+" ==================================================
+
 function! s:on_lsp_buffer_enabled() abort
   if &buftype ==# 'nofile' || &filetype =~# '^\(quickrun\)' || getcmdwintype() ==# ':'
     return
@@ -191,7 +180,7 @@ function! s:on_lsp_buffer_enabled() abort
   autocmd BufWritePre *.go call execute(['LspCodeActionSync source.organizeImports', 'LspDocumentFormatSync'])
 endfunction
 
-" # Language Server Protocol setting(for TypeScript)
+" Configure fenced TypeScript blocks and available language servers.
 let g:markdown_fenced_languages = ['ts=typescript']
 let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server', 'deno']
 

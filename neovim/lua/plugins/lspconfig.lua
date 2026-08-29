@@ -74,5 +74,45 @@ return {
         })
       end,
     })
+
+    -- Organize imports and format Go files with gopls before saving.
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*.go",
+      callback = function(args)
+        local clients = vim.lsp.get_clients({
+          bufnr = args.buf,
+          name = "gopls",
+          method = "textDocument/formatting",
+        })
+
+        if #clients == 0 then
+          return
+        end
+
+        local client = clients[1]
+        local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+        params.context = { only = { "source.organizeImports" } }
+
+        local response = client:request_sync(
+          "textDocument/codeAction",
+          params,
+          3000,
+          args.buf
+        )
+
+        for _, action in ipairs(response and response.result or {}) do
+          if action.edit then
+            vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+          end
+        end
+
+        vim.lsp.buf.format({
+          bufnr = args.buf,
+          name = "gopls",
+          async = false,
+          timeout_ms = 3000,
+        })
+      end,
+    })
   end,
 }

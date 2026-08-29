@@ -14,6 +14,9 @@ font-size = 18
 
 theme = Catppuccin Frappe
 
+# Prevent text from becoming indistinguishable from the background.
+minimum-contrast = 1.1
+
 
 # ==================================================
 # Cursor / Mouse

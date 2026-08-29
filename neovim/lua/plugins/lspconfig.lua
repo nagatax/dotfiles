@@ -2,15 +2,6 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = { "saghen/blink.cmp" },
   config = function()
-    vim.lsp.config("rust_analyzer", {
-      settings = {
-        ["rust-analyzer"] = {
-          check = {
-            command = "clippy",
-          },
-        },
-      }
-    })
     vim.lsp.config("terraformls", { filetypes = { "tf", "terraform", "terraform-vars" } })
 
     local servers = {
@@ -32,6 +23,18 @@ return {
         and type(command[1]) == "string"
         and vim.fn.executable(command[1]) == 1
       then
+        if server == "rust_analyzer" then
+          vim.lsp.config(server, {
+            settings = {
+              ["rust-analyzer"] = {
+                check = {
+                  command = "clippy",
+                },
+              },
+            },
+          })
+        end
+
         vim.lsp.enable(server)
       end
     end
@@ -53,8 +56,19 @@ return {
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "*.rs",
       callback = function(args)
+        local clients = vim.lsp.get_clients({
+          bufnr = args.buf,
+          name = "rust_analyzer",
+          method = "textDocument/formatting",
+        })
+
+        if #clients == 0 then
+          return
+        end
+
         vim.lsp.buf.format({
           bufnr = args.buf,
+          name = "rust_analyzer",
           async = false,
           timeout_ms = 3000,
         })

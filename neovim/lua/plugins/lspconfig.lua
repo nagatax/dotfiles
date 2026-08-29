@@ -13,12 +13,28 @@ return {
     })
     vim.lsp.config("terraformls", { filetypes = { "tf", "terraform", "terraform-vars" } })
 
-    vim.lsp.enable("clangd")
-    vim.lsp.enable("rust_analyzer")
-    vim.lsp.enable("gopls")
-    vim.lsp.enable("terraformls")
-    vim.lsp.enable("intelephense")
-    vim.lsp.enable("basedpyright")
+    local servers = {
+      "clangd",
+      "rust_analyzer",
+      "gopls",
+      "terraformls",
+      "intelephense",
+      "basedpyright",
+    }
+
+    -- Enable only servers whose executables are available.
+    for _, server in ipairs(servers) do
+      local config = vim.lsp.config[server]
+      local command = config and config.cmd
+
+      if
+        type(command) == "table"
+        and type(command[1]) == "string"
+        and vim.fn.executable(command[1]) == 1
+      then
+        vim.lsp.enable(server)
+      end
+    end
 
     -- Configure diagnostic display.
     vim.diagnostic.config({

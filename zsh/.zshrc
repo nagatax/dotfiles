@@ -14,11 +14,17 @@ if type brew &>/dev/null; then
   FPATH="${brew_prefix}/share/zsh/site-functions:${FPATH}"
 
   # Add Rustup-managed toolchains installed through Homebrew to PATH.
-  export PATH="${brew_prefix}/opt/rustup/bin:${PATH}"
+  path=("${brew_prefix}/opt/rustup/bin" "${path[@]}")
 fi
 
 # Add user-installed Go binaries to PATH.
-export PATH="${HOME}/go/bin:${PATH}"
+path=("${HOME}/go/bin" "${path[@]}")
+
+# Use Neovim as the default terminal editor when available.
+if type nvim &>/dev/null; then
+  export EDITOR='nvim'
+  export VISUAL="${EDITOR}"
+fi
 
 # ==================================================
 # History
@@ -38,8 +44,17 @@ setopt extended_history
 # Do not save consecutive duplicate commands.
 setopt hist_ignore_dups
 
-# Append history on shell exit so concurrent shells do not overwrite each other.
-setopt append_history
+# Save history after each command finishes while retaining command durations.
+setopt inc_append_history_time
+
+# Hide duplicate entries while searching command history.
+setopt hist_find_no_dups
+
+# Remove unnecessary whitespace from saved commands.
+setopt hist_reduce_blanks
+
+# Omit older duplicate commands when rewriting the history file.
+setopt hist_save_no_dups
 
 # Show timestamps when displaying command history.
 alias history='history -i'
@@ -48,6 +63,9 @@ alias history='history -i'
 # Shell options
 # Configure Zsh's interactive shell behavior.
 # ==================================================
+
+# Allow comments in commands entered at the interactive prompt.
+setopt interactive_comments
 
 # ==================================================
 # Aliases
@@ -67,6 +85,17 @@ fi
 # Load Zsh plugins and initialize completion in the configured order.
 # ==================================================
 
+# Group completion candidates by their descriptions in fzf-tab.
+zstyle ':completion:*:descriptions' format '[%d]'
+
+# Let fzf-tab display ambiguous completion candidates.
+zstyle ':completion:*' menu no
+
+# Preview directory contents when completing cd arguments.
+if type eza &>/dev/null; then
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+fi
+
 if type sheldon &>/dev/null; then
   eval "$(sheldon source)"
 fi
@@ -75,6 +104,11 @@ fi
 # Functions
 # Define custom shell functions.
 # ==================================================
+
+# Edit the current command line in the configured external editor.
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
 
 # ==================================================
 # Prompt

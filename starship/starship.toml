@@ -1,10 +1,14 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Match the prompt colors to the terminal and editor theme.
+palette = 'catppuccin_frappe'
+
 # Display the main prompt components on the left.
 format = """
 $directory\
 $git_branch\
 $git_commit\
+$git_state\
 $git_metrics\
 $git_status\
 $line_break\
@@ -14,6 +18,7 @@ $character"""
 right_format = """
 $cmd_duration\
 $status\
+$jobs\
 $time\
 $c\
 $cpp\
@@ -28,7 +33,8 @@ $aws\
 $azure\
 $gcloud\
 $docker_context\
-$container"""
+$container\
+$hostname"""
 
 # Limit how long slow external commands may delay prompt rendering.
 command_timeout = 750
@@ -94,6 +100,8 @@ symbol = " "
 # Highlight the current directory, including its read-only state.
 style = 'bold blue'
 read_only = " 󰌾"
+# Mark paths that were shortened to fit the prompt.
+truncation_symbol = '…/'
 
 [docker_context]
 # Display the Docker context in blue to distinguish it from the directory.
@@ -171,7 +179,10 @@ symbol = " "
 symbol = " "
 
 [hostname]
+# Identify the remote host only during SSH sessions.
 ssh_symbol = " "
+format = '[$ssh_symbol$hostname]($style) '
+ssh_only = true
 
 [java]
 symbol = " "
@@ -346,6 +357,9 @@ symbol = " "
 symbol = " "
 format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
 map_symbol = true
+# Report failures from every command in a pipeline.
+pipestatus = true
+pipestatus_segment_format = '[$status]($style)'
 disabled = false
 
 [sudo]
@@ -378,3 +392,31 @@ symbol = " "
 
 [zig]
 symbol = " "
+
+[palettes.catppuccin_frappe]
+rosewater = "#f2d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e5c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"

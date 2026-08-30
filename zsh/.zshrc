@@ -118,8 +118,14 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 # Group completion candidates by their descriptions in fzf-tab.
 zstyle ':completion:*:descriptions' format '[%d]'
 
+# Separate completion candidates into groups based on their tags.
+zstyle ':completion:*' group-name ''
+
 # Let fzf-tab display ambiguous completion candidates.
 zstyle ':completion:*' menu no
+
+# Switch between fzf-tab completion groups with angle brackets.
+zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # Preview directory contents when completing cd arguments.
 if type eza &>/dev/null; then

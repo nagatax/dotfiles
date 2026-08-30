@@ -1,0 +1,32 @@
+# Keep remote-tracking branches tidy after fetching.
+[fetch]
+    prune = true
+
+# Set the upstream automatically on the first push of a new branch.
+[push]
+    autoSetupRemote = true
+
+# List recently updated branches first.
+[branch]
+    sort = -committerdate
+
+# Sort tags by version number.
+[tag]
+    sort = version:refname
+
+# Make moved code and low-frequency matching lines easier to identify.
+[diff]
+    algorithm = histogram
+    colorMoved = default
+
+# Include the common ancestor while keeping conflict regions compact.
+[merge]
+    conflictStyle = zdiff3
+
+# Stop when an interactive rebase might accidentally drop a commit.
+[rebase]
+    missingCommitsCheck = error
+
+# Reuse recorded conflict resolutions without updating the index automatically.
+[rerere]
+    enabled = true

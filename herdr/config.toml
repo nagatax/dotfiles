@@ -31,7 +31,9 @@ height = "80%"
 
 [ui]
 # Match the existing selection behavior and prioritize agent supervision.
+mouse_capture = false
 copy_on_select = true
+pane_scrollbars = false
 show_agent_labels_on_pane_borders = true
 hide_tab_bar_when_single_tab = true
 agent_panel_sort = "priority"

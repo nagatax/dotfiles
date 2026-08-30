@@ -1,0 +1,2 @@
+# Ignore Neovim logs generated during local validation.
+nvim.log

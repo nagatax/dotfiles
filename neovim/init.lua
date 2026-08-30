@@ -11,6 +11,7 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 4
 vim.opt.splitkeep = "screen"
+vim.opt.jumpoptions:append("view")
 vim.opt.winborder = "rounded"
 
 vim.opt.ignorecase = true
@@ -27,6 +28,7 @@ vim.opt.autoindent = true
 vim.opt.number = true
 
 -- Configure command-line completion behavior.
+vim.opt.inccommand = "split"
 vim.opt.wildmenu = true
 vim.opt.wildmode = "list:longest,full"
 

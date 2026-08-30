@@ -1,4 +1,13 @@
 # ==================================================
+# Ghostty shell integration
+# Load Ghostty features in shells started by tmux, Herdr, or another Zsh.
+# ==================================================
+
+if [[ -n "${GHOSTTY_RESOURCES_DIR}" ]]; then
+  source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
+fi
+
+# ==================================================
 # Environment / PATH
 # Configure environment variables and command search paths.
 # ==================================================

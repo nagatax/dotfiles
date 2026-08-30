@@ -59,8 +59,8 @@ copy-on-select = clipboard
 
 scrollback-limit = 20000000
 
-# Enable prompt navigation, title updates, and SSH environment integration.
-shell-integration-features = cursor,title,ssh-env,ssh-terminfo,path
+# Enable prompt navigation, sudo terminfo preservation, titles, and SSH integration.
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo,path
 
 
 # ==================================================

@@ -49,31 +49,11 @@ vim.filetype.add({
 vim.opt.fileencodings = "utf-8,cp932,euc-jp"
 
 -- ==================================================
--- Swap files
--- Store swap files outside working directories.
--- ==================================================
-
-local swap_dir = vim.fn.expand("$HOME/.vim/swap")
-
-if vim.fn.isdirectory(swap_dir) == 0 then
-  vim.fn.mkdir(swap_dir, "p")
-end
-
-vim.opt.directory = swap_dir .. "//"
-
--- ==================================================
 -- Undo history
--- Persist undo history outside working directories.
+-- Persist undo history in Neovim's default state directory.
 -- ==================================================
-
-local undo_dir = vim.fn.expand("$HOME/.vim/undo")
-
-if vim.fn.isdirectory(undo_dir) == 0 then
-  vim.fn.mkdir(undo_dir, "p")
-end
 
 vim.opt.undofile = true
-vim.opt.undodir = undo_dir
 
 -- ==================================================
 -- Syntax highlighting

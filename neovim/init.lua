@@ -10,6 +10,8 @@ vim.opt.hlsearch = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 4
+vim.opt.breakindent = true
+vim.opt.virtualedit = "block"
 vim.opt.splitkeep = "screen"
 vim.opt.jumpoptions:append("view")
 vim.opt.winborder = "rounded"
@@ -33,6 +35,7 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = "list:longest,full"
 
 vim.opt.laststatus = 2
+vim.opt.showmode = false
 
 -- ==================================================
 -- File types

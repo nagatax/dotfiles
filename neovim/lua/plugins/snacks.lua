@@ -28,6 +28,8 @@ return {
       picker = {},
       notifier = {}, -- Replace vim.notify and expose notification history through <leader>n.
       quickfile = { enabled = true }, -- Render files before the remaining plugins finish loading.
+      scope = { enabled = true }, -- Add scope-aware text objects and navigation.
+      statuscolumn = { enabled = true }, -- Combine line numbers, signs, folds, and Git status.
       words = { enabled = true }, -- Highlight references reported by attached LSP clients.
     },
     keys = {

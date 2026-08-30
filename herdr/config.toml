@@ -15,6 +15,7 @@ new_cwd = "follow"
 prefix = "ctrl+b"
 switch_workspace = "prefix+shift+1..9"
 focus_agent = "prefix+alt+1..9"
+open_worktree = "prefix+alt+w"
 
 [[keys.command]]
 # Open repository Git operations without changing the tab layout.
@@ -33,6 +34,14 @@ hide_tab_bar_when_single_tab = true
 agent_panel_sort = "priority"
 status_indicators = "symbols"
 window_title = "{workspace}: {tab}"
+
+[ui.sidebar.agents]
+# Show agent state, terminal activity, and location on separate lines.
+rows = [
+  ["state_icon", "agent", "state_text"],
+  ["terminal_title_stripped"],
+  ["workspace", "tab"],
+]
 
 [ui.toast]
 # Let Ghostty deliver stable background-agent notifications.

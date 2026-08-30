@@ -9,6 +9,7 @@ Herdr, Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
 
 | Path | Description |
 | --- | --- |
+| `.gitattributes` | Git-managed text-file line-ending rules |
 | `.editorconfig` | Shared editor formatting rules for this repository |
 | `ghostty/config` | Ghostty terminal appearance, integration, and keybindings |
 | `herdr/config.toml` | Herdr workspace, agent, notification, and input settings |
@@ -106,7 +107,8 @@ inherits Ghostty's Catppuccin Frappe palette, and background-agent notifications
 are delivered through Ghostty. The configuration also enables Japanese input
 support for Codex and Claude Code panes without saving pane contents to disk.
 Distinct status symbols make agent states recognizable without relying on color
-alone.
+alone, while the expanded sidebar shows the current state, terminal activity,
+workspace, and tab for each agent.
 
 The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 
@@ -120,6 +122,7 @@ The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 | Switch workspace 1–9 | `Ctrl-b`, then `Shift+1–9` |
 | Focus agent 1–9 | `Ctrl-b`, then `Alt+1–9` |
 | Open Lazygit popup | `Ctrl-b`, then `Alt+g` |
+| Open an existing Git worktree | `Ctrl-b`, then `Alt+w` |
 
 Install the optional integrations for installed coding agents to let Herdr
 restore their native sessions after a server restart:

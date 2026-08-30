@@ -53,6 +53,9 @@ setopt extended_history
 # Do not save consecutive duplicate commands.
 setopt hist_ignore_dups
 
+# Exclude commands deliberately prefixed with a space from history.
+setopt hist_ignore_space
+
 # Remove duplicate history entries before unique entries when trimming.
 setopt hist_expire_dups_first
 
@@ -67,6 +70,9 @@ setopt hist_reduce_blanks
 
 # Omit older duplicate commands when rewriting the history file.
 setopt hist_save_no_dups
+
+# Review expanded history commands before executing them.
+setopt hist_verify
 
 # Show timestamps when displaying command history.
 alias history='history -i'
@@ -96,6 +102,9 @@ fi
 # Sheldon / plugins
 # Load Zsh plugins and initialize completion in the configured order.
 # ==================================================
+
+# Retry completion without letter-case distinctions when exact matching fails.
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Group completion candidates by their descriptions in fzf-tab.
 zstyle ':completion:*:descriptions' format '[%d]'

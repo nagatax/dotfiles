@@ -27,11 +27,24 @@ set whichwrap=b,s,[,],<,>,~
 " Disable mouse input.
 set mouse=
 
+" Ask before abandoning modified buffers.
+set confirm
+
 " Highlight search matches.
 set hlsearch
 
+" Ignore letter case unless the search pattern contains uppercase letters.
+set ignorecase
+set smartcase
+
 " Highlight the current cursor line.
 set cursorline
+
+" Keep context visible above and below the cursor.
+set scrolloff=4
+
+" Keep the diagnostic and Git sign column visible.
+set signcolumn=yes
 
 " Insert spaces when the Tab key is pressed.
 set expandtab
@@ -173,7 +186,6 @@ function! s:on_lsp_buffer_enabled() abort
   endif
 
   setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes
 
   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
 

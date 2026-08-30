@@ -10,7 +10,6 @@ Herdr, Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
 | Path | Description |
 | --- | --- |
 | `.editorconfig` | Shared editor formatting rules for this repository |
-| `.vscode/extensions.json` | Recommended VS Code extensions for this repository |
 | `ghostty/config` | Ghostty terminal appearance, integration, and keybindings |
 | `herdr/config.toml` | Herdr workspace, agent, notification, and input settings |
 | `zsh/.zshrc` | Zsh environment, history, aliases, plugins, and prompt initialization |

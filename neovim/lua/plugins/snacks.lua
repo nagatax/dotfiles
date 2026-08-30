@@ -18,12 +18,16 @@ return {
     priority = 1000,
     ---@type snacks.Config
     opts = {
+      bigfile = { enabled = true }, -- Disable expensive features for large files.
       explorer = {
         replace_netrw = true, -- Replace netrw with the Snacks explorer.
         trash = true, -- Move deleted files to the system trash.
       },
+      input = { enabled = true }, -- Replace vim.ui.input with a floating input window.
       picker = {},
       notifier = {}, -- Replace vim.notify and expose notification history through <leader>n.
+      quickfile = { enabled = true }, -- Render files before the remaining plugins finish loading.
+      words = { enabled = true }, -- Highlight references reported by attached LSP clients.
     },
     keys = {
       -- Configure file and explorer keymaps.

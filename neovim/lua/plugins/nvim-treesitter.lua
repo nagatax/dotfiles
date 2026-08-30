@@ -3,7 +3,7 @@ return {
   lazy = false,
   build = ":TSUpdate",
   config = function()
-    local languages = { "c", "cpp", "go", "lua", "rust", "terraform", "vim", "vimdoc" }
+    local languages = { "c", "cpp", "go", "lua", "regex", "rust", "terraform", "vim", "vimdoc" }
     local treesitter = require("nvim-treesitter")
 
     treesitter.setup()

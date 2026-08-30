@@ -8,6 +8,13 @@ vim.opt.mouse = ""
 
 vim.opt.hlsearch = true
 vim.opt.cursorline = true
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 4
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.confirm = true
 
 -- Configure indentation behavior.
 vim.opt.expandtab = true
@@ -22,6 +29,17 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = "list:longest,full"
 
 vim.opt.laststatus = 2
+
+-- ==================================================
+-- File types
+-- Configure additional file type detection.
+-- ==================================================
+
+vim.filetype.add({
+  extension = {
+    gotmpl = "gotmpl",
+  },
+})
 
 -- ==================================================
 -- Encoding

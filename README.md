@@ -35,7 +35,7 @@ brew install --cask ghostty
 These optional tools enable additional shell and Neovim features:
 
 ```bash
-brew install eza fd fzf gh lazygit ripgrep
+brew install eza fd fzf gh lazygit lua-language-server ripgrep
 ```
 
 | Tool | Used by |
@@ -45,6 +45,7 @@ brew install eza fd fzf gh lazygit ripgrep
 | [fzf](https://github.com/junegunn/fzf) | Interactive completion through `fzf-tab` |
 | [gh](https://cli.github.com/) | GitHub Issue and pull request pickers in Neovim |
 | [lazygit](https://github.com/jesseduffield/lazygit) | `<leader>gg` in Neovim |
+| [lua-language-server](https://luals.github.io/) | Lua diagnostics and completion in Neovim |
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | Fast text search in Snacks pickers |
 | [Nerd Font](https://www.nerdfonts.com/) | Icons in Starship, eza, and Neovim |
 
@@ -166,6 +167,7 @@ the languages you use.
 | `clangd` | `clangd` | C and C++ |
 | `rust_analyzer` | `rust-analyzer` | Rust |
 | `gopls` | `gopls` | Go |
+| `lua_ls` | `lua-language-server` | Lua |
 | `terraformls` | `terraform-ls` | Terraform |
 | `intelephense` | `intelephense` | PHP |
 | `basedpyright` | `basedpyright-langserver` | Python |

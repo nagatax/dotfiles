@@ -3,7 +3,7 @@
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
 
 Personal dotfiles for macOS. This repository contains configuration for Ghostty,
-Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
+Herdr, Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
 
 ## Contents
 
@@ -12,6 +12,7 @@ Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
 | `.editorconfig` | Shared editor formatting rules for this repository |
 | `.vscode/extensions.json` | Recommended VS Code extensions for this repository |
 | `ghostty/config` | Ghostty terminal appearance, integration, and keybindings |
+| `herdr/config.toml` | Herdr workspace, agent, notification, and input settings |
 | `zsh/.zshrc` | Zsh environment, history, aliases, plugins, and prompt initialization |
 | `sheldon/plugins.toml` | Zsh plugins managed by Sheldon |
 | `starship/starship.toml` | Starship prompt configuration |
@@ -28,7 +29,7 @@ components you want to use; the Zsh configuration skips optional commands that
 are not installed.
 
 ```bash
-brew install neovim sheldon starship tmux tree-sitter-cli vim
+brew install herdr neovim sheldon starship tmux tree-sitter-cli vim
 brew install --cask ghostty
 ```
 
@@ -65,9 +66,10 @@ Back up or remove any files that already exist at these destinations before
 creating the symbolic links.
 
 ```bash
-mkdir -p ~/.config/ghostty ~/.config/sheldon
+mkdir -p ~/.config/ghostty ~/.config/herdr ~/.config/sheldon
 
 ln -s "${DOTFILES_DIR}/ghostty/config" ~/.config/ghostty/config
+ln -s "${DOTFILES_DIR}/herdr/config.toml" ~/.config/herdr/config.toml
 ln -s "${DOTFILES_DIR}/zsh/.zshrc" ~/.zshrc
 ln -s "${DOTFILES_DIR}/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
 ln -s "${DOTFILES_DIR}/starship/starship.toml" ~/.config/starship.toml
@@ -97,6 +99,36 @@ not require a SmartSet or ZMK remap.
 
 Ghostty also uses `Alt+n`/`Alt+p` to cycle splits, `Alt+e` to equalize them,
 and `Alt+u`/`Alt+d` to jump to the previous or next shell prompt.
+
+## Herdr
+
+Herdr reads its configuration from `~/.config/herdr/config.toml`. The theme
+inherits Ghostty's Catppuccin Frappe palette, and background-agent notifications
+are delivered through Ghostty. The configuration also enables Japanese input
+support for Codex and Claude Code panes without saving pane contents to disk.
+
+The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
+
+| Action | Herdr |
+| --- | --- |
+| Focus left/down/up/right | `Ctrl-b`, then `h/j/k/l` |
+| Split right/down | `Ctrl-b`, then `v/-` |
+| Resize left/down/up/right | `Ctrl-b`, then `r`, then `h/j/k/l` |
+| Toggle zoom | `Ctrl-b`, then `z` |
+| Switch tab 1–9 | `Ctrl-b`, then `1–9` |
+| Switch workspace 1–9 | `Ctrl-b`, then `Shift+1–9` |
+
+Install the optional integrations for installed coding agents to let Herdr
+restore their native sessions after a server restart:
+
+```bash
+herdr integration install codex
+herdr integration install claude
+herdr integration status
+```
+
+Run `herdr` to start or attach to the persistent session. Reload configuration
+changes in a running session with `herdr server reload-config`.
 
 ## Zsh, Sheldon, and Starship
 

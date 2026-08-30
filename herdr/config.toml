@@ -1,0 +1,51 @@
+# Skip first-run setup because this file manages the preferred behavior.
+onboarding = false
+
+[theme]
+# Inherit the Catppuccin Frappe palette from the outer terminal.
+name = "terminal"
+
+[terminal]
+# Start a login shell on macOS and inherit the source pane's directory.
+shell_mode = "auto"
+new_cwd = "follow"
+
+[keys]
+# Keep the tmux-style prefix and add indexed workspace switching.
+prefix = "ctrl+b"
+switch_workspace = "prefix+shift+1..9"
+
+[ui]
+# Match the existing selection behavior and prioritize agent supervision.
+copy_on_select = true
+show_agent_labels_on_pane_borders = true
+hide_tab_bar_when_single_tab = true
+agent_panel_sort = "priority"
+window_title = "{workspace}: {tab}"
+
+[ui.toast]
+# Let Ghostty deliver stable background-agent notifications.
+delivery = "terminal"
+delay_seconds = 2
+
+[ui.sound]
+# Avoid duplicating the existing Ghostty notifications with sounds.
+enabled = false
+
+[session]
+# Resume supported agent conversations after a server restart.
+resume_agents_on_restore = true
+
+[experimental]
+# Keep terminal contents out of persistent session history.
+pane_history = false
+
+# Make prefix commands and Japanese input reliable in agent TUIs.
+switch_ascii_input_source_in_prefix = true
+reveal_hidden_cursor_for_cjk_ime = true
+cjk_ime_agents = ["codex", "claude"]
+cjk_ime_cursor_shape = "steady_block"
+
+[advanced]
+# Match the scrollback capacity configured in Ghostty.
+scrollback_limit_bytes = 20000000

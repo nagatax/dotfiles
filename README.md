@@ -2,8 +2,8 @@
 
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
 
-Personal dotfiles for macOS. This repository contains configuration for Ghostty,
-Herdr, Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
+Personal dotfiles for macOS. This repository contains configuration for Git,
+Ghostty, Herdr, Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
 
 ## Contents
 
@@ -11,6 +11,7 @@ Herdr, Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
 | --- | --- |
 | `.gitattributes` | Git-managed text-file line-ending rules |
 | `.editorconfig` | Shared editor formatting rules for this repository |
+| `git/config` | Shared Git fetch, push, merge, and conflict-resolution settings |
 | `ghostty/config` | Ghostty terminal appearance, integration, and keybindings |
 | `herdr/config.toml` | Herdr workspace, agent, notification, and input settings |
 | `zsh/.zshrc` | Zsh environment, history, aliases, plugins, and prompt initialization |
@@ -76,6 +77,8 @@ ln -s "${DOTFILES_DIR}/starship/starship.toml" ~/.config/starship.toml
 ln -s "${DOTFILES_DIR}/tmux/.tmux.conf" ~/.tmux.conf
 ln -s "${DOTFILES_DIR}/vim/.vimrc" ~/.vimrc
 ln -s "${DOTFILES_DIR}/neovim" ~/.config/nvim
+
+git config --global --add include.path "${DOTFILES_DIR}/git/config"
 ```
 
 ## Ghostty
@@ -160,11 +163,13 @@ configuration:
 
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/bin/install_plugins
 tmux
 ```
 
-Inside tmux, press `prefix` + <kbd>I</kbd> to install the configured plugins.
-The default prefix is <kbd>Ctrl-b</kbd>.
+The command-line installer fetches the configured plugins without requiring a
+running tmux server. Inside tmux, `prefix` + <kbd>I</kbd> installs any plugins
+added later. The default prefix is <kbd>Ctrl-b</kbd>.
 
 ## Vim
 

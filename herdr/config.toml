@@ -10,6 +10,11 @@ name = "terminal"
 shell_mode = "auto"
 new_cwd = "follow"
 
+[server]
+# Use a wider virtual terminal while no client is attached.
+headless_cols = 160
+headless_rows = 50
+
 [keys]
 # Keep the tmux-style prefix and add indexed and sequential agent switching.
 prefix = "ctrl+b"

@@ -11,6 +11,7 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.foldcolumn = "auto:1"
 vim.opt.scrolloff = 4
+vim.opt.smoothscroll = true
 vim.opt.breakindent = true
 vim.opt.virtualedit = "block"
 vim.opt.splitbelow = true
@@ -57,6 +58,16 @@ vim.filetype.add({
   extension = {
     gotmpl = "gotmpl",
   },
+})
+
+-- Avoid continuing comment leaders automatically in Lua and Rust files.
+local formatoptions_group = vim.api.nvim_create_augroup("user-formatoptions", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = formatoptions_group,
+  pattern = { "lua", "rust" },
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "r", "o" })
+  end,
 })
 
 -- ==================================================

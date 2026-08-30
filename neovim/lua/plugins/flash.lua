@@ -1,26 +1,40 @@
 return {
   "folke/flash.nvim",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    modes = {
+      char = {
+        jump_labels = true,
+      },
+      search = {
+        enabled = true,
+      },
+    },
+  },
   keys = {
     {
-      "<leader>F",
+      "<leader>Fj",
       mode = { "n", "x", "o" },
       function() require("flash").jump() end,
       desc = "Flash Jump",
     },
     {
-      "<C-Space>",
+      "<leader>Ft",
       mode = { "n", "x", "o" },
-      function()
-        require("flash").treesitter({
-          actions = {
-            ["<C-Space>"] = "next",
-            ["<BS>"] = "prev",
-          },
-        })
-      end,
+      function() require("flash").treesitter() end,
       desc = "Flash Treesitter Selection",
+    },
+    {
+      "<leader>Fr",
+      mode = "o",
+      function() require("flash").remote() end,
+      desc = "Remote Flash",
+    },
+    {
+      "<leader>Fs",
+      mode = { "o", "x" },
+      function() require("flash").treesitter_search() end,
+      desc = "Flash Treesitter Search",
     },
   },
 }

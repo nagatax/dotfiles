@@ -7,6 +7,7 @@ return {
       { "<leader>c", group = "Code" },
       { "<leader>d", group = "Diff" },
       { "<leader>f", group = "Find" },
+      { "<leader>F", group = "Flash" },
       { "<leader>g", group = "Git" },
       { "<leader>q", group = "Quit" },
       { "<leader>r", group = "Resize" },

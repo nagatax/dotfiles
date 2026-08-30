@@ -3,7 +3,24 @@ return {
   lazy = false,
   build = ":TSUpdate",
   config = function()
-    local languages = { "c", "cpp", "go", "lua", "regex", "rust", "terraform", "vim", "vimdoc" }
+    local languages = {
+      "c",
+      "cpp",
+      "go",
+      "gotmpl",
+      "json",
+      "lua",
+      "markdown",
+      "php",
+      "python",
+      "regex",
+      "rust",
+      "terraform",
+      "toml",
+      "vim",
+      "vimdoc",
+      "zsh",
+    }
     local treesitter = require("nvim-treesitter")
 
     treesitter.setup()
@@ -16,6 +33,12 @@ return {
 
       pcall(vim.treesitter.start, bufnr)
       vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+      for _, winid in ipairs(vim.fn.win_findbuf(bufnr)) do
+        vim.wo[winid].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo[winid].foldmethod = "expr"
+        vim.wo[winid].foldlevel = 99
+      end
     end
 
     local group = vim.api.nvim_create_augroup("nvim-treesitter", { clear = true })

@@ -157,7 +157,8 @@ nvim
 ```
 
 `tree-sitter-cli` is required to build the parsers configured for C, C++, Go,
-Lua, Rust, Terraform, Vim, and Vim documentation.
+Go templates, JSON, Lua, Markdown, PHP, Python, regular expressions, Rust,
+Terraform, TOML, Vim, Vim documentation, and Zsh.
 
 The following language servers are enabled. Install only the servers needed for
 the languages you use.

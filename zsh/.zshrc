@@ -34,8 +34,8 @@ fi
 # Store command history in ZDOTDIR when set, otherwise in the home directory.
 HISTFILE="${ZDOTDIR:-${HOME}}/.zsh_history"
 
-# Keep up to 10,000 history entries in memory and on disk.
-HISTSIZE=10000
+# Keep extra in-memory history so duplicate entries expire before unique ones.
+HISTSIZE=20000
 SAVEHIST=10000
 
 # Save additional information, such as timestamps, in the history file.
@@ -43,6 +43,9 @@ setopt extended_history
 
 # Do not save consecutive duplicate commands.
 setopt hist_ignore_dups
+
+# Remove duplicate history entries before unique entries when trimming.
+setopt hist_expire_dups_first
 
 # Save history after each command finishes while retaining command durations.
 setopt inc_append_history_time

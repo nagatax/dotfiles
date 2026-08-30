@@ -10,6 +10,8 @@ vim.opt.hlsearch = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 4
+vim.opt.splitkeep = "screen"
+vim.opt.winborder = "rounded"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

@@ -121,6 +121,8 @@ The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 | Switch tab 1–9 | `Ctrl-b`, then `1–9` |
 | Switch workspace 1–9 | `Ctrl-b`, then `Shift+1–9` |
 | Focus agent 1–9 | `Ctrl-b`, then `Alt+1–9` |
+| Focus previous/next agent | `Ctrl-b`, then `Alt+p/n` |
+| Focus the last pane | `Ctrl-b`, then backtick |
 | Open Lazygit popup | `Ctrl-b`, then `Alt+g` |
 | Open an existing Git worktree | `Ctrl-b`, then `Alt+w` |
 
@@ -194,9 +196,10 @@ the plugins pinned in `neovim/lazy-lock.json`.
 nvim
 ```
 
-`tree-sitter-cli` is required to build the parsers configured for C, C++, Go,
-Go templates, JSON, Lua, Markdown, PHP, Python, regular expressions, Rust,
-Terraform, TOML, Vim, Vim documentation, and Zsh.
+`tree-sitter-cli` is required to build the parsers configured for C, C++, Git
+attributes, Git commits, Git ignore files, Go, Go templates, JSON, Lua,
+Markdown, PHP, Python, regular expressions, Rust, Terraform, TOML, Vim, Vim
+documentation, and Zsh.
 
 The following language servers are enabled. Install only the servers needed for
 the languages you use.

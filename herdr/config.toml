@@ -11,10 +11,13 @@ shell_mode = "auto"
 new_cwd = "follow"
 
 [keys]
-# Keep the tmux-style prefix and add indexed workspace and agent switching.
+# Keep the tmux-style prefix and add indexed and sequential agent switching.
 prefix = "ctrl+b"
 switch_workspace = "prefix+shift+1..9"
 focus_agent = "prefix+alt+1..9"
+previous_agent = "prefix+alt+p"
+next_agent = "prefix+alt+n"
+last_pane = "prefix+backtick"
 open_worktree = "prefix+alt+w"
 
 [[keys.command]]

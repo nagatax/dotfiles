@@ -43,8 +43,18 @@ set cursorline
 " Keep context visible above and below the cursor.
 set scrolloff=4
 
+" Preserve indentation when long lines wrap visually.
+set breakindent
+
+" Allow rectangular selections to extend beyond line endings.
+set virtualedit=block
+
 " Keep the diagnostic and Git sign column visible.
 set signcolumn=yes
+
+" Open standard horizontal and vertical splits below and to the right.
+set splitbelow
+set splitright
 
 " Insert spaces when the Tab key is pressed.
 set expandtab
@@ -93,8 +103,9 @@ set wildmode=list:longest,full
 call plug#begin()
 
 Plug 'itchyny/lightline.vim'
-" Keep the status line visible for lightline.
+" Keep the status line visible and let lightline provide the mode indicator.
 set laststatus=2
+set noshowmode
 
 Plug 'nathanaelkane/vim-indent-guides'
 " Configure indent-guide startup behavior and colors.

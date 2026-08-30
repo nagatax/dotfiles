@@ -1,4 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
-  opts = {},
+  opts = {
+    options = {
+      globalstatus = true,
+    },
+    extensions = { "lazy", "man", "quickfix" },
+  },
 }

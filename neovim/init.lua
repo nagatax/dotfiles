@@ -9,12 +9,23 @@ vim.opt.mouse = ""
 vim.opt.hlsearch = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
+vim.opt.foldcolumn = "auto:1"
 vim.opt.scrolloff = 4
 vim.opt.breakindent = true
 vim.opt.virtualedit = "block"
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 vim.opt.splitkeep = "screen"
 vim.opt.jumpoptions:append("view")
 vim.opt.winborder = "rounded"
+vim.opt.list = false
+vim.opt.listchars = {
+  tab = "» ",
+  trail = "·",
+  nbsp = "␣",
+  extends = "›",
+  precedes = "‹",
+}
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -34,7 +45,7 @@ vim.opt.inccommand = "split"
 vim.opt.wildmenu = true
 vim.opt.wildmode = "list:longest,full"
 
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.showmode = false
 
 -- ==================================================

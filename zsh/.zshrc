@@ -62,6 +62,9 @@ setopt hist_expire_dups_first
 # Save history after each command finishes while retaining command durations.
 setopt inc_append_history_time
 
+# Use the operating system's file lock when writing shared history.
+setopt hist_fcntl_lock
+
 # Hide duplicate entries while searching command history.
 setopt hist_find_no_dups
 
@@ -84,6 +87,12 @@ alias history='history -i'
 
 # Allow comments in commands entered at the interactive prompt.
 setopt interactive_comments
+
+# Wait before expanding a wildcard that would remove every file in a directory.
+setopt rm_star_wait
+
+# Complete around the cursor instead of moving it to the end of the word.
+setopt complete_in_word
 
 # ==================================================
 # Aliases

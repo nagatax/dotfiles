@@ -6,6 +6,9 @@ return {
     local languages = {
       "c",
       "cpp",
+      "gitattributes",
+      "gitcommit",
+      "gitignore",
       "go",
       "gotmpl",
       "json",

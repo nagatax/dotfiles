@@ -128,6 +128,7 @@ The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 | Focus the last pane | `Ctrl-b`, then backtick |
 | Open Lazygit popup | `Ctrl-b`, then `Alt+g` |
 | Open an existing Git worktree | `Ctrl-b`, then `Alt+w` |
+| Remove the selected Git worktree after confirmation | `Ctrl-b`, then `Alt+Shift+w` |
 
 Install the optional integrations for installed coding agents to let Herdr
 restore their native sessions after a server restart:
@@ -197,7 +198,8 @@ Launch Vim and run `:PlugInstall` to install the plugins.
 
 The Neovim configuration requires Neovim 0.12 or later. On the first launch,
 [lazy.nvim](https://github.com/folke/lazy.nvim) bootstraps itself and installs
-the plugins pinned in `neovim/lazy-lock.json`.
+the plugins pinned in `neovim/lazy-lock.json`. The unnamed register uses the
+macOS system clipboard for yank, delete, change, and put operations.
 
 ```bash
 nvim

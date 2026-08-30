@@ -5,6 +5,7 @@
 
 vim.opt.whichwrap = "b,s,[,],<,>,~"
 vim.opt.mouse = ""
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.hlsearch = true
 vim.opt.cursorline = true

@@ -8,6 +8,10 @@
     prune = true
     writeCommitGraph = true
 
+# Stop when pulling would require an implicit merge or rebase.
+[pull]
+    ff = only
+
 # Set the upstream automatically on the first push of a new branch.
 [push]
     autoSetupRemote = true
@@ -33,6 +37,10 @@
 # Reject bare repositories discovered implicitly while walking parent directories.
 [safe]
     bareRepository = explicit
+
+# Warn when a remote URL contains plaintext credentials.
+[transfer]
+    credentialsInUrl = warn
 
 # Include the common ancestor while keeping conflict regions compact.
 [merge]

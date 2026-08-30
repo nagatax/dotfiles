@@ -24,6 +24,7 @@ previous_agent = "prefix+alt+p"
 next_agent = "prefix+alt+n"
 last_pane = "prefix+backtick"
 open_worktree = "prefix+alt+w"
+remove_worktree = "prefix+alt+shift+w"
 
 [[keys.command]]
 # Open repository Git operations without changing the tab layout.

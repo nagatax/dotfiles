@@ -8,12 +8,9 @@ if !has('nvim')
   set nocompatible
 endif
 
-" Configure text encoding for the current platform.
-if has('win32')
-  set encoding=cp932
-else
-  set encoding=utf-8
-endif
+" Use UTF-8 internally and detect legacy Windows-encoded files.
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp932,default,latin1
 if !has('nvim')
   scriptencoding utf-8
 endif
@@ -90,8 +87,11 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Configure indent-guide startup behavior and colors.
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+augroup vimrc_indent_guides
+  autocmd!
+  autocmd VimEnter,ColorScheme * highlight IndentGuidesOdd guibg=red ctermbg=3
+  autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=green ctermbg=4
+augroup END
 
 Plug 'bronson/vim-trailing-whitespace'
 " Ignore Unite buffers because Unite renders spaces as part of its interface.
@@ -113,10 +113,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-markdown'
 Plug 'tyru/open-browser.vim'
 Plug 'thinca/vim-quickrun'
-
-Plug 'Shougo/vimproc.vim'
-
-Plug 'Shougo/vimshell.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -157,6 +153,20 @@ call plug#end()
 " Configure buffer-local LSP behavior and TypeScript servers.
 " ==================================================
 
+let g:lsp_format_sync_timeout = 1000
+
+function! s:organize_imports_and_format_go() abort
+  let l:servers = lsp#get_allowed_servers()
+
+  if !empty(filter(copy(l:servers), 'lsp#capabilities#has_code_action_provider(v:val)'))
+    LspCodeActionSync source.organizeImports
+  endif
+
+  if !empty(filter(copy(l:servers), 'lsp#capabilities#has_document_formatting_provider(v:val)'))
+    LspDocumentFormatSync
+  endif
+endfunction
+
 function! s:on_lsp_buffer_enabled() abort
   if &buftype ==# 'nofile' || &filetype =~# '^\(quickrun\)' || getcmdwintype() ==# ':'
     return
@@ -176,8 +186,12 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
 
-  let g:lsp_format_sync_timeout = 1000
-  autocmd BufWritePre *.go call execute(['LspCodeActionSync source.organizeImports', 'LspDocumentFormatSync'])
+  if &filetype ==# 'go'
+    augroup vimrc_lsp_go_save
+      autocmd! BufWritePre <buffer>
+      autocmd BufWritePre <buffer> call s:organize_imports_and_format_go()
+    augroup END
+  endif
 endfunction
 
 " Configure fenced TypeScript blocks and available language servers.

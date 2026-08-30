@@ -11,6 +11,7 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.foldcolumn = "auto:1"
 vim.opt.scrolloff = 4
+vim.opt.updatetime = 1000
 vim.opt.smoothscroll = true
 vim.opt.breakindent = true
 vim.opt.virtualedit = "block"

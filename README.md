@@ -158,6 +158,8 @@ highlighting from `sheldon/plugins.toml`. Starship automatically reads
 
 ## tmux
 
+This configuration requires tmux 3.7 or later for copy-mode line numbers.
+
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this
 configuration:
 

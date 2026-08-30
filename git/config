@@ -1,6 +1,12 @@
+# Speed up worktree scans with Git's built-in file-system monitor and untracked cache.
+[core]
+    fsmonitor = true
+    untrackedCache = true
+
 # Keep remote-tracking branches tidy after fetching.
 [fetch]
     prune = true
+    writeCommitGraph = true
 
 # Set the upstream automatically on the first push of a new branch.
 [push]
@@ -13,6 +19,10 @@
 # Sort tags by version number.
 [tag]
     sort = version:refname
+
+# Show the staged diff while composing a commit message in an editor.
+[commit]
+    verbose = true
 
 # Make moved code and low-frequency matching lines easier to identify.
 [diff]

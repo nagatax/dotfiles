@@ -115,6 +115,9 @@ fi
 # Retry completion without letter-case distinctions when exact matching fails.
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
+# Preserve Git's branch ordering when completing checkout targets.
+zstyle ':completion:*:git-checkout:*' sort false
+
 # Group completion candidates by their descriptions in fzf-tab.
 zstyle ':completion:*:descriptions' format '[%d]'
 

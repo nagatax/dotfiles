@@ -11,9 +11,19 @@ shell_mode = "auto"
 new_cwd = "follow"
 
 [keys]
-# Keep the tmux-style prefix and add indexed workspace switching.
+# Keep the tmux-style prefix and add indexed workspace and agent switching.
 prefix = "ctrl+b"
 switch_workspace = "prefix+shift+1..9"
+focus_agent = "prefix+alt+1..9"
+
+[[keys.command]]
+# Open repository Git operations without changing the tab layout.
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+description = "Open Lazygit"
+width = "80%"
+height = "80%"
 
 [ui]
 # Match the existing selection behavior and prioritize agent supervision.
@@ -21,6 +31,7 @@ copy_on_select = true
 show_agent_labels_on_pane_borders = true
 hide_tab_bar_when_single_tab = true
 agent_panel_sort = "priority"
+status_indicators = "symbols"
 window_title = "{workspace}: {tab}"
 
 [ui.toast]

@@ -106,6 +106,8 @@ Herdr reads its configuration from `~/.config/herdr/config.toml`. The theme
 inherits Ghostty's Catppuccin Frappe palette, and background-agent notifications
 are delivered through Ghostty. The configuration also enables Japanese input
 support for Codex and Claude Code panes without saving pane contents to disk.
+Distinct status symbols make agent states recognizable without relying on color
+alone.
 
 The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 
@@ -117,6 +119,8 @@ The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 | Toggle zoom | `Ctrl-b`, then `z` |
 | Switch tab 1–9 | `Ctrl-b`, then `1–9` |
 | Switch workspace 1–9 | `Ctrl-b`, then `Shift+1–9` |
+| Focus agent 1–9 | `Ctrl-b`, then `Alt+1–9` |
+| Open Lazygit popup | `Ctrl-b`, then `Alt+g` |
 
 Install the optional integrations for installed coding agents to let Herdr
 restore their native sessions after a server restart:

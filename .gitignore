@@ -1,2 +1,5 @@
+# Ignore macOS Finder metadata.
+.DS_Store
+
 # Ignore Neovim logs generated during local validation.
 nvim.log

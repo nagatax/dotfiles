@@ -28,6 +28,11 @@
 [diff]
     algorithm = histogram
     colorMoved = default
+    colorMovedWS = allow-indentation-change
+
+# Reject bare repositories discovered implicitly while walking parent directories.
+[safe]
+    bareRepository = explicit
 
 # Include the common ancestor while keeping conflict regions compact.
 [merge]

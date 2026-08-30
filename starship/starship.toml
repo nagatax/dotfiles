@@ -34,6 +34,7 @@ $azure\
 $gcloud\
 $docker_context\
 $container\
+$username\
 $hostname"""
 
 # Limit how long slow external commands may delay prompt rendering.
@@ -177,6 +178,10 @@ symbol = " "
 
 [hg_branch]
 symbol = " "
+
+[username]
+# Identify the remote user only during SSH sessions.
+format = '[$user]($style)@'
 
 [hostname]
 # Identify the remote host only during SSH sessions.

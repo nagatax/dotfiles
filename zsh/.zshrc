@@ -74,6 +74,9 @@ setopt hist_reduce_blanks
 # Omit older duplicate commands when rewriting the history file.
 setopt hist_save_no_dups
 
+# Do not save history-listing commands in the history itself.
+setopt hist_no_store
+
 # Review expanded history commands before executing them.
 setopt hist_verify
 
@@ -93,6 +96,9 @@ setopt rm_star_wait
 
 # Complete around the cursor instead of moving it to the end of the word.
 setopt complete_in_word
+
+# Keep ZLE errors and exhausted history navigation silent.
+setopt no_beep
 
 # Keep a quiet, duplicate-free history of visited directories.
 setopt auto_pushd

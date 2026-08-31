@@ -81,6 +81,13 @@ ln -s "${DOTFILES_DIR}/neovim" ~/.config/nvim
 git config --global --add include.path "${DOTFILES_DIR}/git/config"
 ```
 
+## Git
+
+The shared Git configuration keeps related local branches aligned when their
+commits are rewritten by rebase, except for branches checked out in another
+worktree. Failed interactive-rebase `exec` commands are rescheduled so they can
+run again after the underlying problem is fixed.
+
 ## Ghostty
 
 Ghostty reads its configuration from `~/.config/ghostty/config`. This
@@ -110,7 +117,8 @@ inherits Ghostty's Catppuccin Frappe palette, and background-agent notifications
 are delivered through Ghostty. The configuration also enables Japanese input
 support for Codex and Claude Code panes without saving pane contents to disk.
 Distinct status symbols make agent states recognizable without relying on color
-alone, while the expanded sidebar shows the current state, terminal activity,
+alone, while Frappe surface colors separate the sidebar, active row, and current
+selection. The expanded sidebar shows the current state, terminal activity,
 workspace, and tab for each agent.
 
 The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
@@ -156,15 +164,19 @@ exec zsh
 Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
 highlighting from `sheldon/plugins.toml`. Starship automatically reads
 `~/.config/starship.toml`. Its battery indicator stays hidden above 20%, warns
-in yellow at 20%, and turns red at 10%. Zsh refuses to overwrite an existing
-file with `>`; use `>|` when an overwrite is intentional. Append redirection
-with `>>` can still create a missing file. Directory changes are recorded in a
-duplicate-free stack; inspect it with `dirs -v` and jump to an older entry with
-commands such as `cd -2`.
+in yellow at 20%, and turns red at 10%. Repository root names are highlighted
+in mauve. Zsh refuses to overwrite an existing file with `>`; use `>|` when an
+overwrite is intentional. Append redirection with `>>` can still create a
+missing file. History-listing commands are omitted from saved history, and ZLE
+error bells are disabled. Directory changes are recorded in a duplicate-free
+stack; inspect it with `dirs -v` and jump to an older entry with commands such
+as `cd -2`.
 
 ## tmux
 
-This configuration requires tmux 3.7 or later for copy-mode line numbers.
+This configuration requires tmux 3.7 or later for copy-mode line numbers. Its
+status line, active window, pane borders, messages, and copy mode use the same
+Catppuccin Frappe palette as Ghostty.
 
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this
 configuration:
@@ -201,7 +213,9 @@ Launch Vim and run `:PlugInstall` to install the plugins. When clipboard
 support is available, Vim connects unnamed register operations to the macOS
 system clipboard. Line numbers use a hybrid display: the current line is
 absolute and surrounding lines are relative. Long lines wrap at word boundaries
-while preserving their visual indentation.
+while preserving their visual indentation and display a continuation marker.
+End-of-buffer tildes are hidden, and similar lines in larger diff hunks are
+aligned.
 
 ## Neovim
 
@@ -211,7 +225,9 @@ the plugins pinned in `neovim/lazy-lock.json`. The unnamed register uses the
 macOS system clipboard for yank, delete, change, and put operations. Line
 numbers use a hybrid display: the current line is absolute and surrounding
 lines are relative. Long lines wrap at word boundaries while preserving their
-visual indentation.
+visual indentation and display a continuation marker. End-of-buffer tildes are
+hidden, and diff mode uses histogram matching with a larger line-alignment
+window.
 
 ```bash
 nvim

@@ -56,10 +56,13 @@
 [merge]
     conflictStyle = zdiff3
 
-# Autosquash fixup commits and stop when an interactive rebase might drop one.
+# Keep related branches aligned, retry failed exec commands, autosquash fixups,
+# and stop when an interactive rebase might drop a commit.
 [rebase]
     autoSquash = true
     missingCommitsCheck = error
+    updateRefs = true
+    rescheduleFailedExec = true
 
 # Reuse recorded conflict resolutions without updating the index automatically.
 [rerere]

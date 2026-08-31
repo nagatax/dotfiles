@@ -53,6 +53,11 @@ set breakindent
 
 " Wrap long lines at word boundaries without changing the file.
 set linebreak
+let &showbreak = '↪ '
+
+" Hide end-of-buffer markers for a cleaner editing area.
+set fillchars-=eob:~
+execute 'set fillchars+=eob:\ '
 
 " Allow rectangular selections to extend beyond line endings.
 set virtualedit=block
@@ -63,6 +68,9 @@ set signcolumn=yes
 " Open standard horizontal and vertical splits below and to the right.
 set splitbelow
 set splitright
+
+" Align similar lines in larger diff hunks.
+set diffopt+=linematch:60
 
 " Insert spaces when the Tab key is pressed.
 set expandtab

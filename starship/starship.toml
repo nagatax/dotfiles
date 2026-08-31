@@ -110,6 +110,8 @@ symbol = " "
 [directory]
 # Highlight the current directory, including its read-only state.
 style = 'bold blue'
+# Distinguish the repository root from directories below it.
+repo_root_style = 'bold mauve'
 read_only = " 󰌾"
 # Mark paths that were shortened to fit the prompt.
 truncation_symbol = '…/'

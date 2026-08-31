@@ -26,12 +26,16 @@ vim.opt.updatetime = 1000
 vim.opt.smoothscroll = true
 vim.opt.breakindent = true
 vim.opt.linebreak = true
+vim.opt.showbreak = "↪ "
 vim.opt.virtualedit = "block"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.splitkeep = "screen"
 vim.opt.jumpoptions:append("view")
 vim.opt.winborder = "rounded"
+vim.opt.diffopt:append("algorithm:histogram")
+vim.opt.diffopt:remove("linematch:40")
+vim.opt.diffopt:append("linematch:60")
 vim.opt.list = false
 vim.opt.listchars = {
   tab = "» ",
@@ -40,6 +44,7 @@ vim.opt.listchars = {
   extends = "›",
   precedes = "‹",
 }
+vim.opt.fillchars:append({ eob = " " })
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

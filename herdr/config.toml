@@ -5,6 +5,13 @@ onboarding = false
 # Inherit the Catppuccin Frappe palette from the outer terminal.
 name = "terminal"
 
+[theme.custom]
+# Add depth to the sidebar while preserving the terminal-derived palette.
+sidebar_bg = "#292c3c"
+active_row_bg = "#414559"
+selection_bg = "#51576d"
+accent = "#8caaee"
+
 [terminal]
 # Start a login shell on macOS and inherit the source pane's directory.
 shell_mode = "auto"

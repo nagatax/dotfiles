@@ -27,6 +27,11 @@ set whichwrap=b,s,[,],<,>,~
 " Disable mouse input.
 set mouse=
 
+" Use the macOS system clipboard for unnamed register operations when available.
+if has('clipboard')
+  set clipboard=unnamed
+endif
+
 " Ask before abandoning modified buffers.
 set confirm
 

@@ -155,7 +155,9 @@ exec zsh
 
 Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
 highlighting from `sheldon/plugins.toml`. Starship automatically reads
-`~/.config/starship.toml`.
+`~/.config/starship.toml`. Zsh refuses to overwrite an existing file with `>`;
+use `>|` when an overwrite is intentional. Append redirection with `>>` can
+still create a missing file.
 
 ## tmux
 
@@ -192,7 +194,9 @@ mv ~/.vim/molokai/colors/molokai.vim ~/.vim/colors/
 rm -rf ~/.vim/molokai
 ```
 
-Launch Vim and run `:PlugInstall` to install the plugins.
+Launch Vim and run `:PlugInstall` to install the plugins. When clipboard
+support is available, Vim connects unnamed register operations to the macOS
+system clipboard.
 
 ## Neovim
 

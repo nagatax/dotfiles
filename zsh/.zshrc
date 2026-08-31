@@ -94,6 +94,10 @@ setopt rm_star_wait
 # Complete around the cursor instead of moving it to the end of the word.
 setopt complete_in_word
 
+# Refuse accidental overwrites while allowing append redirection to create files.
+setopt no_clobber
+setopt append_create
+
 # ==================================================
 # Aliases
 # Define shortcuts for frequently used commands.

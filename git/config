@@ -12,9 +12,10 @@
 [pull]
     ff = only
 
-# Set the upstream automatically on the first push of a new branch.
+# Set the upstream automatically and strengthen force-with-lease checks.
 [push]
     autoSetupRemote = true
+    useForceIfIncludes = true
 
 # List recently updated branches first.
 [branch]
@@ -46,8 +47,9 @@
 [merge]
     conflictStyle = zdiff3
 
-# Stop when an interactive rebase might accidentally drop a commit.
+# Autosquash fixup commits and stop when an interactive rebase might drop one.
 [rebase]
+    autoSquash = true
     missingCommitsCheck = error
 
 # Reuse recorded conflict resolutions without updating the index automatically.

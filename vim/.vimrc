@@ -75,8 +75,9 @@ endif
 " Use four columns for automatic indentation.
 set shiftwidth=4
 
-" Display absolute line numbers.
+" Use an absolute current line and relative surrounding line numbers.
 set number
+set relativenumber
 
 " Enable syntax highlighting with the Molokai color scheme.
 syntax on

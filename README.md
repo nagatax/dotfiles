@@ -155,9 +155,10 @@ exec zsh
 
 Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
 highlighting from `sheldon/plugins.toml`. Starship automatically reads
-`~/.config/starship.toml`. Zsh refuses to overwrite an existing file with `>`;
-use `>|` when an overwrite is intentional. Append redirection with `>>` can
-still create a missing file.
+`~/.config/starship.toml`. Its battery indicator stays hidden above 20%, warns
+in yellow at 20%, and turns red at 10%. Zsh refuses to overwrite an existing
+file with `>`; use `>|` when an overwrite is intentional. Append redirection
+with `>>` can still create a missing file.
 
 ## tmux
 
@@ -196,14 +197,17 @@ rm -rf ~/.vim/molokai
 
 Launch Vim and run `:PlugInstall` to install the plugins. When clipboard
 support is available, Vim connects unnamed register operations to the macOS
-system clipboard.
+system clipboard. Line numbers use a hybrid display: the current line is
+absolute and surrounding lines are relative.
 
 ## Neovim
 
 The Neovim configuration requires Neovim 0.12 or later. On the first launch,
 [lazy.nvim](https://github.com/folke/lazy.nvim) bootstraps itself and installs
 the plugins pinned in `neovim/lazy-lock.json`. The unnamed register uses the
-macOS system clipboard for yank, delete, change, and put operations.
+macOS system clipboard for yank, delete, change, and put operations. Line
+numbers use a hybrid display: the current line is absolute and surrounding
+lines are relative.
 
 ```bash
 nvim

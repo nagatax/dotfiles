@@ -25,9 +25,18 @@
 [tag]
     sort = version:refname
 
+# Arrange branch and tag listings into columns only in a terminal.
+[column]
+    branch = auto
+    tag = auto
+
 # Show the staged diff while composing a commit message in an editor.
 [commit]
     verbose = true
+
+# Prompt before running a uniquely matched correction for a mistyped command.
+[help]
+    autoCorrect = prompt
 
 # Make moved code and low-frequency matching lines easier to identify.
 [diff]

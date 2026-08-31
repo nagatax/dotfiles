@@ -20,6 +20,7 @@ $cmd_duration\
 $status\
 $jobs\
 $time\
+$battery\
 $c\
 $cpp\
 $golang\
@@ -55,6 +56,15 @@ charging_symbol = "󰂄 "
 discharging_symbol = "󰂃 "
 unknown_symbol = "󰂑 "
 empty_symbol = "󰂎 "
+
+# Warn as the battery approaches a critical charge level.
+[[battery.display]]
+threshold = 10
+style = 'bold red'
+
+[[battery.display]]
+threshold = 20
+style = 'bold yellow'
 
 [buf]
 symbol = " "

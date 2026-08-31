@@ -51,6 +51,9 @@ set scrolloff=4
 " Preserve indentation when long lines wrap visually.
 set breakindent
 
+" Wrap long lines at word boundaries without changing the file.
+set linebreak
+
 " Allow rectangular selections to extend beyond line endings.
 set virtualedit=block
 

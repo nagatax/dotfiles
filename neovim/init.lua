@@ -1,4 +1,14 @@
 -- ==================================================
+-- Providers
+-- Disable unused remote-plugin providers.
+-- ==================================================
+
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+-- ==================================================
 -- Core settings
 -- Configure core editor behavior.
 -- ==================================================
@@ -15,6 +25,7 @@ vim.opt.scrolloff = 4
 vim.opt.updatetime = 1000
 vim.opt.smoothscroll = true
 vim.opt.breakindent = true
+vim.opt.linebreak = true
 vim.opt.virtualedit = "block"
 vim.opt.splitbelow = true
 vim.opt.splitright = true

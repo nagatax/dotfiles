@@ -39,7 +39,7 @@ $username\
 $hostname"""
 
 # Limit how long slow external commands may delay prompt rendering.
-command_timeout = 750
+command_timeout = 2000
 
 # Insert a blank line before the prompt to make the input area easier to read.
 add_newline = true

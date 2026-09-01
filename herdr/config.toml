@@ -52,6 +52,11 @@ hide_tab_bar_when_single_tab = true
 agent_panel_sort = "priority"
 status_indicators = "symbols"
 window_title = "{workspace}: {tab}"
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "datetime", format = "%H:%M" },
+]
+tab_bar_right_separator = " · "
 
 [ui.sidebar.agents]
 # Show agent state, terminal activity, and location on separate lines.

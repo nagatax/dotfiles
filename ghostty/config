@@ -43,6 +43,7 @@ window-save-state = always
 
 # Make the focused split visually stand out.
 unfocused-split-opacity = 0.70
+unfocused-split-fill = #292c3c
 split-divider-color = #626880
 
 

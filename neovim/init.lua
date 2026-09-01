@@ -44,7 +44,12 @@ vim.opt.listchars = {
   extends = "›",
   precedes = "‹",
 }
-vim.opt.fillchars:append({ eob = " " })
+vim.opt.fillchars:append({
+  eob = " ",
+  foldopen = "",
+  foldclose = "",
+  foldsep = " ",
+})
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

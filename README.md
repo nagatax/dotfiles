@@ -93,7 +93,8 @@ run again after the underlying problem is fixed.
 Ghostty reads its configuration from `~/.config/ghostty/config`. This
 configuration uses JetBrains Mono with the Catppuccin Frappe theme and defines
 clipboard, cursor, window, shell integration, and split navigation behavior.
-Full-screen application backgrounds extend into the balanced window padding.
+Full-screen application backgrounds extend into the balanced window padding,
+and unfocused splits fade toward the Frappe Mantle color.
 
 ### Split keybindings
 
@@ -120,7 +121,8 @@ support for Codex and Claude Code panes without saving pane contents to disk.
 Distinct status symbols make agent states recognizable without relying on color
 alone, while Frappe surface colors separate the sidebar, active row, and current
 selection. The expanded sidebar shows the current state, terminal activity,
-workspace, and tab for each agent.
+workspace, and tab for each agent. When multiple tabs are visible, the tab bar
+shows zoom state and local time in a right-aligned status area.
 
 The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 
@@ -167,12 +169,12 @@ highlighting from `sheldon/plugins.toml`. Starship automatically reads
 `~/.config/starship.toml`. Its battery indicator stays hidden above 20%, warns
 in yellow at 20%, and turns red at 10%. Repository root names are highlighted
 in mauve, and the right prompt shows local time with a muted Frappe clock icon.
-Zsh refuses to overwrite an existing file with `>`; use `>|` when an overwrite
-is intentional. Append redirection with `>>` can still create a missing file.
-History-listing commands are omitted from saved history, and ZLE error bells
-are disabled. Directory changes are recorded in a duplicate-free stack;
-inspect it with `dirs -v` and jump to an older entry with commands such as
-`cd -2`.
+Continued input uses a muted double-arrow prompt. Zsh refuses to overwrite an
+existing file with `>`; use `>|` when an overwrite is intentional. Append
+redirection with `>>` can still create a missing file. History-listing commands
+are omitted from saved history, and ZLE error bells are disabled. Directory
+changes are recorded in a duplicate-free stack; inspect it with `dirs -v` and
+jump to an older entry with commands such as `cd -2`.
 
 ## tmux
 
@@ -180,7 +182,9 @@ This configuration requires tmux 3.7 or later for copy-mode line numbers. Its
 status line, active window, pane borders, messages, and copy mode use the same
 Catppuccin Frappe palette as Ghostty. Activity in background windows is
 highlighted in yellow without displaying an additional message. Copy-mode
-search matches and line numbers use distinct Frappe colors.
+search matches and line numbers use distinct Frappe colors. Rounded session and
+active-window pills frame the status line, while menus, popups, command prompts,
+and the session tree use matching Frappe surfaces and selection colors.
 
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this
 configuration:
@@ -214,7 +218,7 @@ while preserving their visual indentation and display a continuation marker.
 End-of-buffer tildes are hidden, similar lines in larger diff hunks are aligned,
 and unmodified files are reloaded when they change outside Vim. Catppuccin
 Frappe provides full RGB colors for Vim, lightline, and the alternating
-indent-guide backgrounds.
+indent-guide backgrounds. Lightline uses rounded separators that match Neovim.
 
 ## Neovim
 
@@ -228,6 +232,8 @@ visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
+Solid rounded floating windows, rounded lualine separators, and Nerd Font fold
+markers keep editor chrome visually consistent.
 Starting Neovim without a file opens a single-column Snacks dashboard with
 keymaps, recent files, projects, repository status, and startup time. Neovim
 started from Zsh writes its general log to

@@ -125,7 +125,11 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 
 Plug 'itchyny/lightline.vim'
 " Match lightline to Catppuccin Frappe and let it provide the mode indicator.
-let g:lightline = {'colorscheme': 'catppuccin_frappe'}
+let g:lightline = {
+      \ 'colorscheme': 'catppuccin_frappe',
+      \ 'separator': {'left': '', 'right': ''},
+      \ 'subseparator': {'left': '', 'right': ''},
+      \ }
 set laststatus=2
 set noshowmode
 

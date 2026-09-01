@@ -3,6 +3,9 @@
 # Match the prompt colors to the terminal and editor theme.
 palette = 'catppuccin_frappe'
 
+# Distinguish continued input with a muted Frappe double arrow.
+continuation_prompt = '[❯❯](overlay0) '
+
 # Display the main prompt components on the left.
 format = """
 $directory\

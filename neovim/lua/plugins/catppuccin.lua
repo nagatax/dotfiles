@@ -7,6 +7,9 @@ return {
   opts = {
     flavour = "frappe",
     term_colors = true,
+    float = {
+      solid = true,
+    },
     dim_inactive = {
       enabled = true,
       shade = "dark",

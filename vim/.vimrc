@@ -35,6 +35,9 @@ endif
 " Ask before abandoning modified buffers.
 set confirm
 
+" Reload unmodified files when they change outside Vim.
+set autoread
+
 " Highlight search matches.
 set hlsearch
 

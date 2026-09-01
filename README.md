@@ -176,7 +176,8 @@ as `cd -2`.
 
 This configuration requires tmux 3.7 or later for copy-mode line numbers. Its
 status line, active window, pane borders, messages, and copy mode use the same
-Catppuccin Frappe palette as Ghostty.
+Catppuccin Frappe palette as Ghostty. Activity in background windows is
+highlighted in yellow without displaying an additional message.
 
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this
 configuration:
@@ -214,8 +215,8 @@ support is available, Vim connects unnamed register operations to the macOS
 system clipboard. Line numbers use a hybrid display: the current line is
 absolute and surrounding lines are relative. Long lines wrap at word boundaries
 while preserving their visual indentation and display a continuation marker.
-End-of-buffer tildes are hidden, and similar lines in larger diff hunks are
-aligned.
+End-of-buffer tildes are hidden, similar lines in larger diff hunks are aligned,
+and unmodified files are reloaded when they change outside Vim.
 
 ## Neovim
 

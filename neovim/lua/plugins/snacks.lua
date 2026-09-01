@@ -19,6 +19,29 @@ return {
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true }, -- Disable expensive features for large files.
+      dashboard = {
+        enabled = true,
+        sections = {
+          { section = "header" },
+          { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+          { icon = " ", title = "Recent Files", section = "recent_files", limit = 5, indent = 2, padding = 1 },
+          { icon = " ", title = "Projects", section = "projects", limit = 5, indent = 2, padding = 1 },
+          {
+            icon = " ",
+            title = "Git Status",
+            section = "terminal",
+            enabled = function()
+              return Snacks.git.get_root() ~= nil
+            end,
+            cmd = "git status --short --branch --renames",
+            height = 5,
+            padding = 1,
+            ttl = 5 * 60,
+            indent = 3,
+          },
+          { section = "startup" },
+        },
+      },
       explorer = {
         replace_netrw = true, -- Replace netrw with the Snacks explorer.
         trash = true, -- Move deleted files to the system trash.

@@ -166,12 +166,13 @@ Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
 highlighting from `sheldon/plugins.toml`. Starship automatically reads
 `~/.config/starship.toml`. Its battery indicator stays hidden above 20%, warns
 in yellow at 20%, and turns red at 10%. Repository root names are highlighted
-in mauve. Zsh refuses to overwrite an existing file with `>`; use `>|` when an
-overwrite is intentional. Append redirection with `>>` can still create a
-missing file. History-listing commands are omitted from saved history, and ZLE
-error bells are disabled. Directory changes are recorded in a duplicate-free
-stack; inspect it with `dirs -v` and jump to an older entry with commands such
-as `cd -2`.
+in mauve, and the right prompt shows local time with a muted Frappe clock icon.
+Zsh refuses to overwrite an existing file with `>`; use `>|` when an overwrite
+is intentional. Append redirection with `>>` can still create a missing file.
+History-listing commands are omitted from saved history, and ZLE error bells
+are disabled. Directory changes are recorded in a duplicate-free stack;
+inspect it with `dirs -v` and jump to an older entry with commands such as
+`cd -2`.
 
 ## tmux
 
@@ -227,6 +228,8 @@ visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
+Starting Neovim without a file opens a single-column Snacks dashboard with
+keymaps, recent files, projects, repository status, and startup time.
 
 ```bash
 nvim

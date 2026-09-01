@@ -391,7 +391,7 @@ symbol = " "
 [time]
 # Always display the local time on the right.
 disabled = false
-format = '🕙[\[ $time \]]($style) '
+format = '[󰥔 $time](overlay1) '
 time_format = '%T'
 utc_time_offset = 'local'
 

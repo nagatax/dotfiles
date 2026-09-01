@@ -93,6 +93,7 @@ run again after the underlying problem is fixed.
 Ghostty reads its configuration from `~/.config/ghostty/config`. This
 configuration uses JetBrains Mono with the Catppuccin Frappe theme and defines
 clipboard, cursor, window, shell integration, and split navigation behavior.
+Full-screen application backgrounds extend into the balanced window padding.
 
 ### Split keybindings
 
@@ -191,7 +192,9 @@ tmux
 
 The command-line installer fetches the configured plugins without requiring a
 running tmux server. Inside tmux, `prefix` + <kbd>I</kbd> installs any plugins
-added later. The default prefix is <kbd>Ctrl-b</kbd>.
+added later. The default prefix is <kbd>Ctrl-b</kbd>. The window list stays
+centered and uses padded, contiguous tabs. Pane-number overlays use Frappe
+colors to distinguish the active pane.
 
 ## Vim
 
@@ -202,23 +205,15 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-Install the molokai colorscheme used by `.vimrc`:
-
-```bash
-mkdir -p ~/.vim/colors
-git clone https://github.com/tomasr/molokai ~/.vim/molokai
-mv ~/.vim/molokai/colors/molokai.vim ~/.vim/colors/
-rm -rf ~/.vim/molokai
-```
-
 Launch Vim and run `:PlugInstall` to install the plugins. When clipboard
 support is available, Vim connects unnamed register operations to the macOS
 system clipboard. Line numbers use a hybrid display: the current line is
 absolute and surrounding lines are relative. Long lines wrap at word boundaries
 while preserving their visual indentation and display a continuation marker.
 End-of-buffer tildes are hidden, similar lines in larger diff hunks are aligned,
-and unmodified files are reloaded when they change outside Vim. Molokai uses
-full RGB rendering with subtle alternating indent-guide backgrounds.
+and unmodified files are reloaded when they change outside Vim. Catppuccin
+Frappe provides full RGB colors for Vim, lightline, and the alternating
+indent-guide backgrounds.
 
 ## Neovim
 
@@ -230,7 +225,8 @@ numbers use a hybrid display: the current line is absolute and surrounding
 lines are relative. Long lines wrap at word boundaries while preserving their
 visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
-window. Embedded terminals use the Catppuccin Frappe ANSI palette.
+window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
+editor splits use restrained background dimming to keep the active split clear.
 
 ```bash
 nvim

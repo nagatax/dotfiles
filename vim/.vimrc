@@ -93,10 +93,9 @@ set shiftwidth=4
 set number
 set relativenumber
 
-" Render the Molokai color scheme with full RGB colors.
+" Render color schemes with full RGB colors.
 set termguicolors
 syntax on
-colorscheme molokai
 
 " Store swap files outside working directories.
 if !isdirectory(expand("$HOME/.vim/swap"))
@@ -122,8 +121,11 @@ set wildmode=list:longest,full
 
 call plug#begin()
 
+Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
+
 Plug 'itchyny/lightline.vim'
-" Keep the status line visible and let lightline provide the mode indicator.
+" Match lightline to Catppuccin Frappe and let it provide the mode indicator.
+let g:lightline = {'colorscheme': 'catppuccin_frappe'}
 set laststatus=2
 set noshowmode
 
@@ -187,11 +189,13 @@ Plug 'github/copilot.vim'
 
 call plug#end()
 
+colorscheme catppuccin_frappe
+
 " Apply custom indent-guide colors after the plugin initializes its highlights.
 augroup vimrc_indent_guides
   autocmd!
-  autocmd VimEnter,ColorScheme * highlight IndentGuidesOdd guibg=#232526 ctermbg=235
-  autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=#293739 ctermbg=236
+  autocmd VimEnter,ColorScheme * highlight IndentGuidesOdd guibg=#232634 ctermbg=235
+  autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=#292c3c ctermbg=236
 augroup END
 
 " ==================================================

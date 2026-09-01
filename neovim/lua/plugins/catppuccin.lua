@@ -7,6 +7,11 @@ return {
   opts = {
     flavour = "frappe",
     term_colors = true,
+    dim_inactive = {
+      enabled = true,
+      shade = "dark",
+      percentage = 0.10,
+    },
   },
 
   config = function(_, opts)

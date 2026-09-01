@@ -35,6 +35,8 @@ mouse-hide-while-typing = true
 window-padding-x = 8
 window-padding-y = 8
 window-padding-balance = true
+# Extend full-screen application backgrounds into the balanced padding.
+window-padding-color = extend
 
 # Restore the previous window state when Ghostty starts.
 window-save-state = always

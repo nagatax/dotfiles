@@ -229,7 +229,10 @@ hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
 Starting Neovim without a file opens a single-column Snacks dashboard with
-keymaps, recent files, projects, repository status, and startup time.
+keymaps, recent files, projects, repository status, and startup time. Neovim
+started from Zsh writes its general log to
+`~/.local/state/nvim/nvim.log` by default, or to the corresponding directory
+under `$XDG_STATE_HOME` when that variable is set.
 
 ```bash
 nvim

@@ -31,6 +31,12 @@ path=("${HOME}/go/bin" "${path[@]}")
 
 # Use Neovim as the default terminal editor when available.
 if type nvim &>/dev/null; then
+  # Create the standard state directory before Neovim selects its log file.
+  nvim_state_dir="${XDG_STATE_HOME:-${HOME}/.local/state}/nvim"
+  mkdir -p "${nvim_state_dir}"
+  export NVIM_LOG_FILE="${nvim_state_dir}/nvim.log"
+  unset nvim_state_dir
+
   export EDITOR='nvim'
   export VISUAL="${EDITOR}"
 fi

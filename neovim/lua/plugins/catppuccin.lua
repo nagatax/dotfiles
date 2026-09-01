@@ -6,6 +6,7 @@ return {
 
   opts = {
     flavour = "frappe",
+    term_colors = true,
   },
 
   config = function(_, opts)

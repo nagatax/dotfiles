@@ -177,7 +177,8 @@ as `cd -2`.
 This configuration requires tmux 3.7 or later for copy-mode line numbers. Its
 status line, active window, pane borders, messages, and copy mode use the same
 Catppuccin Frappe palette as Ghostty. Activity in background windows is
-highlighted in yellow without displaying an additional message.
+highlighted in yellow without displaying an additional message. Copy-mode
+search matches and line numbers use distinct Frappe colors.
 
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this
 configuration:
@@ -216,7 +217,8 @@ system clipboard. Line numbers use a hybrid display: the current line is
 absolute and surrounding lines are relative. Long lines wrap at word boundaries
 while preserving their visual indentation and display a continuation marker.
 End-of-buffer tildes are hidden, similar lines in larger diff hunks are aligned,
-and unmodified files are reloaded when they change outside Vim.
+and unmodified files are reloaded when they change outside Vim. Molokai uses
+full RGB rendering with subtle alternating indent-guide backgrounds.
 
 ## Neovim
 
@@ -228,7 +230,7 @@ numbers use a hybrid display: the current line is absolute and surrounding
 lines are relative. Long lines wrap at word boundaries while preserving their
 visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
-window.
+window. Embedded terminals use the Catppuccin Frappe ANSI palette.
 
 ```bash
 nvim

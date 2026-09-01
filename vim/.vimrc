@@ -93,10 +93,10 @@ set shiftwidth=4
 set number
 set relativenumber
 
-" Enable syntax highlighting with the Molokai color scheme.
+" Render the Molokai color scheme with full RGB colors.
+set termguicolors
 syntax on
 colorscheme molokai
-set t_Co=256
 
 " Store swap files outside working directories.
 if !isdirectory(expand("$HOME/.vim/swap"))
@@ -131,11 +131,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Configure indent-guide startup behavior and colors.
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-augroup vimrc_indent_guides
-  autocmd!
-  autocmd VimEnter,ColorScheme * highlight IndentGuidesOdd guibg=red ctermbg=3
-  autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=green ctermbg=4
-augroup END
 
 Plug 'bronson/vim-trailing-whitespace'
 " Ignore Unite buffers because Unite renders spaces as part of its interface.
@@ -191,6 +186,13 @@ Plug 'cohama/lexima.vim'
 Plug 'github/copilot.vim'
 
 call plug#end()
+
+" Apply custom indent-guide colors after the plugin initializes its highlights.
+augroup vimrc_indent_guides
+  autocmd!
+  autocmd VimEnter,ColorScheme * highlight IndentGuidesOdd guibg=#232526 ctermbg=235
+  autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=#293739 ctermbg=236
+augroup END
 
 " ==================================================
 " Language Server Protocol

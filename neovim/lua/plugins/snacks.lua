@@ -21,6 +21,22 @@ return {
       bigfile = { enabled = true }, -- Disable expensive features for large files.
       dashboard = {
         enabled = true,
+        width = 52,
+        preset = {
+          header = [[
+╭──────────────────╮
+│    N E O V I M  │
+╰──────────────────╯]],
+        },
+        formats = {
+          key = function(item)
+            return {
+              { "", hl = "SnacksDashboardKeyCap" },
+              { item.key, hl = "SnacksDashboardKey" },
+              { "", hl = "SnacksDashboardKeyCap" },
+            }
+          end,
+        },
         sections = {
           { section = "header" },
           { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
@@ -39,7 +55,7 @@ return {
             ttl = 5 * 60,
             indent = 3,
           },
-          { section = "startup" },
+          { section = "startup", icon = "󰥔 " },
         },
       },
       explorer = {

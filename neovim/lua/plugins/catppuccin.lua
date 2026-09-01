@@ -15,6 +15,18 @@ return {
       shade = "dark",
       percentage = 0.10,
     },
+    highlight_overrides = {
+      frappe = function(colors)
+        return {
+          SnacksDashboardHeader = { fg = colors.mauve },
+          SnacksDashboardTitle = { fg = colors.lavender, bold = true },
+          SnacksDashboardDesc = { fg = colors.subtext1 },
+          SnacksDashboardFooter = { fg = colors.overlay0, italic = true },
+          SnacksDashboardKey = { fg = colors.base, bg = colors.peach, bold = true },
+          SnacksDashboardKeyCap = { fg = colors.peach },
+        }
+      end,
+    },
   },
 
   config = function(_, opts)

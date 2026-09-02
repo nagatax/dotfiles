@@ -6,10 +6,11 @@ onboarding = false
 name = "terminal"
 
 [theme.custom]
-# Add depth to the sidebar while preserving the terminal-derived palette.
+# Add depth to the sidebar and panels while preserving the terminal-derived palette.
 sidebar_bg = "#292c3c"
 active_row_bg = "#414559"
 selection_bg = "#51576d"
+panel_bg = "#292c3c"
 accent = "#8caaee"
 
 [terminal]
@@ -59,11 +60,11 @@ tab_bar_right = [
 tab_bar_right_separator = " · "
 
 [ui.sidebar.agents]
-# Show agent state, terminal activity, and location on separate lines.
+# Show agent state, terminal activity, and location with a clear visual hierarchy.
 rows = [
-  ["state_icon", "agent", "state_text"],
-  ["terminal_title_stripped"],
-  ["workspace", "tab"],
+  ["state_icon", { token = "agent", fg = "#ca9ee6", bold = true }, { token = "state_text", fg = "#b5bfe2", dim = true }],
+  [{ token = "terminal_title_stripped", fg = "#c6d0f5" }],
+  [{ token = "workspace", fg = "#8caaee" }, { token = "tab", fg = "#838ba7", dim = true }],
 ]
 
 [ui.toast]

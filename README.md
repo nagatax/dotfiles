@@ -120,9 +120,11 @@ are delivered through Ghostty. The configuration also enables Japanese input
 support for Codex and Claude Code panes without saving pane contents to disk.
 Distinct status symbols make agent states recognizable without relying on color
 alone, while Frappe surface colors separate the sidebar, active row, and current
-selection. The expanded sidebar shows the current state, terminal activity,
-workspace, and tab for each agent. When multiple tabs are visible, the tab bar
-shows zoom state and local time in a right-aligned status area.
+selection. A darker panel background separates the tab bar and overlays from
+terminal content. The expanded sidebar emphasizes the agent name, then uses
+progressively quieter colors for its state, terminal activity, workspace, and
+tab. When multiple tabs are visible, the tab bar shows zoom state and local
+time in a right-aligned status area.
 
 The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 
@@ -233,7 +235,8 @@ hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
 Solid rounded floating windows, rounded lualine separators, and Nerd Font fold
-markers keep editor chrome visually consistent.
+markers keep editor chrome visually consistent. LSP inlay hints retain their
+muted text color without drawing a background block over the code.
 Starting Neovim without a file opens a single-column Snacks dashboard with
 keymaps, recent files, projects, repository status, and startup time. Neovim
 started from Zsh writes its general log to

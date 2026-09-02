@@ -15,6 +15,11 @@ return {
       shade = "dark",
       percentage = 0.10,
     },
+    lsp_styles = {
+      inlay_hints = {
+        background = false,
+      },
+    },
     highlight_overrides = {
       frappe = function(colors)
         return {

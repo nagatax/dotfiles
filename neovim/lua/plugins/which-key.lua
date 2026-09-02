@@ -6,6 +6,7 @@ return {
       { "<leader>b", group = "Buffer" },
       { "<leader>c", group = "Code" },
       { "<leader>d", group = "Diff" },
+      { "<leader>D", group = "Debug" },
       { "<leader>f", group = "Find" },
       { "<leader>F", group = "Flash" },
       { "<leader>g", group = "Git" },

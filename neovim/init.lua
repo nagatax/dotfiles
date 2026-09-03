@@ -36,7 +36,7 @@ vim.opt.winborder = "rounded"
 vim.opt.diffopt:append("algorithm:histogram")
 vim.opt.diffopt:remove("linematch:40")
 vim.opt.diffopt:append("linematch:60")
-vim.opt.list = false
+vim.opt.list = true
 vim.opt.listchars = {
   tab = "» ",
   trail = "·",

@@ -158,10 +158,6 @@ return {
       { "]q", "<cmd>cnext<cr>", desc = "Next Quickfix" },
 
       -- Configure appearance keymaps.
-      { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
-      { "<leader>ug", function() Snacks.toggle.indent():toggle() end, desc = "Toggle Indent Guides" },
-      { "<leader>uh", function() Snacks.toggle.inlay_hints():toggle() end, desc = "Toggle Inlay Hints" },
-      { "<leader>uw", function() Snacks.toggle.option("list", { name = "Whitespace" }):toggle() end, desc = "Toggle Whitespace" },
       { "<leader>uz", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
 
       -- Configure scratch-buffer keymaps.

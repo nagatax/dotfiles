@@ -88,11 +88,6 @@ return {
       { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
       { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
       { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-      { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-      { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
-      { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
-      { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
-      { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
 
       -- Configure buffer keymaps.
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
@@ -176,9 +171,6 @@ return {
       -- Configure notification keymaps.
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-
-      -- Configure terminal keymaps.
-      { "<leader>tt", function() Snacks.terminal() end, desc = "Terminal" },
 
       -- Configure window navigation and split-management keymaps.
       { "<leader>h", "<C-w>h", desc = "Go to Left Window" },

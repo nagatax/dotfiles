@@ -13,7 +13,6 @@ return {
       { "<leader>q", group = "Quit" },
       { "<leader>r", group = "Resize" },
       { "<leader>s", group = "Search" },
-      { "<leader>t", group = "Terminal" },
       { "<leader>u", group = "UI" },
     },
   },

@@ -7,6 +7,7 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    -- Configure completion keymaps; inherit the remaining preset bindings.
     keymap = {
       preset = "default",
 

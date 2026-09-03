@@ -98,16 +98,16 @@ and unfocused splits fade toward the Frappe Mantle color.
 
 ### Split keybindings
 
-Ghostty, Neovim, and tmux use the same action grammar for split management.
+The table below compares split-related keybindings in Ghostty, Neovim, and tmux.
 These bindings work with the Advantage360 Limited's standard layout and do
 not require a SmartSet or ZMK remap.
 
 | Action | Ghostty | Neovim | tmux |
 | --- | --- | --- | --- |
 | Focus left/down/up/right | `Alt+h/j/k/l` | `Space`, then `h/j/k/l` | `Ctrl-b`, then `h/j/k/l` |
-| Split left/down/up/right | `Alt+s`, then `h/j/k/l` | `Space`, `s`, then `h/j/k/l` | `Ctrl-b`, `s`, then `h/j/k/l` |
-| Resize left/down/up/right by 5 cells | `Alt+r`, then `h/j/k/l` | `Space`, `r`, then `h/j/k/l` | `Ctrl-b`, `r`, then `h/j/k/l` |
-| Toggle zoom | `Alt+z` | `Space`, then `z` | `Ctrl-b`, then `z` |
+| Split left/down/up/right | `Alt+s`, then `h/j/k/l` | Not mapped | `Ctrl-b`, `s`, then `h/j/k/l` |
+| Resize left/down/up/right by 5 cells | `Alt+r`, then `h/j/k/l` | Not mapped | `Ctrl-b`, `r`, then `h/j/k/l` |
+| Toggle zoom | `Alt+z` | Not mapped | `Ctrl-b`, then `z` |
 
 Ghostty also uses `Alt+n`/`Alt+p` to cycle splits, `Alt+e` to equalize them,
 and `Alt+u`/`Alt+d` to jump to the previous or next shell prompt.
@@ -275,6 +275,149 @@ the languages you use.
 | `basedpyright` | `basedpyright-langserver` | Python |
 
 The custom clangd arguments are defined in `neovim/after/lsp/clangd.lua`.
+
+### Keybindings
+
+The following 55 shortcuts are explicitly configured in `neovim/lua/plugins/`.
+`Space` is the leader key. Keys are case-sensitive and run in Normal mode unless
+noted otherwise. Plugin defaults and Neovim's built-in mappings are not included.
+The `Enter` completion binding extends blink.cmp's `default` preset.
+
+Frequent editing and navigation actions use short bindings: `Space Space` for
+smart file search, `Space ,` for buffers, `Space /` for grep, and `Space f` / `Space F`
+for Flash. The old bindings are not retained as aliases. `Space sh` opens help;
+it no longer creates a split.
+
+which-key groups related bindings under `Space b` (Buffer), `Space c`
+(Code / Symbols), `Space d` (Diagnostics), `Space D` (Debug), `Space g` (Git),
+`Space q` (Quit), and `Space s` (Search / History / Help). Short standalone
+bindings such as `Space f` and `Space F` execute directly rather than opening a group.
+
+#### Files and buffers
+
+| Key | Action |
+| --- | --- |
+| `Space Space` | Smart file search |
+| `Space e` | Open file explorer |
+| `Space ,` | List buffers |
+| `Space bd` | Delete the current buffer |
+
+#### Search, history, and help
+
+| Key | Action |
+| --- | --- |
+| `Space /` | Grep file contents |
+| `Space sw` | Grep the cursor word or Visual selection |
+| `Space sC` | List commands |
+| `Space sh` | Search help pages |
+| `Space su` | Browse undo history |
+
+#### Git
+
+| Key | Action |
+| --- | --- |
+| `Space gb` | List branches |
+| `Space gl` | Browse commit history |
+| `Space gL` | Browse history for the current line |
+| `Space gs` | List changed files |
+| `Space gS` | List stashes |
+| `Space gd` | Browse diff hunks |
+| `Space gf` | Browse history for the current file |
+| `Space gB` | Open the file or selected lines on the remote website (also Visual/Select) |
+| `Space gg` | Open Lazygit |
+
+#### Code actions and symbols
+
+| Key | Action |
+| --- | --- |
+| `Space ca` | Run a code action |
+| `Space cf` | Format the current buffer |
+| `Space cr` | Rename a symbol |
+| `Space cs` | List document symbols |
+| `Space cS` | Search workspace symbols |
+
+#### Definitions and references
+
+| Key | Action |
+| --- | --- |
+| `gd` | Go to definition |
+| `gD` | Go to declaration |
+| `gr` | Find references |
+| `gI` | Go to implementation |
+| `gy` | Go to type definition |
+
+#### Diagnostics
+
+| Key | Action |
+| --- | --- |
+| `Space dd` | List diagnostics across buffers |
+| `Space db` | List diagnostics in the current buffer |
+| `[d` | Go to the previous diagnostic and show its details |
+| `]d` | Go to the next diagnostic and show its details |
+
+#### Quickfix
+
+| Key | Action |
+| --- | --- |
+| `[q` | Go to the previous quickfix entry |
+| `]q` | Go to the next quickfix entry |
+
+#### Notifications
+
+| Key | Action |
+| --- | --- |
+| `Space n` | Browse notification history |
+
+#### Window navigation
+
+| Key | Action |
+| --- | --- |
+| `Space h` | Focus the left window |
+| `Space j` | Focus the lower window |
+| `Space k` | Focus the upper window |
+| `Space l` | Focus the right window |
+
+#### Quit
+
+| Key | Action |
+| --- | --- |
+| `Space qq` | Quit all windows |
+| `Space qw` | Save all buffers and quit |
+
+#### Flash
+
+| Key | Action | Modes |
+| --- | --- | --- |
+| `Space f` | Jump using search labels | Normal, Visual, Operator-pending |
+| `Space F` | Select a syntax node | Normal, Visual, Operator-pending |
+
+Operator-pending is the state after an operator such as `d` or `y`, while Neovim
+waits for the target motion or selection. Flash's existing character-motion and
+search integrations are unchanged.
+
+#### Debugging
+
+The configured debugger targets Python.
+
+| Key | Action |
+| --- | --- |
+| `Space Db` | Toggle a breakpoint |
+| `Space DB` | Set a conditional breakpoint |
+| `Space Dc` | Start or continue debugging |
+| `Space Di` | Step into a function |
+| `Space Do` | Step over a function |
+| `Space DO` | Step out of a function |
+| `Space Dp` | Pause execution |
+| `Space De` | Evaluate an expression (also Visual) |
+| `Space Dr` | Toggle the debug REPL |
+| `Space Du` | Toggle the debug UI |
+| `Space Dt` | Terminate debugging |
+
+#### Completion
+
+| Key | Action |
+| --- | --- |
+| `Enter` | Select and accept a completion candidate; fall back to normal Enter when not applicable |
 
 ## License
 

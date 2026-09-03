@@ -11,15 +11,16 @@ return {
       },
     },
   },
+  -- Configure Flash navigation and syntax-selection keymaps.
   keys = {
     {
-      "<leader>Fj",
+      "<leader>f",
       mode = { "n", "x", "o" },
       function() require("flash").jump() end,
       desc = "Flash Jump",
     },
     {
-      "<leader>Ft",
+      "<leader>F",
       mode = { "n", "x", "o" },
       function() require("flash").treesitter() end,
       desc = "Flash Treesitter Selection",

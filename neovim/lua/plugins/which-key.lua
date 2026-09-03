@@ -4,13 +4,12 @@ return {
   opts = {
     spec = {
       { "<leader>b", group = "Buffer" },
-      { "<leader>c", group = "Code" },
+      { "<leader>c", group = "Code / Symbols" },
+      { "<leader>d", group = "Diagnostics" },
       { "<leader>D", group = "Debug" },
-      { "<leader>f", group = "Find" },
-      { "<leader>F", group = "Flash" },
       { "<leader>g", group = "Git" },
       { "<leader>q", group = "Quit" },
-      { "<leader>s", group = "Search" },
+      { "<leader>s", group = "Search / History / Help" },
     },
   },
 }

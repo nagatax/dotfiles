@@ -59,7 +59,7 @@ return {
         },
       },
       explorer = {
-        replace_netrw = true, -- Replace netrw with the Snacks explorer.
+        replace_netrw = false, -- Keep the Snacks explorer hidden until explicitly opened.
         trash = true, -- Move deleted files to the system trash.
       },
       indent = {

@@ -24,17 +24,5 @@ return {
       function() require("flash").treesitter() end,
       desc = "Flash Treesitter Selection",
     },
-    {
-      "<leader>Fr",
-      mode = "o",
-      function() require("flash").remote() end,
-      desc = "Remote Flash",
-    },
-    {
-      "<leader>Fs",
-      mode = { "o", "x" },
-      function() require("flash").treesitter_search() end,
-      desc = "Flash Treesitter Search",
-    },
   },
 }

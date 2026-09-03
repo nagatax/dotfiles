@@ -32,8 +32,6 @@ return {
     { "<leader>Dr", function() require("dap").repl.toggle() end, desc = "Toggle Debug REPL" },
     { "<leader>Du", function() require("dapui").toggle() end, desc = "Toggle Debug UI" },
     { "<leader>Dt", function() require("dap").terminate() end, desc = "Terminate Debugging" },
-    { "<leader>Dm", function() require("dap-python").test_method() end, desc = "Debug Test Method" },
-    { "<leader>DC", function() require("dap-python").test_class() end, desc = "Debug Test Class" },
   },
   config = function()
     local dap = require("dap")

@@ -11,16 +11,6 @@ return {
       { "<leader>g", group = "Git" },
       { "<leader>q", group = "Quit" },
       { "<leader>s", group = "Search" },
-      { "<leader>u", group = "UI" },
-    },
-  },
-  keys = {
-    {
-      "<leader>?",
-      function()
-        require("which-key").show({ global = false })
-      end,
-      desc = "Buffer Local Keymaps",
     },
   },
 }

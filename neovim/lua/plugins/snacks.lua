@@ -95,11 +95,8 @@ return {
       -- Configure search and navigation keymaps.
       { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
       { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
-      { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
       { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
       { "<leader>fh", function() Snacks.picker.help() end, desc = "Help Pages" },
-      { "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
-      { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
       { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
 
       -- Configure Git keymaps.
@@ -113,12 +110,6 @@ return {
       { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
       { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
 
-      -- Configure GitHub keymaps.
-      { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
-      { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
-      { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
-      { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
-
       -- Configure LSP keymaps.
       { "<leader>ca", function() vim.lsp.buf.code_action() end, desc = "Code Action" },
       { "<leader>cf", function() vim.lsp.buf.format() end, desc = "Format Buffer" },
@@ -128,8 +119,6 @@ return {
       { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
       { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
       { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-      { "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "C[a]lls Incoming" },
-      { "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "C[a]lls Outgoing" },
       { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
       { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 
@@ -143,26 +132,14 @@ return {
       { "[q", "<cmd>cprev<cr>", desc = "Previous Quickfix" },
       { "]q", "<cmd>cnext<cr>", desc = "Next Quickfix" },
 
-      -- Configure appearance keymaps.
-      { "<leader>uz", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-
-      -- Configure scratch-buffer keymaps.
-      { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
-      { "<leader>S", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
-
       -- Configure notification keymaps.
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-      { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 
-      -- Configure window navigation and split-management keymaps.
+      -- Configure window navigation keymaps.
       { "<leader>h", "<C-w>h", desc = "Go to Left Window" },
       { "<leader>j", "<C-w>j", desc = "Go to Lower Window" },
       { "<leader>k", "<C-w>k", desc = "Go to Upper Window" },
       { "<leader>l", "<C-w>l", desc = "Go to Right Window" },
-      { "<leader>sh", "<cmd>leftabove vsplit<cr>", desc = "Split Window Left" },
-      { "<leader>sj", "<cmd>rightbelow split<cr>", desc = "Split Window Down" },
-      { "<leader>sk", "<cmd>leftabove split<cr>", desc = "Split Window Up" },
-      { "<leader>sl", "<cmd>rightbelow vsplit<cr>", desc = "Split Window Right" },
 
       -- Configure quit keymaps.
       { "<leader>qq", "<cmd>qa<cr>", desc = "Quit All" },

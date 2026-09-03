@@ -99,9 +99,7 @@ return {
       { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
       { "<leader>fh", function() Snacks.picker.help() end, desc = "Help Pages" },
       { "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
-      { "<leader>fl", function() Snacks.picker.loclist() end, desc = "Location List" },
       { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
-      { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
       { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
 
       -- Configure Git keymaps.

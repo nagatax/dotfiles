@@ -38,9 +38,19 @@ return {
   config = function()
     local dap = require("dap")
     local dapui = require("dapui")
+    local sign = vim.fn.sign_define
+
+    -- Match breakpoint and log-point signs to the Catppuccin DAP palette.
+    sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+    sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+    sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 
     require("dap-python").setup("uv")
-    dapui.setup()
+    dapui.setup({
+      floating = {
+        border = "rounded",
+      },
+    })
     require("nvim-dap-virtual-text").setup()
 
     dap.listeners.after.event_initialized.dapui_config = function()

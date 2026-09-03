@@ -32,6 +32,11 @@ return {
     },
 
     completion = {
+      menu = {
+        draw = {
+          treesitter = { "lsp" },
+        },
+      },
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 500,

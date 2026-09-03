@@ -123,8 +123,9 @@ alone, while Frappe surface colors separate the sidebar, active row, and current
 selection. A darker panel background separates the tab bar and overlays from
 terminal content. The expanded sidebar emphasizes the agent name, then uses
 progressively quieter colors for its state, terminal activity, workspace, and
-tab. When multiple tabs are visible, the tab bar shows zoom state and local
-time in a right-aligned status area.
+tab. The Spaces list gives workspace names stronger emphasis while preserving
+semantic state and Git-status colors. When multiple tabs are visible, the tab
+bar shows zoom state and local time in a right-aligned status area.
 
 The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 
@@ -167,7 +168,8 @@ exec zsh
 ```
 
 Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
-highlighting from `sheldon/plugins.toml`. Starship automatically reads
+highlighting from `sheldon/plugins.toml`. Standalone fzf and fzf-tab use the
+official Catppuccin Frappe colors. Starship automatically reads
 `~/.config/starship.toml`. Its battery indicator stays hidden above 20%, warns
 in yellow at 20%, and turns red at 10%. Repository root names are highlighted
 in mauve, and the right prompt shows local time with a muted Frappe clock icon.
@@ -186,7 +188,10 @@ Catppuccin Frappe palette as Ghostty. Activity in background windows is
 highlighted in yellow without displaying an additional message. Copy-mode
 search matches and line numbers use distinct Frappe colors. Rounded session and
 active-window pills frame the status line, while menus, popups, command prompts,
-and the session tree use matching Frappe surfaces and selection colors.
+and the session tree use matching Frappe surfaces and selection colors. Each
+pane border shows its index and title, with color and arrow indicators making
+the active pane easier to identify. The right status area is reserved for the
+date and time because pane titles are displayed on their borders.
 
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this
 configuration:
@@ -236,7 +241,11 @@ window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
 Solid rounded floating windows, rounded lualine separators, and Nerd Font fold
 markers keep editor chrome visually consistent. LSP inlay hints retain their
-muted text color without drawing a background block over the code.
+muted text color without drawing a background block over the code. Diagnostic
+virtual text appears only on the cursor line, while signs and underlines remain
+visible elsewhere. Completion labels use Tree-sitter colors, and the active
+indent scope uses rounded chunk markers. Python debugging uses Catppuccin-aware
+breakpoint and log-point symbols plus rounded floating windows.
 Starting Neovim without a file opens a single-column Snacks dashboard with
 keymaps, recent files, projects, repository status, and startup time. Neovim
 started from Zsh writes its general log to

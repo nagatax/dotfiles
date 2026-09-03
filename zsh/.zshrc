@@ -149,6 +149,18 @@ zstyle ':completion:*' group-name ''
 # Let fzf-tab display ambiguous completion candidates.
 zstyle ':completion:*' menu no
 
+# Match standalone fzf and fzf-tab to Catppuccin Frappe.
+typeset -a fzf_catppuccin_frappe=(
+  '--color=bg+:#414559,bg:#303446,spinner:#F2D5CF,hl:#E78284'
+  '--color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#F2D5CF'
+  '--color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284'
+  '--color=selected-bg:#51576D'
+  '--color=border:#737994,label:#C6D0F5'
+)
+export FZF_DEFAULT_OPTS="${(j: :)fzf_catppuccin_frappe}"
+zstyle ':fzf-tab:*' fzf-flags "${fzf_catppuccin_frappe[@]}"
+unset fzf_catppuccin_frappe
+
 # Switch between fzf-tab completion groups with angle brackets.
 zstyle ':fzf-tab:*' switch-group '<' '>'
 

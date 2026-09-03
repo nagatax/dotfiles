@@ -62,7 +62,19 @@ return {
         replace_netrw = true, -- Replace netrw with the Snacks explorer.
         trash = true, -- Move deleted files to the system trash.
       },
-      indent = { enabled = true }, -- Visualize indentation and the current scope.
+      indent = {
+        enabled = true, -- Visualize indentation and the current scope.
+        chunk = {
+          enabled = true,
+          char = {
+            corner_top = "╭",
+            corner_bottom = "╰",
+            horizontal = "─",
+            vertical = "│",
+            arrow = ">",
+          },
+        },
+      },
       input = { enabled = true }, -- Replace vim.ui.input with a floating input window.
       picker = {},
       notifier = {}, -- Replace vim.notify and expose notification history through <leader>n.

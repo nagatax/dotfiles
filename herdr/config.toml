@@ -67,6 +67,13 @@ rows = [
   [{ token = "workspace", fg = "#8caaee" }, { token = "tab", fg = "#838ba7", dim = true }],
 ]
 
+[ui.sidebar.spaces]
+# Emphasize the workspace while retaining semantic state and Git-status colors.
+rows = [
+  ["state_icon", { token = "workspace", fg = "#c6d0f5", bold = true }],
+  [{ token = "branch", fg = "#8caaee" }, "git_status"],
+]
+
 [ui.toast]
 # Let Ghostty deliver stable background-agent notifications.
 delivery = "terminal"

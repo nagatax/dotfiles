@@ -98,7 +98,9 @@ return {
 
     -- Configure diagnostic display.
     vim.diagnostic.config({
-      virtual_text = true,
+      virtual_text = {
+        current_line = true,
+      },
       signs = true,
       underline = true,
       severity_sort = true,

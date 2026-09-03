@@ -181,17 +181,8 @@ return {
       { "<leader>sj", "<cmd>rightbelow split<cr>", desc = "Split Window Down" },
       { "<leader>sk", "<cmd>leftabove split<cr>", desc = "Split Window Up" },
       { "<leader>sl", "<cmd>rightbelow vsplit<cr>", desc = "Split Window Right" },
-      { "<leader>rh", "<cmd>vertical resize -5<cr>", desc = "Resize Window Left" },
-      { "<leader>rj", "<cmd>resize -5<cr>", desc = "Resize Window Down" },
-      { "<leader>rk", "<cmd>resize +5<cr>", desc = "Resize Window Up" },
-      { "<leader>rl", "<cmd>vertical resize +5<cr>", desc = "Resize Window Right" },
-      { "<leader>z", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
 
-      -- Configure file and editor keymaps.
-      { "<leader>dt", ":DiffTool ", desc = "Diff Tool" },
-      { "<leader>ds", ":diffsplit ", desc = "Diff Split" },
-      { "<leader>w", "<cmd>write<cr>", desc = "Save File" },
-      { "<leader>q", "<cmd>quit<cr>", desc = "Quit Window" },
+      -- Configure quit keymaps.
       { "<leader>qq", "<cmd>qa<cr>", desc = "Quit All" },
       { "<leader>qw", "<cmd>wqa<cr>", desc = "Save and Quit All" },
     },

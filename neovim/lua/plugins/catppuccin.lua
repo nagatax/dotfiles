@@ -23,6 +23,8 @@ return {
     highlight_overrides = {
       frappe = function(colors)
         return {
+          WhichKey = { fg = colors.mauve, bold = true },
+          WhichKeyDesc = { fg = colors.subtext1 },
           FloatBorder = { fg = colors.surface2, bg = colors.mantle },
           SnacksDashboardHeader = { fg = colors.mauve },
           SnacksDashboardTitle = { fg = colors.lavender, bold = true },

@@ -100,6 +100,14 @@ borders. Blink limits completion labels, descriptions, and source names to
 40, 20, and 10 columns. Gitsigns uses `+` for additions and `~` for changes,
 including staged changes, which retain their dimmed colors.
 
+Lazygit also displays Nerd Font v3 icons outside Neovim. The `ll` listing uses
+gradients for file sizes and timestamps. WhichKey emphasizes keys in bold Mauve
+and keeps descriptions in Subtext1. lualine shows encoding only for non-UTF-8
+files or files with a BOM, and shows line endings only when they are not Unix;
+the file type remains visible. Picker paths can truncate down to 20 columns,
+while retaining filename-first display. Flash colors Treesitter selection labels
+individually; ordinary jumps keep their existing colors.
+
 ## Git
 
 The shared Git configuration keeps related local branches aligned when their

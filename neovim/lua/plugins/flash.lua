@@ -3,6 +3,9 @@ return {
   event = "VeryLazy",
   opts = {
     modes = {
+      treesitter = {
+        label = { rainbow = { enabled = true } },
+      },
       char = {
         jump_labels = true,
       },

@@ -23,6 +23,7 @@
 # SOFTWARE.
 
 gui:
+  nerdFontsVersion: "3"
   theme:
     activeBorderColor:
       - '#8caaee'

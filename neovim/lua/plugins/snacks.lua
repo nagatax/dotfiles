@@ -103,7 +103,7 @@ return {
       input = { enabled = true }, -- Replace vim.ui.input with a floating input window.
       picker = {
         formatters = {
-          file = { filename_first = true },
+          file = { filename_first = true, min_width = 20 },
         },
       },
       notifier = { gap = 1 }, -- Separate notifications and expose history through <leader>n.

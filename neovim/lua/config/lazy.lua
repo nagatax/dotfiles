@@ -26,6 +26,8 @@ require("lazy").setup({
   },
   -- Use this colorscheme while installing plugins.
   install = { colorscheme = { "habamax" } },
+  -- Match the plugin manager to the editor's rounded floating windows.
+  ui = { border = "rounded" },
   -- Check for plugin updates automatically.
   checker = { enabled = true },
   -- Disable LuaRocks because no configured plugin requires it.

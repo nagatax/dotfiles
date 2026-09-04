@@ -20,7 +20,19 @@ return {
           },
         },
       },
-      lualine_c = { { "filename", path = 1 } },
+      lualine_c = {
+        {
+          "filename",
+          path = 1,
+          -- Highlight unsaved files while retaining the standard status symbols.
+          color = function()
+            if vim.bo.modified then
+              return { fg = "#ef9f76", gui = "bold" }
+            end
+            return {}
+          end,
+        },
+      },
     },
     extensions = { "lazy", "man", "quickfix" },
   },

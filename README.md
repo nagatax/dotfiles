@@ -169,8 +169,10 @@ exec zsh
 
 Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
 highlighting from `sheldon/plugins.toml`. Standalone fzf and fzf-tab use the
-official Catppuccin Frappe colors. Starship automatically reads
-`~/.config/starship.toml`. Its battery indicator stays hidden above 20%, warns
+official Catppuccin Frappe colors. Shell syntax distinguishes commands, options,
+quoted strings, reserved words, and underlined paths with the same palette.
+Starship automatically reads `~/.config/starship.toml`. Its battery indicator
+stays hidden above 20%, warns
 in yellow at 20%, and turns red at 10%. Repository root names are highlighted
 in mauve, and the right prompt shows local time with a muted Frappe clock icon.
 Continued input uses a muted double-arrow prompt. Zsh refuses to overwrite an
@@ -189,9 +191,9 @@ highlighted in yellow without displaying an additional message. Copy-mode
 search matches and line numbers use distinct Frappe colors. Rounded session and
 active-window pills frame the status line, while menus, popups, command prompts,
 and the session tree use matching Frappe surfaces and selection colors. Each
-pane border shows its index and title, with color and arrow indicators making
-the active pane easier to identify. The right status area is reserved for the
-date and time because pane titles are displayed on their borders.
+pane border shows its index and current command, with bold text, color, and
+arrow indicators making the active pane easier to identify. The right status area is reserved for the
+date and time because pane commands are displayed on their borders.
 
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this
 configuration:
@@ -239,8 +241,10 @@ visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
-Solid rounded floating windows, rounded lualine separators, and Nerd Font fold
-markers keep editor chrome visually consistent. LSP inlay hints retain their
+Rounded floating windows with muted outlines, rounded lualine separators, and
+Nerd Font fold markers keep editor chrome visually consistent. The Lazy window
+also uses a rounded border. Unsaved filenames stand out in bold peach, and
+notifications have a one-line gap between them. LSP inlay hints retain their
 muted text color without drawing a background block over the code. Diagnostic
 virtual text appears only on the cursor line, while signs and underlines remain
 visible elsewhere. Completion labels use Tree-sitter colors, and the active

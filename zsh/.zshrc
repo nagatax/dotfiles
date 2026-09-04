@@ -203,6 +203,15 @@ fi
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#838ba7'
 if (( ${+ZSH_HIGHLIGHT_STYLES} )); then
   ZSH_HIGHLIGHT_STYLES[comment]='fg=#838ba7'
+  # Distinguish command roles with the Catppuccin Frappe palette.
+  ZSH_HIGHLIGHT_STYLES[arg0]='fg=#a6d189'
+  ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#ef9f76'
+  ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#ef9f76'
+  ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#e5c890'
+  ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#e5c890'
+  ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#e5c890'
+  ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#ca9ee6'
+  ZSH_HIGHLIGHT_STYLES[path]='fg=#8caaee,underline'
 fi
 
 # ==================================================

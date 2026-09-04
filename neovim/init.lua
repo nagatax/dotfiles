@@ -19,6 +19,7 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.hlsearch = true
 vim.opt.cursorline = true
+vim.opt.cursorlineopt = "screenline,number"
 vim.opt.signcolumn = "yes"
 vim.opt.foldcolumn = "auto:1"
 vim.opt.scrolloff = 4

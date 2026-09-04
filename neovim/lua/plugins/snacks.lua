@@ -99,7 +99,11 @@ return {
         },
       },
       input = { enabled = true }, -- Replace vim.ui.input with a floating input window.
-      picker = {},
+      picker = {
+        formatters = {
+          file = { filename_first = true },
+        },
+      },
       notifier = {}, -- Replace vim.notify and expose notification history through <leader>n.
       quickfile = { enabled = true }, -- Render files before the remaining plugins finish loading.
       scope = { enabled = true }, -- Add scope-aware text objects and navigation.

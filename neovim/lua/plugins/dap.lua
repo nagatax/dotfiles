@@ -52,6 +52,7 @@ return {
     })
     require("nvim-dap-virtual-text").setup({
       virt_text_pos = "eol",
+      commented = true,
     })
 
     dap.listeners.after.event_initialized.dapui_config = function()

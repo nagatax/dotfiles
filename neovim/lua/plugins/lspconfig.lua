@@ -117,7 +117,7 @@ return {
       update_in_insert = false,
       float = {
         border = "rounded",
-        source = true,
+        source = "if_many",
       },
     })
 

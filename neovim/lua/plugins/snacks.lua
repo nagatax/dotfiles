@@ -106,7 +106,7 @@ return {
           file = { filename_first = true, min_width = 20 },
         },
       },
-      notifier = { gap = 1 }, -- Separate notifications and expose history through <leader>n.
+      notifier = { gap = 1, style = "fancy" }, -- Separate notifications and expose history through <leader>n.
       quickfile = { enabled = true }, -- Render files before the remaining plugins finish loading.
       scope = { enabled = true }, -- Add scope-aware text objects and navigation.
       statuscolumn = {

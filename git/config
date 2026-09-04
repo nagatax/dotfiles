@@ -44,6 +44,12 @@
     colorMoved = dimmed-zebra
     colorMovedWS = allow-indentation-change
 
+# Match diff headings to the Catppuccin Frappe palette.
+[color "diff"]
+    meta = "#ca9ee6 bold"
+    frag = "#8caaee bold"
+    func = "#babbf1"
+
 # Reject bare repositories discovered implicitly while walking parent directories.
 [safe]
     bareRepository = explicit

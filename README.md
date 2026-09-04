@@ -108,12 +108,22 @@ the file type remains visible. Picker paths can truncate down to 20 columns,
 while retaining filename-first display. Flash colors Treesitter selection labels
 individually; ordinary jumps keep their existing colors.
 
+Diagnostic floats show source names only when the buffer contains diagnostics
+from multiple sources. DAP displays variable values as commented virtual text
+at the end of the line (for example, `# x = 42` in Python), without editing the
+file. Snacks notifications use the fancy style with a title, timestamp, and
+separator above the body. They retain a one-line gap and use more vertical space
+than the compact style.
+
 ## Git
 
 The shared Git configuration keeps related local branches aligned when their
 commits are rewritten by rebase, except for branches checked out in another
 worktree. Failed interactive-rebase `exec` commands are rescheduled so they can
 run again after the underlying problem is fixed.
+
+Diff file metadata, hunk headers, and function names use Catppuccin Frappe
+Mauve, Blue, and Lavender, respectively. File metadata and hunk headers are bold.
 
 ## Ghostty
 
@@ -258,6 +268,10 @@ End-of-buffer tildes are hidden, similar lines in larger diff hunks are aligned,
 and unmodified files are reloaded when they change outside Vim. Catppuccin
 Frappe provides full RGB colors for Vim, lightline, and the alternating
 indent-guide backgrounds. Lightline uses rounded separators that match Neovim.
+
+Whitespace markers match Neovim: tabs use `»`, trailing spaces use `·`, and
+non-breaking spaces use `␣`. With wrapping disabled, horizontal overflow uses
+`›` and `‹`. The existing trailing-whitespace highlight remains enabled.
 
 ## Neovim
 

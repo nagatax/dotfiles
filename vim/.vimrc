@@ -58,6 +58,10 @@ set breakindent
 set linebreak
 let &showbreak = '↪ '
 
+" Match Neovim's whitespace and horizontal overflow markers.
+set list
+let &listchars = 'tab:» ,trail:·,nbsp:␣,extends:›,precedes:‹'
+
 " Hide end-of-buffer markers for a cleaner editing area.
 set fillchars-=eob:~
 execute 'set fillchars+=eob:\ '

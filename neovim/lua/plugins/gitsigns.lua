@@ -1,5 +1,7 @@
 return {
   "lewis6991/gitsigns.nvim",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    word_diff = true,
+  },
 }

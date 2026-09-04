@@ -151,6 +151,7 @@ zstyle ':completion:*' menu no
 
 # Match standalone fzf and fzf-tab to Catppuccin Frappe.
 typeset -a fzf_catppuccin_frappe=(
+  '--border=rounded'
   '--color=bg+:#414559,bg:#303446,spinner:#F2D5CF,hl:#E78284'
   '--color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#F2D5CF'
   '--color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284'
@@ -160,6 +161,31 @@ typeset -a fzf_catppuccin_frappe=(
 export FZF_DEFAULT_OPTS="${(j: :)fzf_catppuccin_frappe}"
 zstyle ':fzf-tab:*' fzf-flags "${fzf_catppuccin_frappe[@]}"
 unset fzf_catppuccin_frappe
+
+# Reserve the two extra rows used by the rounded border.
+zstyle ':fzf-tab:*' fzf-pad 4
+
+# Match all 16 completion-group colors to Frappe's accents and light text colors.
+typeset -a fzf_tab_group_colors=(
+  $'\033[38;2;140;170;238m' # blue
+  $'\033[38;2;166;209;137m' # green
+  $'\033[38;2;229;200;144m' # yellow
+  $'\033[38;2;202;158;230m' # mauve
+  $'\033[38;2;231;130;132m' # red
+  $'\033[38;2;133;193;220m' # sapphire
+  $'\033[38;2;129;200;190m' # teal
+  $'\033[38;2;239;159;118m' # peach
+  $'\033[38;2;186;187;241m' # lavender
+  $'\033[38;2;234;153;156m' # maroon
+  $'\033[38;2;153;209;219m' # sky
+  $'\033[38;2;238;190;190m' # flamingo
+  $'\033[38;2;242;213;207m' # rosewater
+  $'\033[38;2;244;184;228m' # pink
+  $'\033[38;2;181;191;226m' # subtext1
+  $'\033[38;2;198;208;245m' # text
+)
+zstyle ':fzf-tab:*' group-colors "${fzf_tab_group_colors[@]}"
+unset fzf_tab_group_colors
 
 # Switch between fzf-tab completion groups with angle brackets.
 zstyle ':fzf-tab:*' switch-group '<' '>'

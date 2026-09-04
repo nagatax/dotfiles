@@ -47,6 +47,7 @@ vim.opt.listchars = {
 }
 vim.opt.fillchars:append({
   eob = " ",
+  diff = "╱",
   foldopen = "",
   foldclose = "",
   foldsep = " ",

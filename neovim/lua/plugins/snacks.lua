@@ -86,7 +86,18 @@ return {
     keys = {
       -- Configure file and buffer keymaps.
       { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-      { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+      {
+        "<leader>e",
+        function()
+          local explorer = Snacks.picker.get({ source = "explorer" })[1]
+          if explorer then
+            explorer:focus()
+          else
+            Snacks.explorer()
+          end
+        end,
+        desc = "Focus File Explorer",
+      },
       { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
 

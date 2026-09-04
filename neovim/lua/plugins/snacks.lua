@@ -99,32 +99,32 @@ return {
         desc = "Focus File Explorer",
       },
       { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
-      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<leader>b", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
 
       -- Configure search, history, and help keymaps.
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
-      { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
-      { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
-      { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
-      { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
+      { "<leader>w", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+      { "<leader>c", function() Snacks.picker.commands() end, desc = "Commands" },
+      { "<leader>s", function() Snacks.picker.help() end, desc = "Help Pages" },
+      { "<leader>u", function() Snacks.picker.undo() end, desc = "Undo History" },
 
       -- Configure Git keymaps.
       { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
       { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
       { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
-      { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+      { "<leader>v", function() Snacks.picker.git_status() end, desc = "Git Status" },
       { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-      { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
+      { "<leader>p", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
       { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
       { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
-      { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+      { "<leader>t", function() Snacks.lazygit() end, desc = "Lazygit" },
 
       -- Configure code-action and symbol-list keymaps.
-      { "<leader>ca", function() vim.lsp.buf.code_action() end, desc = "Code Action" },
-      { "<leader>cf", function() vim.lsp.buf.format() end, desc = "Format Buffer" },
-      { "<leader>cr", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },
-      { "<leader>cs", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-      { "<leader>cS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+      { "<leader>a", function() vim.lsp.buf.code_action() end, desc = "Code Action" },
+      { "<leader>=", function() vim.lsp.buf.format() end, desc = "Format Buffer" },
+      { "<leader>r", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },
+      { "<leader>o", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+      { "<leader>O", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 
       -- Configure definition and reference navigation keymaps.
       { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
@@ -134,8 +134,8 @@ return {
       { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
 
       -- Configure diagnostic keymaps.
-      { "<leader>dd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
-      { "<leader>db", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+      { "<leader>X", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+      { "<leader>x", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
       { "[d", function() jump_diagnostic(-1) end, desc = "Previous Diagnostic" },
       { "]d", function() jump_diagnostic(1) end, desc = "Next Diagnostic" },
 
@@ -153,8 +153,8 @@ return {
       { "<leader>l", "<C-w>l", desc = "Go to Right Window" },
 
       -- Configure quit keymaps.
-      { "<leader>qq", "<cmd>qa<cr>", desc = "Quit All" },
-      { "<leader>qw", "<cmd>wqa<cr>", desc = "Save and Quit All" },
+      { "<leader>q", "<cmd>qa<cr>", desc = "Quit All" },
+      { "<leader>Q", "<cmd>wqa<cr>", desc = "Save and Quit All" },
     },
   },
 }

@@ -46,7 +46,7 @@ brew install eza fd fzf gh lazygit lua-language-server ripgrep
 | [fd](https://github.com/sharkdp/fd) | Fast file discovery in Snacks pickers |
 | [fzf](https://github.com/junegunn/fzf) | Interactive completion through `fzf-tab` |
 | [gh](https://cli.github.com/) | GitHub Issue and pull request pickers in Neovim |
-| [lazygit](https://github.com/jesseduffield/lazygit) | `<leader>gg` in Neovim |
+| [lazygit](https://github.com/jesseduffield/lazygit) | `<leader>t` in Neovim |
 | [lua-language-server](https://luals.github.io/) | Lua diagnostics and completion in Neovim |
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | Fast text search in Snacks pickers |
 | [Nerd Font](https://www.nerdfonts.com/) | Icons in Starship, eza, and Neovim |
@@ -278,20 +278,20 @@ The custom clangd arguments are defined in `neovim/after/lsp/clangd.lua`.
 
 ### Keybindings
 
-The following 55 shortcuts are explicitly configured in `neovim/lua/plugins/`.
+The following 56 shortcuts are explicitly configured in `neovim/lua/plugins/`.
 `Space` is the leader key. Keys are case-sensitive and run in Normal mode unless
 noted otherwise. Plugin defaults and Neovim's built-in mappings are not included.
 The `Enter` completion binding extends blink.cmp's `default` preset.
 
-Frequent editing and navigation actions use short bindings: `Space Space` for
-smart file search, `Space ,` for buffers, `Space /` for grep, and `Space f` / `Space F`
-for Flash. The old bindings are not retained as aliases. `Space sh` opens help;
-it no longer creates a split.
+Frequent actions use `Space` followed by one key: `Space Space` for smart file
+search, `Space ,` for buffers, `Space /` for grep, `Space s` for help, and
+`Space f` / `Space F` for Flash. Replaced bindings are not retained as aliases.
+`Space o` / `Space O` list document/workspace symbols, and `Space x` / `Space X`
+list current-buffer/all-buffer diagnostics. Uppercase keys require Shift.
 
-which-key groups related bindings under `Space b` (Buffer), `Space c`
-(Code / Symbols), `Space d` (Diagnostics), `Space D` (Debug), `Space g` (Git),
-`Space q` (Quit), and `Space s` (Search / History / Help). Short standalone
-bindings such as `Space f` and `Space F` execute directly rather than opening a group.
+which-key groups the remaining related bindings under `Space D` (Debug) and
+`Space g` (Git). Other Space-led bindings execute directly. `Space m` opens a
+repeatable debug menu; see Debugging below.
 
 #### Files and buffers
 
@@ -300,17 +300,17 @@ bindings such as `Space f` and `Space F` execute directly rather than opening a 
 | `Space Space` | Smart file search |
 | `Space e` | Open file explorer |
 | `Space ,` | List buffers |
-| `Space bd` | Delete the current buffer |
+| `Space b` | Delete the current buffer |
 
 #### Search, history, and help
 
 | Key | Action |
 | --- | --- |
 | `Space /` | Grep file contents |
-| `Space sw` | Grep the cursor word or Visual selection |
-| `Space sC` | List commands |
-| `Space sh` | Search help pages |
-| `Space su` | Browse undo history |
+| `Space w` | Grep the cursor word or Visual selection |
+| `Space c` | List commands |
+| `Space s` | Search help pages |
+| `Space u` | Browse undo history |
 
 #### Git
 
@@ -319,22 +319,22 @@ bindings such as `Space f` and `Space F` execute directly rather than opening a 
 | `Space gb` | List branches |
 | `Space gl` | Browse commit history |
 | `Space gL` | Browse history for the current line |
-| `Space gs` | List changed files |
+| `Space v` | List changed files |
 | `Space gS` | List stashes |
-| `Space gd` | Browse diff hunks |
+| `Space p` | Browse diff hunks |
 | `Space gf` | Browse history for the current file |
 | `Space gB` | Open the file or selected lines on the remote website (also Visual/Select) |
-| `Space gg` | Open Lazygit |
+| `Space t` | Open Lazygit |
 
 #### Code actions and symbols
 
 | Key | Action |
 | --- | --- |
-| `Space ca` | Run a code action |
-| `Space cf` | Format the current buffer |
-| `Space cr` | Rename a symbol |
-| `Space cs` | List document symbols |
-| `Space cS` | Search workspace symbols |
+| `Space a` | Run a code action |
+| `Space =` | Format the current buffer |
+| `Space r` | Rename a symbol |
+| `Space o` | List document symbols |
+| `Space O` | Search workspace symbols |
 
 #### Definitions and references
 
@@ -350,8 +350,8 @@ bindings such as `Space f` and `Space F` execute directly rather than opening a 
 
 | Key | Action |
 | --- | --- |
-| `Space dd` | List diagnostics across buffers |
-| `Space db` | List diagnostics in the current buffer |
+| `Space X` | List diagnostics across buffers |
+| `Space x` | List diagnostics in the current buffer |
 | `[d` | Go to the previous diagnostic and show its details |
 | `]d` | Go to the next diagnostic and show its details |
 
@@ -381,8 +381,8 @@ bindings such as `Space f` and `Space F` execute directly rather than opening a 
 
 | Key | Action |
 | --- | --- |
-| `Space qq` | Quit all windows |
-| `Space qw` | Save all buffers and quit |
+| `Space q` | Quit all windows |
+| `Space Q` | Save all buffers and quit |
 
 #### Flash
 
@@ -399,8 +399,18 @@ search integrations are unchanged.
 
 The configured debugger targets Python.
 
+Press `Space m` in Normal mode to open the repeatable debug menu. Use the final
+key from the bindings below (`b`, `B`, `c`, `i`, `o`, `O`, `p`, `e`, `r`, `u`, or
+`t`) to execute an action and keep the menu open. Press `Esc` to leave the menu
+before editing code or typing into the REPL. For example, `Space m`, then `o`
+five times, then `Esc` performs five step-over actions.
+
+The regular `Space D…` bindings remain available. Evaluate a Visual selection
+with `Space De`; the repeatable menu is Normal-mode only.
+
 | Key | Action |
 | --- | --- |
+| `Space m` | Open the repeatable debug menu (Esc to exit) |
 | `Space Db` | Toggle a breakpoint |
 | `Space DB` | Set a conditional breakpoint |
 | `Space Dc` | Start or continue debugging |

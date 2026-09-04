@@ -41,7 +41,7 @@
 # Make moved code and low-frequency matching lines easier to identify.
 [diff]
     algorithm = histogram
-    colorMoved = default
+    colorMoved = dimmed-zebra
     colorMovedWS = allow-indentation-change
 
 # Reject bare repositories discovered implicitly while walking parent directories.

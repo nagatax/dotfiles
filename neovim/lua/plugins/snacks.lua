@@ -87,8 +87,10 @@ return {
       },
       indent = {
         enabled = true, -- Visualize indentation and the current scope.
+        scope = { only_current = true },
         chunk = {
           enabled = true,
+          only_current = true,
           char = {
             corner_top = "╭",
             corner_bottom = "╰",
@@ -107,7 +109,10 @@ return {
       notifier = {}, -- Replace vim.notify and expose notification history through <leader>n.
       quickfile = { enabled = true }, -- Render files before the remaining plugins finish loading.
       scope = { enabled = true }, -- Add scope-aware text objects and navigation.
-      statuscolumn = { enabled = true }, -- Combine line numbers, signs, folds, and Git status.
+      statuscolumn = {
+        enabled = true, -- Combine line numbers, signs, folds, and Git status.
+        folds = { git_hl = true },
+      },
       words = { enabled = true }, -- Highlight references reported by attached LSP clients.
     },
     keys = {

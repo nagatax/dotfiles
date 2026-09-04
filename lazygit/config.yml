@@ -24,6 +24,8 @@
 
 gui:
   nerdFontsVersion: "3"
+  # Reserve more vertical space for diffs while keeping the command log visible.
+  commandLogSize: 4
   theme:
     activeBorderColor:
       - '#8caaee'
@@ -35,9 +37,9 @@ gui:
     optionsTextColor:
       - '#8caaee'
     selectedLineBgColor:
-      - '#414559'
+      - '#51576d'
     inactiveViewSelectedLineBgColor:
-      - '#737994'
+      - '#414559'
     cherryPickedCommitFgColor:
       - '#8caaee'
     cherryPickedCommitBgColor:

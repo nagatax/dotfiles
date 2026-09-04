@@ -172,6 +172,11 @@ disabled = false
 [git_status]
 # Display the worktree state and remote divergence as a single group.
 format = '([$all_status$ahead_behind]($style) )'
+# Distinguish Git states without changing their symbols or display width.
+modified = '[!](yellow)'
+staged = '[+](green)'
+untracked = '[?](blue)'
+conflicted = '[=](bold red)'
 
 [golang]
 symbol = " "

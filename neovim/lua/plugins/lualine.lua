@@ -1,3 +1,19 @@
+-- Show file names above ordinary editing buffers, including inactive splits.
+local function file_winbar(color)
+  return {
+    lualine_c = {
+      {
+        "filename",
+        path = 1,
+        color = { fg = color },
+        cond = function()
+          return vim.bo.buftype == ""
+        end,
+      },
+    },
+  }
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   opts = {
@@ -40,7 +56,8 @@ return {
       lualine_c = {
         {
           "filename",
-          path = 1,
+          -- Keep the relative path in the winbar and the filename in the statusline.
+          path = 0,
           -- Highlight unsaved files while retaining the standard status symbols.
           color = function()
             if vim.bo.modified then
@@ -51,6 +68,8 @@ return {
         },
       },
     },
+    winbar = file_winbar("#c6d0f5"),
+    inactive_winbar = file_winbar("#838ba7"),
     extensions = { "lazy", "man", "quickfix" },
   },
 }

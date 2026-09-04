@@ -22,6 +22,12 @@ theme = Catppuccin Frappe
 # Prevent text from becoming indistinguishable from the background.
 minimum-contrast = 1.1
 
+# Match search highlights to the Frappe colors used by tmux copy mode.
+search-foreground = #c6d0f5
+search-background = #626880
+search-selected-foreground = #303446
+search-selected-background = #e5c890
+
 
 # ==================================================
 # Cursor / Mouse

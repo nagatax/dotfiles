@@ -75,6 +75,14 @@ vim.opt.wildmode = "list:longest,full"
 vim.opt.laststatus = 3
 vim.opt.showmode = false
 
+-- Briefly highlight copied text to make the yank range visible.
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("user-yank-highlight", { clear = true }),
+  callback = function()
+    vim.hl.on_yank({ higroup = "IncSearch", timeout = 200 })
+  end,
+})
+
 -- ==================================================
 -- File types
 -- Configure additional file type detection.

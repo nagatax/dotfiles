@@ -5,6 +5,8 @@
 
 font-family = JetBrains Mono
 font-size = 18
+# Add a little vertical breathing room without changing the font size.
+adjust-cell-height = 5%
 
 
 # ==================================================

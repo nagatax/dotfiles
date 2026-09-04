@@ -11,6 +11,7 @@ return {
     },
   },
   opts = {
+    preset = "modern",
     spec = {
       { "<leader>D", group = "Debug" },
       { "<leader>g", group = "Git" },

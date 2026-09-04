@@ -173,6 +173,12 @@ if type sheldon &>/dev/null; then
   eval "$(sheldon source)"
 fi
 
+# Keep suggestions and comments readable with Frappe's muted overlay color.
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#838ba7'
+if (( ${+ZSH_HIGHLIGHT_STYLES} )); then
+  ZSH_HIGHLIGHT_STYLES[comment]='fg=#838ba7'
+fi
+
 # ==================================================
 # Functions
 # Define custom shell functions.

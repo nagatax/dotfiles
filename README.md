@@ -67,7 +67,7 @@ Back up or remove any files that already exist at these destinations before
 creating the symbolic links.
 
 ```bash
-mkdir -p ~/.config/ghostty ~/.config/herdr ~/.config/sheldon
+mkdir -p ~/.config/ghostty ~/.config/herdr ~/.config/sheldon ~/.config/eza
 
 ln -s "${DOTFILES_DIR}/ghostty/config" ~/.config/ghostty/config
 ln -s "${DOTFILES_DIR}/herdr/config.toml" ~/.config/herdr/config.toml
@@ -77,9 +77,28 @@ ln -s "${DOTFILES_DIR}/starship/starship.toml" ~/.config/starship.toml
 ln -s "${DOTFILES_DIR}/tmux/.tmux.conf" ~/.tmux.conf
 ln -s "${DOTFILES_DIR}/vim/.vimrc" ~/.vimrc
 ln -s "${DOTFILES_DIR}/neovim" ~/.config/nvim
+ln -s "${DOTFILES_DIR}/eza/theme.yml" ~/.config/eza/theme.yml
+
+# Use Lazygit's standard macOS config directory (on Linux: ~/.config/lazygit).
+mkdir -p "${HOME}/Library/Application Support/lazygit"
+ln -s "${DOTFILES_DIR}/lazygit/config.yml" "${HOME}/Library/Application Support/lazygit/config.yml"
 
 git config --global --add include.path "${DOTFILES_DIR}/git/config"
 ```
+
+## Additional appearance settings
+
+eza uses the Catppuccin Frappe theme for `ll`, `lt`, and directory completion
+previews. Zsh sets `EZA_CONFIG_DIR` to `${XDG_CONFIG_HOME:-${HOME}/.config}/eza`;
+if you customize `XDG_CONFIG_HOME`, place the theme link in that directory.
+Lazygit uses Frappe with a Blue accent when launched from the shell or Herdr.
+Neovim's Snacks integration continues to generate its theme from the colorscheme.
+The bundled theme files retain their upstream MIT license notices.
+
+Ghostty thickens text strokes at strength 100 on macOS, and tmux uses heavy pane
+borders. Blink limits completion labels, descriptions, and source names to
+40, 20, and 10 columns. Gitsigns uses `+` for additions and `~` for changes,
+including staged changes, which retain their dimmed colors.
 
 ## Git
 

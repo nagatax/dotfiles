@@ -36,6 +36,12 @@ return {
       menu = {
         draw = {
           treesitter = { "lsp" },
+          -- Keep long completion items compact in split windows.
+          components = {
+            label = { width = { max = 40 } },
+            label_description = { width = { max = 20 } },
+            source_name = { width = { max = 10 } },
+          },
           columns = {
             { "kind_icon" },
             { "label", "label_description", gap = 1 },

@@ -125,6 +125,8 @@ alias ls='ls -G'
 
 # Define enhanced directory-listing aliases when eza is available.
 if type eza &>/dev/null; then
+  # Use the shared theme directory on macOS and other platforms.
+  export EZA_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/eza"
   alias ll='eza -la --icons --git --group-directories-first'
   alias lt='eza --tree --icons --level=2'
 fi

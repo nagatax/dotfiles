@@ -5,6 +5,9 @@
 
 font-family = JetBrains Mono
 font-size = 18
+# Strengthen text strokes without increasing the font size on macOS.
+font-thicken = true
+font-thicken-strength = 100
 # Add a little vertical breathing room without changing the font size.
 adjust-cell-height = 5%
 

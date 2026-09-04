@@ -11,6 +11,29 @@ local function jump_diagnostic(count)
   })
 end
 
+local function copy_file_reference(line_range)
+  local path = vim.fn.expand("%:.")
+  if path == "" then
+    vim.notify("Current buffer has no file path", vim.log.levels.WARN)
+    return
+  end
+
+  local reference = path
+  if line_range == "cursor" then
+    reference = ("%s:%d"):format(path, vim.fn.line("."))
+  elseif line_range == "visual" then
+    local first_line = vim.fn.line("v")
+    local last_line = vim.fn.line(".")
+    if first_line > last_line then
+      first_line, last_line = last_line, first_line
+    end
+    reference = ("%s:%d-%d"):format(path, first_line, last_line)
+  end
+
+  vim.fn.setreg("+", reference)
+  vim.notify(("Copied %s"):format(reference))
+end
+
 return {
   {
     "folke/snacks.nvim",
@@ -100,6 +123,9 @@ return {
       },
       { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>b", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<leader>y", function() copy_file_reference() end, desc = "Copy File Path" },
+      { "<leader>Y", function() copy_file_reference("cursor") end, desc = "Copy File Reference" },
+      { "<leader>Y", function() copy_file_reference("visual") end, desc = "Copy File Range", mode = "x" },
 
       -- Configure search, history, and help keymaps.
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },

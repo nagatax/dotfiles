@@ -105,12 +105,15 @@ not require a SmartSet or ZMK remap.
 | Action | Ghostty | Neovim | tmux |
 | --- | --- | --- | --- |
 | Focus left/down/up/right | `Alt+h/j/k/l` | `Space`, then `h/j/k/l` | `Ctrl-b`, then `h/j/k/l` |
-| Split left/down/up/right | `Alt+s`, then `h/j/k/l` | Not mapped | `Ctrl-b`, `s`, then `h/j/k/l` |
-| Resize left/down/up/right by 5 cells | `Alt+r`, then `h/j/k/l` | Not mapped | `Ctrl-b`, `r`, then `h/j/k/l` |
-| Toggle zoom | `Alt+z` | Not mapped | `Ctrl-b`, then `z` |
+| Split left/down/up/right | `Alt+m`, `Alt+,`, `Alt+.`, `Alt+/` | Not mapped | `Ctrl-b`, `s`, then `h/j/k/l` |
+| Resize left/down/up/right by 5 cells | No custom binding | Not mapped | `Ctrl-b`, `r`, then `h/j/k/l` |
+| Toggle zoom | No custom binding | Not mapped | `Ctrl-b`, then `z` |
 
-Ghostty also uses `Alt+n`/`Alt+p` to cycle splits, `Alt+e` to equalize them,
-and `Alt+u`/`Alt+d` to jump to the previous or next shell prompt.
+Ghostty also uses `Alt+n`/`Alt+p` to cycle splits and `Alt+u`/`Alt+d` to jump
+to the previous or next shell prompt. Split creation requires only Alt plus
+one key, without Shift or a key sequence. `Alt+Left`/`Alt+Right` retain shell
+word navigation. Zoom, equalize, and resize have no custom bindings; Ghostty's
+default shortcuts remain available.
 
 ## Herdr
 

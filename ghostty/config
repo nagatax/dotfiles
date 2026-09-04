@@ -99,21 +99,11 @@ keybind = alt+l=goto_split:right
 keybind = alt+n=goto_split:next
 keybind = alt+p=goto_split:previous
 
-# Create splits with Alt+S followed by a direction.
-keybind = alt+s>h=new_split:left
-keybind = alt+s>j=new_split:down
-keybind = alt+s>k=new_split:up
-keybind = alt+s>l=new_split:right
-
-# Manage the active split layout.
-keybind = alt+z=toggle_split_zoom
-keybind = alt+e=equalize_splits
-
-# Resize with Alt+R followed by a direction, in five-cell increments.
-keybind = alt+r>h=resize_split:left,5
-keybind = alt+r>j=resize_split:down,5
-keybind = alt+r>k=resize_split:up,5
-keybind = alt+r>l=resize_split:right,5
+# Create splits left/down/up/right with Alt+m/comma/period/slash.
+keybind = alt+m=new_split:left
+keybind = alt+,=new_split:down
+keybind = alt+.=new_split:up
+keybind = alt+/=new_split:right
 
 # Jump between shell prompts recorded by shell integration.
 keybind = alt+u=jump_to_prompt:-1

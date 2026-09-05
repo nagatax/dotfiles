@@ -342,10 +342,16 @@ the languages you use.
 | `gopls` | `gopls` | Go |
 | `lua_ls` | `lua-language-server` | Lua |
 | `terraformls` | `terraform-ls` | Terraform |
-| `intelephense` | `intelephense` | PHP |
+| `phpantom_lsp` | `phpantom_lsp` | PHP |
 | `basedpyright` | `basedpyright-langserver` | Python |
 
 The custom clangd arguments are defined in `neovim/after/lsp/clangd.lua`.
+
+Install PHPantom for PHP support with Homebrew:
+
+```bash
+brew install phpantom-lsp
+```
 
 ### Keybindings
 

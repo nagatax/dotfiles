@@ -55,7 +55,7 @@ return {
       "gopls",
       "lua_ls",
       "terraformls",
-      "intelephense",
+      "phpantom_lsp",
       "basedpyright",
     }
     local enabled_servers = {}

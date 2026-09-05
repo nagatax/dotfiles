@@ -121,6 +121,14 @@ than the compact style.
 
 ## Git
 
+Lazygit shows added/deleted line counts in the Files view and a down arrow with
+the number of commits behind the base branch in the Branches view. It retains the
+default main-branch names, `master` and `main`; these counts are distinct from
+upstream synchronization status.
+
+Git diff headers identify the compared sides: `i/` and `w/` for index versus
+worktree, and `c/` and `i/` for commit versus index in staged diffs.
+
 The shared Git configuration keeps related local branches aligned when their
 commits are rewritten by rebase, except for branches checked out in another
 worktree. Failed interactive-rebase `exec` commands are rescheduled so they can
@@ -491,6 +499,10 @@ with `Space De`; the repeatable menu is Normal-mode only.
 | Key | Action |
 | --- | --- |
 | `Enter` | Select and accept a completion candidate; fall back to normal Enter when not applicable |
+
+Completion candidates are not preselected. Browsing candidates leaves the buffer
+unchanged until a candidate is accepted with Enter. Canceling closes the menu
+without inserting the selected candidate.
 
 ## License
 

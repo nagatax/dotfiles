@@ -52,6 +52,8 @@
 
 # Make moved code and low-frequency matching lines easier to identify.
 [diff]
+    # Identify the commit, index, and worktree sides in diff headers.
+    mnemonicPrefix = true
     algorithm = histogram
     colorMoved = dimmed-zebra
     colorMovedWS = allow-indentation-change

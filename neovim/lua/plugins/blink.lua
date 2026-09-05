@@ -35,7 +35,8 @@ return {
     completion = {
       -- Keep Enter as a newline until a completion item is explicitly selected.
       list = {
-        selection = { preselect = false },
+        -- Keep the buffer unchanged while browsing completion candidates.
+        selection = { preselect = false, auto_insert = false },
       },
       menu = {
         draw = {

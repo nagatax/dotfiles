@@ -211,6 +211,8 @@ Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
 highlighting from `sheldon/plugins.toml`. Standalone fzf and fzf-tab use the
 official Catppuccin Frappe colors. Shell syntax distinguishes commands, options,
 quoted strings, reserved words, and underlined paths with the same palette.
+Line-editor selections and pasted text use a muted background, while history
+search matches use a yellow background.
 Starship automatically reads `~/.config/starship.toml`. Its battery indicator
 stays hidden above 20%, warns
 in yellow at 20%, and turns red at 10%. Repository root names are highlighted
@@ -285,13 +287,17 @@ visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
+Relative line numbers and split boundaries use brighter muted colors. Ordinary
+editing buffers show their relative path in a winbar, with inactive paths dimmed.
 Rounded floating windows with muted outlines, rounded lualine separators, and
 Nerd Font fold markers keep editor chrome visually consistent. The Lazy window
 also uses a rounded border. Unsaved filenames stand out in bold peach, and
 notifications have a one-line gap between them. LSP inlay hints retain their
 muted text color without drawing a background block over the code. Diagnostic
 virtual text appears only on the cursor line, while signs and underlines remain
-visible elsewhere. Completion labels use Tree-sitter colors, and the active
+visible elsewhere. Errors and warnings use curly underlines on supporting
+terminals; information and hints retain straight underlines.
+Completion labels use Tree-sitter colors, and the active
 indent scope uses rounded chunk markers. Python debugging uses Catppuccin-aware
 breakpoint and log-point symbols plus rounded floating windows.
 Starting Neovim without a file opens a single-column Snacks dashboard with

@@ -16,6 +16,10 @@ return {
       percentage = 0.10,
     },
     lsp_styles = {
+      underlines = {
+        errors = { "undercurl" },
+        warnings = { "undercurl" },
+      },
       inlay_hints = {
         background = false,
       },
@@ -25,6 +29,8 @@ return {
         return {
           WhichKey = { fg = colors.mauve, bold = true },
           WhichKeyDesc = { fg = colors.subtext1 },
+          LineNr = { fg = colors.overlay0 },
+          WinSeparator = { fg = colors.surface2 },
           FloatBorder = { fg = colors.surface2, bg = colors.mantle },
           BlinkCmpLabel = { fg = colors.text },
           SnacksPickerMatch = { fg = colors.blue, bold = true, underline = true },

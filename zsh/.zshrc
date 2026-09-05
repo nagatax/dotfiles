@@ -216,6 +216,16 @@ if (( ${+ZSH_HIGHLIGHT_STYLES} )); then
   ZSH_HIGHLIGHT_STYLES[path]='fg=#8caaee,underline'
 fi
 
+# Match line-editor selection, paste, and history-search highlights to Frappe.
+# Replace only these contexts so reloading does not duplicate them.
+typeset -a zle_highlight
+zle_highlight=(
+  "${(@)zle_highlight:#(region|paste|isearch):*}"
+  'region:fg=#c6d0f5,bg=#51576d'
+  'paste:fg=#c6d0f5,bg=#51576d'
+  'isearch:fg=#303446,bg=#e5c890'
+)
+
 # ==================================================
 # Functions
 # Define custom shell functions.

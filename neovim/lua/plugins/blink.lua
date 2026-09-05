@@ -12,7 +12,7 @@ return {
       preset = "default",
 
       ["<CR>"] = {
-        "select_and_accept",
+        "accept",
         "fallback",
       },
     },
@@ -33,6 +33,10 @@ return {
     },
 
     completion = {
+      -- Keep Enter as a newline until a completion item is explicitly selected.
+      list = {
+        selection = { preselect = false },
+      },
       menu = {
         draw = {
           treesitter = { "lsp" },

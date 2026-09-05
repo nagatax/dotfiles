@@ -3,6 +3,8 @@ return {
   event = "VeryLazy",
   opts = {
     word_diff = true,
+    -- Show the current line's last change after the default one-second delay.
+    current_line_blame = true,
     -- Distinguish additions and changes by shape as well as color.
     signs = {
       add = { text = "+" },

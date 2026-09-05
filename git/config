@@ -55,6 +55,14 @@
     algorithm = histogram
     colorMoved = dimmed-zebra
     colorMovedWS = allow-indentation-change
+    # Join nearby hunks and highlight whitespace errors throughout the diff.
+    interHunkContext = 3
+    wsErrorHighlight = all
+
+# Show patches and any saved untracked files when inspecting a stash.
+[stash]
+    showPatch = true
+    showIncludeUntracked = true
 
 # Match diff headings to the Catppuccin Frappe palette.
 [color "diff"]

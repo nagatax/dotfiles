@@ -197,6 +197,18 @@ if type eza &>/dev/null; then
   zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 fi
 
+# Enable fuzzy history search without loading fzf's completion integration.
+if type fzf &>/dev/null && [[ -n "${brew_prefix}" && -r "${brew_prefix}/opt/fzf/shell/key-bindings.zsh" ]]; then
+  () {
+    # Preserve the existing Ctrl+T and Alt+C bindings.
+    local FZF_CTRL_T_COMMAND='' FZF_ALT_C_COMMAND=''
+    source "${brew_prefix}/opt/fzf/shell/key-bindings.zsh"
+  }
+fi
+
+# Skip autosuggestions for large pasted commands and text.
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=1000
+
 if type sheldon &>/dev/null; then
   eval "$(sheldon source)"
 fi

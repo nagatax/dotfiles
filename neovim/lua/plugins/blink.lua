@@ -36,8 +36,13 @@ return {
       menu = {
         draw = {
           treesitter = { "lsp" },
+          padding = { 0, 1 },
           -- Keep long completion items compact in split windows.
           components = {
+            kind_icon = {
+              -- Pad the colored kind badge while preserving the existing columns.
+              text = function(ctx) return " " .. ctx.kind_icon .. ctx.icon_gap .. " " end,
+            },
             label = { width = { max = 40 } },
             label_description = { width = { max = 20 } },
             source_name = { width = { max = 10 } },

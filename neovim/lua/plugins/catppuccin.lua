@@ -26,7 +26,7 @@ return {
     },
     highlight_overrides = {
       frappe = function(colors)
-        return {
+        local highlights = {
           -- Match Ghostty and tmux search colors; IncSearch also marks yanked text.
           Search = { fg = colors.text, bg = colors.surface2 },
           CurSearch = { fg = colors.base, bg = colors.yellow, bold = true },
@@ -41,10 +41,13 @@ return {
           WhichKey = { fg = colors.mauve, bold = true },
           WhichKeyDesc = { fg = colors.subtext1 },
           LineNr = { fg = colors.overlay0 },
+          Whitespace = { fg = colors.overlay0 },
           WinSeparator = { fg = colors.surface2 },
           FloatBorder = { fg = colors.surface2, bg = colors.mantle },
           BlinkCmpLabel = { fg = colors.text },
           SnacksPickerMatch = { fg = colors.blue, bold = true, underline = true },
+          SnacksIndentScope = { fg = colors.blue },
+          SnacksIndentChunk = { fg = colors.blue },
           DapStopped = { fg = colors.yellow, bold = true },
           DapStoppedLine = { bg = colors.surface0 },
           SnacksDashboardHeader = { fg = colors.mauve },
@@ -54,6 +57,26 @@ return {
           SnacksDashboardKey = { fg = colors.base, bg = colors.peach, bold = true },
           SnacksDashboardKeyCap = { fg = colors.peach },
         }
+
+        -- Preserve Catppuccin's kind colors as backgrounds for completion badges.
+        local kind_colors = {
+          blue = { "", "Method", "Function", "Constructor", "Module", "Property", "File", "Folder", "Struct", "Event" },
+          green = { "Text", "Field", "Unit" },
+          flamingo = { "Variable", "Snippet" },
+          yellow = { "Class", "Interface", "Enum" },
+          peach = { "Value", "Constant" },
+          mauve = { "Keyword" },
+          red = { "Color", "Reference" },
+          teal = { "EnumMember", "Copilot" },
+          sky = { "Operator" },
+          maroon = { "TypeParameter" },
+        }
+        for color, kinds in pairs(kind_colors) do
+          for _, kind in ipairs(kinds) do
+            highlights["BlinkCmpKind" .. kind] = { fg = colors.base, bg = colors[color] }
+          end
+        end
+        return highlights
       end,
     },
   },

@@ -128,6 +128,7 @@ run again after the underlying problem is fixed.
 
 Diff file metadata, hunk headers, and function names use Catppuccin Frappe
 Mauve, Blue, and Lavender, respectively. File metadata and hunk headers are bold.
+Whitespace errors use a Frappe Red background with Base-colored text.
 
 ## Ghostty
 
@@ -291,8 +292,9 @@ visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
-Relative line numbers and split boundaries use brighter muted colors. Ordinary
-search matches use a muted background; current and incremental matches use
+Relative line numbers and split boundaries use brighter muted colors.
+Tab, trailing-space, and non-breaking-space markers use Overlay0 for visibility.
+Ordinary search matches use a muted background; current and incremental matches use
 yellow, matching Ghostty and tmux. The brief yank highlight also uses yellow.
 Ordinary editing buffers show their relative path in a winbar, with inactive paths dimmed.
 Rounded floating windows with muted outlines, rounded lualine separators, and
@@ -303,8 +305,9 @@ muted text color without drawing a background block over the code. Diagnostic
 virtual text appears only on the cursor line, while signs and underlines remain
 visible elsewhere. Errors and warnings use curly underlines on supporting
 terminals; information and hints retain straight underlines.
-Completion labels use Tree-sitter colors, and the active
-indent scope uses rounded chunk markers. Python debugging uses Catppuccin-aware
+Completion labels use Tree-sitter colors, and kind icons use padded badges with
+their existing kind colors as backgrounds. The active indent scope uses blue
+lines and rounded chunk markers. Python debugging uses Catppuccin-aware
 breakpoint and log-point symbols plus rounded floating windows.
 Starting Neovim without a file opens a single-column Snacks dashboard with
 keymaps, recent files, projects, repository status, and startup time. Neovim

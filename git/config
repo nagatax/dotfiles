@@ -61,6 +61,7 @@
     meta = "#ca9ee6 bold"
     frag = "#8caaee bold"
     func = "#babbf1"
+    whitespace = "#303446 #e78284"
 
 # Reject bare repositories discovered implicitly while walking parent directories.
 [safe]

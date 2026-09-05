@@ -26,6 +26,13 @@
     current = "#a6d189 bold"
     remote = "#8caaee"
 
+# Distinguish staged, unstaged, untracked, and conflicted files in status output.
+[color "status"]
+    added = "#a6d189"
+    changed = "#e5c890"
+    untracked = "#ef9f76"
+    unmerged = "#e78284 bold"
+
 # Sort tags by version number.
 [tag]
     sort = version:refname

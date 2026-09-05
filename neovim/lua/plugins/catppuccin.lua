@@ -27,6 +27,13 @@ return {
     highlight_overrides = {
       frappe = function(colors)
         return {
+          -- Make paired brackets stand out without changing their accent color.
+          MatchParen = { fg = colors.peach, bg = colors.surface2, bold = true, underline = true },
+          -- Keep diagnostic text colors and italics without a background block.
+          DiagnosticVirtualTextError = { fg = colors.red, bg = "NONE", italic = true },
+          DiagnosticVirtualTextWarn = { fg = colors.yellow, bg = "NONE", italic = true },
+          DiagnosticVirtualTextInfo = { fg = colors.sky, bg = "NONE", italic = true },
+          DiagnosticVirtualTextHint = { fg = colors.teal, bg = "NONE", italic = true },
           WhichKey = { fg = colors.mauve, bold = true },
           WhichKeyDesc = { fg = colors.subtext1 },
           LineNr = { fg = colors.overlay0 },

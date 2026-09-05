@@ -214,6 +214,14 @@ if (( ${+ZSH_HIGHLIGHT_STYLES} )); then
   ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#e5c890'
   ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#ca9ee6'
   ZSH_HIGHLIGHT_STYLES[path]='fg=#8caaee,underline'
+  # Color nested brackets and emphasize matches without duplicating on reload.
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=("${(@)ZSH_HIGHLIGHT_HIGHLIGHTERS:#brackets}" brackets)
+  unset 'ZSH_HIGHLIGHT_STYLES[bracket-level-4]' 'ZSH_HIGHLIGHT_STYLES[bracket-level-5]'
+  ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=#8caaee'
+  ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=#ca9ee6'
+  ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=#e5c890'
+  ZSH_HIGHLIGHT_STYLES[bracket-error]='fg=#e78284,bold'
+  ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]='fg=#ef9f76,bg=#626880,bold,underline'
 fi
 
 # Match line-editor selection, paste, and history-search highlights to Frappe.

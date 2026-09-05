@@ -27,6 +27,10 @@ return {
     highlight_overrides = {
       frappe = function(colors)
         return {
+          -- Match Ghostty and tmux search colors; IncSearch also marks yanked text.
+          Search = { fg = colors.text, bg = colors.surface2 },
+          CurSearch = { fg = colors.base, bg = colors.yellow, bold = true },
+          IncSearch = { fg = colors.base, bg = colors.yellow, bold = true },
           -- Make paired brackets stand out without changing their accent color.
           MatchParen = { fg = colors.peach, bg = colors.surface2, bold = true, underline = true },
           -- Keep diagnostic text colors and italics without a background block.

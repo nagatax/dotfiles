@@ -24,6 +24,8 @@ return {
     },
     sections = {
       lualine_x = {
+        -- Show the current search position while bounding search-count work.
+        { "searchcount", maxcount = 999, timeout = 100 },
         -- Show encoding only when it differs from UTF-8 or includes a BOM.
         function()
           local encoding = vim.bo.fileencoding ~= "" and vim.bo.fileencoding or vim.o.encoding

@@ -91,8 +91,10 @@ git config --global --add include.path "${DOTFILES_DIR}/git/config"
 eza uses the Catppuccin Frappe theme for `ll`, `lt`, and directory completion
 previews. Zsh sets `EZA_CONFIG_DIR` to `${XDG_CONFIG_HOME:-${HOME}/.config}/eza`;
 if you customize `XDG_CONFIG_HOME`, place the theme link in that directory.
-Lazygit uses Frappe with a Blue accent when launched from the shell or Herdr.
-Neovim's Snacks integration continues to generate its theme from the colorscheme.
+Lazygit uses matching Frappe UI colors with a Blue accent from the shell, Herdr,
+and Neovim. Keep the theme in `lazygit/config.yml` and Snacks' Lazygit theme
+overrides in sync; Snacks retains its Neovim editing integration.
+Dates use `YYYY-MM-DD`, and recent times use a 24-hour `HH:MM` clock.
 The bundled theme files retain their upstream MIT license notices.
 
 Ghostty thickens text strokes at strength 100 on macOS, and tmux uses heavy pane
@@ -104,7 +106,9 @@ Lazygit also displays Nerd Font v3 icons outside Neovim. The `ll` listing uses
 gradients for file sizes and timestamps. WhichKey emphasizes keys in bold Mauve
 and keeps descriptions in Subtext1. lualine shows encoding only for non-UTF-8
 files or files with a BOM, and shows line endings only when they are not Unix;
-the file type remains visible. Picker paths can truncate down to 20 columns,
+the file type remains visible. During highlighted searches, lualine shows the
+current match and total (for example, `[3/12]`), capped at 999 with a 100 ms
+search-count timeout. Picker paths can truncate down to 20 columns,
 while retaining filename-first display. Flash colors Treesitter selection labels
 individually; ordinary jumps keep their existing colors.
 
@@ -288,7 +292,9 @@ hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
 Relative line numbers and split boundaries use brighter muted colors. Ordinary
-editing buffers show their relative path in a winbar, with inactive paths dimmed.
+search matches use a muted background; current and incremental matches use
+yellow, matching Ghostty and tmux. The brief yank highlight also uses yellow.
+Ordinary editing buffers show their relative path in a winbar, with inactive paths dimmed.
 Rounded floating windows with muted outlines, rounded lualine separators, and
 Nerd Font fold markers keep editor chrome visually consistent. The Lazy window
 also uses a rounded border. Unsaved filenames stand out in bold peach, and

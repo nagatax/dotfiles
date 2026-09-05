@@ -102,6 +102,27 @@ return {
         },
       },
       input = { enabled = true }, -- Replace vim.ui.input with a floating input window.
+      lazygit = {
+        config = {
+          gui = {
+            -- Keep these colors in sync with lazygit/config.yml while retaining edit integration.
+            theme = {
+              activeBorderColor = { "#8caaee", "bold" },
+              inactiveBorderColor = { "#a5adce" },
+              searchingActiveBorderColor = { "#e5c890" },
+              optionsTextColor = { "#8caaee" },
+              selectedLineBgColor = { "#51576d" },
+              inactiveViewSelectedLineBgColor = { "#414559" },
+              cherryPickedCommitFgColor = { "#8caaee" },
+              cherryPickedCommitBgColor = { "#51576d" },
+              markedBaseCommitFgColor = { "#8caaee" },
+              markedBaseCommitBgColor = { "#e5c890" },
+              unstagedChangesColor = { "#e78284" },
+              defaultFgColor = { "#c6d0f5" },
+            },
+          },
+        },
+      },
       picker = {
         formatters = {
           file = { filename_first = true, min_width = 20 },

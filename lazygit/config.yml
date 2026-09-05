@@ -26,6 +26,9 @@ gui:
   nerdFontsVersion: "3"
   # Reserve more vertical space for diffs while keeping the command log visible.
   commandLogSize: 4
+  # Use numeric dates and a 24-hour clock, matching the other terminal tools.
+  timeFormat: '2006-01-02'
+  shortTimeFormat: '15:04'
   theme:
     activeBorderColor:
       - '#8caaee'

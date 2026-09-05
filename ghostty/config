@@ -3,7 +3,7 @@
 # Configure the terminal font and text size.
 # ==================================================
 
-font-family = JetBrains Mono
+font-family = JetBrainsMono Nerd Font
 font-size = 18
 # Strengthen text strokes without increasing the font size on macOS.
 font-thicken = true

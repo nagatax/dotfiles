@@ -87,6 +87,7 @@ return {
       },
       indent = {
         enabled = true, -- Visualize indentation and the current scope.
+        animate = { enabled = false },
         scope = { only_current = true },
         chunk = {
           enabled = true,

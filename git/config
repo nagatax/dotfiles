@@ -21,6 +21,11 @@
 [branch]
     sort = -committerdate
 
+# Match current and remote-tracking branches to the Catppuccin Frappe palette.
+[color "branch"]
+    current = "#a6d189 bold"
+    remote = "#8caaee"
+
 # Sort tags by version number.
 [tag]
     sort = version:refname

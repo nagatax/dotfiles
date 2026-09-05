@@ -22,6 +22,7 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "screenline,number"
 vim.opt.signcolumn = "yes"
 vim.opt.foldcolumn = "auto:1"
+vim.opt.foldtext = ""
 vim.opt.scrolloff = 4
 vim.opt.updatetime = 1000
 vim.opt.smoothscroll = true
@@ -48,6 +49,7 @@ vim.opt.listchars = {
 vim.opt.fillchars:append({
   eob = " ",
   diff = "╱",
+  fold = " ",
   foldopen = "",
   foldclose = "",
   foldsep = " ",

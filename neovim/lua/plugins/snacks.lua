@@ -124,6 +124,9 @@ return {
         },
       },
       picker = {
+        sources = {
+          explorer = { hidden = true },
+        },
         formatters = {
           file = { filename_first = true, min_width = 20 },
         },

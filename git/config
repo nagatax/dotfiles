@@ -17,6 +17,10 @@
     autoSetupRemote = true
     useForceIfIncludes = true
 
+# Display commit dates in a numeric format using the local time zone.
+[log]
+    date = iso-local
+
 # List recently updated branches first.
 [branch]
     sort = -committerdate

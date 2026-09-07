@@ -121,6 +121,9 @@ than the compact style.
 
 ## Git
 
+Git log dates use numeric local timestamps such as `2026-09-06 15:26:42 +0900`.
+This affects display only; recorded commit timestamps remain unchanged.
+
 Lazygit shows added/deleted line counts in the Files view and a down arrow with
 the number of commits behind the base branch in the Branches view. It retains the
 default main-branch names, `master` and `main`; these counts are distinct from
@@ -221,7 +224,9 @@ exec zsh
 ```
 
 Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
-highlighting from `sheldon/plugins.toml`. Standalone fzf and fzf-tab use the
+highlighting from `sheldon/plugins.toml`. Autosuggestions prefer command history
+and fall back to the completion engine when history has no matching entry.
+Standalone fzf and fzf-tab use the
 official Catppuccin Frappe colors. Shell syntax distinguishes commands, options,
 quoted strings, reserved words, and underlined paths with the same palette.
 Line-editor selections and pasted text use a muted background, while history
@@ -238,6 +243,11 @@ changes are recorded in a duplicate-free stack; inspect it with `dirs -v` and
 jump to an older entry with commands such as `cd -2`.
 
 ## tmux
+
+Panes remain visible when their main process exits with a nonzero status so the
+error output can be inspected. Restart a retained pane with `respawn-pane` from
+the tmux command prompt, or close it manually. This does not apply to a failed
+command that returns to an interactive shell prompt.
 
 This configuration requires tmux 3.7 or later for copy-mode line numbers. Its
 status line, active window, pane borders, messages, and copy mode use the same

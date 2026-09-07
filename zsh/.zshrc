@@ -206,6 +206,9 @@ if type fzf &>/dev/null && [[ -n "${brew_prefix}" && -r "${brew_prefix}/opt/fzf/
   }
 fi
 
+# Prefer history suggestions, falling back to the completion engine.
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 # Skip autosuggestions for large pasted commands and text.
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=1000
 

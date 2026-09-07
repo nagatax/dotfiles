@@ -124,8 +124,15 @@ return {
         },
       },
       picker = {
+        -- Reuse a window in the current tab when the selected file is already open.
+        jump = { reuse_win = true },
         sources = {
           explorer = { hidden = true },
+          -- Include dotfiles in file and text searches while respecting ignore rules.
+          files = { hidden = true },
+          smart = { hidden = true },
+          grep = { hidden = true },
+          grep_word = { hidden = true },
         },
         formatters = {
           file = { filename_first = true, min_width = 20 },

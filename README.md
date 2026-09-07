@@ -363,6 +363,13 @@ Install PHPantom for PHP support with Homebrew:
 brew install phpantom-lsp
 ```
 
+File search, Smart Find Files, grep, and word search include hidden files, matching
+Explorer. Ignore rules remain active, and file/text searches exclude Git internals.
+Selecting a single file normally reuses a window displaying it in the current tab;
+explicit split actions still create a split. Current-line Git blame ignores
+whitespace-only changes to show earlier history. This also ignores meaningful
+indentation changes, such as in Python; diff highlighting remains unchanged.
+
 ### Keybindings
 
 The following 56 shortcuts are explicitly configured in `neovim/lua/plugins/`.

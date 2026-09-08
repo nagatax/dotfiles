@@ -355,6 +355,17 @@ Copilot suggestion; otherwise it advances a snippet or performs normal Tab input
 completion behavior. `Ctrl+]` dismisses a suggestion; `Alt+]` and `Alt+[` cycle
 suggestions. Use `:Copilot disable` / `:Copilot enable` to toggle inline suggestions.
 
+[CodeCompanion.nvim](https://codecompanion.olimorris.dev/) provides chat through
+Codex using ChatGPT subscription authentication. Install the ACP adapter with
+`npm install -g @agentclientprotocol/codex-acp` and authenticate with
+`codex login` (check with `codex login status`). The adapter includes a compatible
+Codex runtime and reuses the existing ChatGPT login. A ChatGPT plan with Codex
+access is required; usage counts toward that plan's limits. No API key is needed.
+Open a chat with `:CodeCompanionChat`, or show/hide it with
+`:CodeCompanionChat toggle`. The model follows the Codex default. This configures
+CodeCompanion chat only; Copilot continues to provide inline suggestions.
+Run `:checkhealth codecompanion` to check the plugin's requirements.
+
 The following language servers are enabled. Install only the servers needed for
 the languages you use.
 

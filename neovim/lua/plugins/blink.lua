@@ -11,6 +11,17 @@ return {
     keymap = {
       preset = "default",
 
+      ["<Tab>"] = {
+        function()
+          if vim.fn["copilot#GetDisplayedSuggestion"]().text ~= "" then
+            vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](""), "i", false)
+            return true
+          end
+        end,
+        "snippet_forward",
+        "fallback",
+      },
+
       ["<CR>"] = {
         "accept",
         "fallback",

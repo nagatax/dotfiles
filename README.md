@@ -346,6 +346,15 @@ attributes, Git commits, Git ignore files, Go, Go templates, JSON, Lua,
 Markdown, PHP, Python, regular expressions, Rust, Terraform, TOML, Vim, Vim
 documentation, and Zsh.
 
+[GitHub Copilot](https://github.com/github/copilot.vim) provides inline code
+suggestions and requires Node.js with npm available on `PATH`, plus a GitHub
+account with Copilot access. Run `:Copilot setup` once to authenticate, then
+`:Copilot status` to check availability. In Insert mode, `Tab` accepts a visible
+Copilot suggestion; otherwise it advances a snippet or performs normal Tab input.
+`Shift+Tab` moves backward through snippets, and `Enter` retains the existing
+completion behavior. `Ctrl+]` dismisses a suggestion; `Alt+]` and `Alt+[` cycle
+suggestions. Use `:Copilot disable` / `:Copilot enable` to toggle inline suggestions.
+
 The following language servers are enabled. Install only the servers needed for
 the languages you use.
 

@@ -24,6 +24,8 @@ return {
         lua = { inherit_defaults = true, "lazydev" },
       },
       providers = {
+        -- Include dotfiles before a dot is explicitly typed in a path.
+        path = { opts = { show_hidden_files_by_default = true } },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
@@ -67,6 +69,8 @@ return {
 
     signature = {
       enabled = true,
+      -- Include documentation supplied by the language server.
+      window = { show_documentation = true },
     },
   },
 }

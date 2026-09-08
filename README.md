@@ -121,6 +121,10 @@ than the compact style.
 
 ## Git
 
+Lazygit gives the focused side panel more height using the default expansion
+weight of 2. Other side panels become shorter as focus moves; panel widths and
+the existing theme stay the same.
+
 Git log dates use numeric local timestamps such as `2026-09-06 15:26:42 +0900`.
 This affects display only; recorded commit timestamps remain unchanged.
 
@@ -522,6 +526,13 @@ with `Space De`; the repeatable menu is Normal-mode only.
 | Key | Action |
 | --- | --- |
 | `Enter` | Select and accept a completion candidate; fall back to normal Enter when not applicable |
+
+Path completion includes hidden files before a dot is explicitly typed. Unlike
+file search, path completion does not apply Git ignore rules, so directories
+with many hidden entries can produce more candidates. Signature help displays
+function documentation when supplied by the language server; longer descriptions
+occupy more space, within the existing window size limits. The existing maximum
+width is 100 columns, so long descriptions may not fit in an 80-column terminal.
 
 Completion candidates are not preselected. Browsing candidates leaves the buffer
 unchanged until a candidate is accepted with Enter. Canceling closes the menu

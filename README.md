@@ -31,7 +31,7 @@ are not installed.
 
 ```bash
 brew install herdr neovim sheldon starship tmux tree-sitter-cli vim
-brew install --cask ghostty
+brew install --cask font-udev-gothic-nf ghostty
 ```
 
 These optional tools enable additional shell and Neovim features:
@@ -165,7 +165,7 @@ Blue, and detached HEAD states in Red.
 ## Ghostty
 
 Ghostty reads its configuration from `~/.config/ghostty/config`. This
-configuration uses JetBrains Mono with the Catppuccin Frappe theme and defines
+configuration uses UDEV Gothic NF with the Catppuccin Frappe theme and defines
 clipboard, cursor, window, shell integration, and split navigation behavior.
 Full-screen application backgrounds extend into the balanced window padding,
 and unfocused splits fade toward the Frappe Mantle color.

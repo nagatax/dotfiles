@@ -96,9 +96,13 @@ notify-on-command-finish-after = 30s
 
 # ==================================================
 # macOS
-# Use the Option key as Alt for terminal shortcuts.
+# Configure macOS-specific behavior.
 # ==================================================
 
+# Disable automatic update checks.
+auto-update = off
+
+# Use the Option key as Alt for terminal shortcuts.
 macos-option-as-alt = true
 
 

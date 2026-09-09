@@ -38,8 +38,28 @@
     tag = "#e5c890"
     stash = "#ef9f76"
 
+# Match repository search output to the editor and terminal search palette.
+[color "grep"]
+    filename = "#8caaee"
+    lineNumber = "#838ba7"
+    column = "#737994"
+    separator = "#626880"
+    function = "#babbf1"
+    match = "#303446 #e5c890 bold"
+
+# Use the same semantic colors for messages received from remotes.
+[color "remote"]
+    hint = "#85c1dc"
+    warning = "#e5c890 bold"
+    success = "#a6d189"
+    error = "#e78284 bold"
+
 # Distinguish staged, unstaged, untracked, and conflicted files in status output.
 [color "status"]
+    branch = "#ca9ee6 bold"
+    localBranch = "#a6d189 bold"
+    remoteBranch = "#8caaee"
+    noBranch = "#e78284 bold"
     added = "#a6d189"
     changed = "#e5c890"
     untracked = "#ef9f76"

@@ -67,6 +67,8 @@ let &listchars = 'tab:» ,trail:·,nbsp:␣,extends:›,precedes:‹'
 " Hide end-of-buffer markers for a cleaner editing area.
 set fillchars-=eob:~
 execute 'set fillchars+=eob:\ '
+" Match Neovim's filler for lines missing from one side of a diff.
+set fillchars+=diff:╱
 
 " Allow rectangular selections to extend beyond line endings.
 set virtualedit=block
@@ -201,6 +203,18 @@ Plug 'github/copilot.vim'
 call plug#end()
 
 colorscheme catppuccin_frappe
+
+" Keep search, paired delimiters, line numbers, and split boundaries aligned
+" with Neovim after startup and colorscheme reloads.
+augroup vimrc_visual_highlights
+  autocmd!
+  autocmd VimEnter,ColorScheme * highlight Search guifg=#c6d0f5 guibg=#626880 gui=NONE
+  autocmd VimEnter,ColorScheme * highlight CurSearch guifg=#303446 guibg=#e5c890 gui=bold
+  autocmd VimEnter,ColorScheme * highlight IncSearch guifg=#303446 guibg=#e5c890 gui=bold
+  autocmd VimEnter,ColorScheme * highlight MatchParen guifg=#ef9f76 guibg=#626880 gui=bold,underline
+  autocmd VimEnter,ColorScheme * highlight LineNr guifg=#737994
+  autocmd VimEnter,ColorScheme * highlight VertSplit guifg=#626880
+augroup END
 
 " Apply custom indent-guide colors after the plugin initializes its highlights.
 augroup vimrc_indent_guides

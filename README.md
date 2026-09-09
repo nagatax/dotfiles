@@ -99,6 +99,10 @@ The bundled theme files retain their upstream MIT license notices.
 
 Ghostty thickens text strokes at strength 100 on macOS, and tmux uses heavy pane
 borders. Faint terminal text uses 70% opacity so subdued details remain readable.
+Underlines are thickened by one pixel so paths, matches, and emphasis remain
+legible beside the heavier text.
+Resize feedback appears at the top right for 500 ms instead of covering the
+center of the terminal.
 Blink limits completion labels, descriptions, and source names to
 40, 20, and 10 columns. Gitsigns uses `+` for additions and `~` for changes,
 including staged changes, which retain their dimmed colors.
@@ -148,6 +152,11 @@ Mauve, Blue, and Lavender, respectively. File metadata and hunk headers are bold
 Whitespace errors use a Frappe Red background with Base-colored text.
 Log decorations use Mauve for HEAD, Green for local branches, Blue for remote
 branches, Yellow for tags, and Peach for stashes.
+Repository search output uses Blue file names, muted line and column numbers,
+Lavender function names, and bold Yellow matches. Remote hints, warnings,
+successes, and errors use Sapphire, Yellow, Green, and Red, respectively.
+Status headers use Mauve, with local branches in Green, upstream branches in
+Blue, and detached HEAD states in Red.
 
 ## Ghostty
 
@@ -271,8 +280,12 @@ and the session tree use matching Frappe surfaces and selection colors. Each
 pane border shows its index and current command, with bold text, color, and
 arrow indicators making the active pane easier to identify. Copy mode adds a
 one-column Blue-on-Surface scrollbar at the right edge; it remains hidden and
-does not narrow panes during normal operation. The right status area is reserved for the
-date and time because pane commands are displayed on their borders.
+does not narrow panes during normal operation. Its position and result count use
+muted Overlay text on Base so matches and selections remain prominent. The
+right status area is reserved for the date and time because pane commands are
+displayed on their borders.
+The command prompt uses a fixed Peach bar cursor, distinguishing prompt input
+from pane cursors and Blue copy-mode selections.
 
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this
 configuration:
@@ -305,9 +318,14 @@ absolute and surrounding lines are relative. Long lines wrap at word boundaries
 while preserving their visual indentation and display a continuation marker;
 only the current screen line is highlighted within a wrapped logical line.
 End-of-buffer tildes are hidden, similar lines in larger diff hunks are aligned,
-and unmodified files are reloaded when they change outside Vim. Catppuccin
+and lines missing from one side of a diff use the same `╱` filler as Neovim.
+Unmodified files are reloaded when they change outside Vim. Catppuccin
 Frappe provides full RGB colors for Vim, lightline, and the alternating
 indent-guide backgrounds. Lightline uses rounded separators that match Neovim.
+Search matches use a muted Surface background, while the current match uses a
+bold Yellow background. Matching delimiters use Peach with a bold underline.
+Relative line numbers use Overlay0 and split boundaries use Surface2, while the
+current line number remains Lavender.
 
 Whitespace markers match Neovim: tabs use `»`, trailing spaces use `·`, and
 non-breaking spaces use `␣`. With wrapping disabled, horizontal overflow uses

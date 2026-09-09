@@ -102,8 +102,9 @@ borders. Blink limits completion labels, descriptions, and source names to
 40, 20, and 10 columns. Gitsigns uses `+` for additions and `~` for changes,
 including staged changes, which retain their dimmed colors.
 
-Lazygit also displays Nerd Font v3 icons outside Neovim. The `ll` listing uses
-gradients for file sizes and timestamps. WhichKey emphasizes keys in bold Mauve
+Lazygit also displays Nerd Font v3 icons outside Neovim and keeps its command
+log free of random startup tips. The `ll` listing uses gradients for file sizes
+and timestamps. WhichKey emphasizes keys in bold Mauve
 and keeps descriptions in Subtext1. lualine shows encoding only for non-UTF-8
 files or files with a BOM, and shows line endings only when they are not Unix;
 the file type remains visible. During highlighted searches, lualine shows the
@@ -238,7 +239,8 @@ search matches use a yellow background.
 Starship automatically reads `~/.config/starship.toml`. Its battery indicator
 stays hidden above 20%, warns
 in yellow at 20%, and turns red at 10%. Repository root names are highlighted
-in mauve, and the right prompt shows local time with a muted Frappe clock icon.
+in mauve, and the right prompt shows local time to the minute with a muted
+Frappe clock icon.
 Continued input uses a muted double-arrow prompt. Zsh refuses to overwrite an
 existing file with `>`; use `>|` when an overwrite is intentional. Append
 redirection with `>>` can still create a missing file. History-listing commands
@@ -256,7 +258,8 @@ command that returns to an interactive shell prompt.
 This configuration requires tmux 3.7 or later for copy-mode line numbers. Its
 status line, active window, pane borders, messages, and copy mode use the same
 Catppuccin Frappe palette as Ghostty. Activity in background windows is
-highlighted in yellow without displaying an additional message. Copy-mode
+highlighted in yellow without displaying an additional message. The previously
+active window uses bold Lavender, while bell alerts retain their Red emphasis. Copy-mode
 search matches and line numbers use distinct Frappe colors. Rounded session and
 active-window pills frame the status line, while menus, popups, command prompts,
 and the session tree use matching Frappe surfaces and selection colors. Each
@@ -292,7 +295,8 @@ Launch Vim and run `:PlugInstall` to install the plugins. When clipboard
 support is available, Vim connects unnamed register operations to the macOS
 system clipboard. Line numbers use a hybrid display: the current line is
 absolute and surrounding lines are relative. Long lines wrap at word boundaries
-while preserving their visual indentation and display a continuation marker.
+while preserving their visual indentation and display a continuation marker;
+only the current screen line is highlighted within a wrapped logical line.
 End-of-buffer tildes are hidden, similar lines in larger diff hunks are aligned,
 and unmodified files are reloaded when they change outside Vim. Catppuccin
 Frappe provides full RGB colors for Vim, lightline, and the alternating
@@ -319,6 +323,8 @@ Tab, trailing-space, and non-breaking-space markers use Overlay0 for visibility.
 Ordinary search matches use a muted background; current and incremental matches use
 yellow, matching Ghostty and tmux. The brief yank highlight also uses yellow.
 Ordinary editing buffers show their relative path in a winbar, with inactive paths dimmed.
+When multiple tab pages are open, a matching lualine tabline identifies each by
+number and filename; it remains hidden for a single tab page.
 Rounded floating windows with muted outlines, rounded lualine separators, and
 Nerd Font fold markers keep editor chrome visually consistent. The Lazy window
 also uses a rounded border. Unsaved filenames stand out in bold peach, and

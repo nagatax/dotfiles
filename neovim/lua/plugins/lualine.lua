@@ -19,6 +19,8 @@ return {
   opts = {
     options = {
       globalstatus = true,
+      -- Keep the tabline hidden until multiple tab pages are open.
+      always_show_tabline = false,
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
     },
@@ -86,6 +88,18 @@ return {
             end
             return {}
           end,
+        },
+      },
+    },
+    tabline = {
+      lualine_a = {
+        {
+          "tabs",
+          -- Identify each tab by number and its current file without duplicating paths.
+          mode = 2,
+          path = 0,
+          tab_max_length = 30,
+          max_length = function() return vim.o.columns end,
         },
       },
     },

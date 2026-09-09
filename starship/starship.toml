@@ -400,7 +400,7 @@ symbol = " "
 # Always display the local time on the right.
 disabled = false
 format = '[󰥔 $time](overlay1) '
-time_format = '%T'
+time_format = '%H:%M'
 utc_time_offset = 'local'
 
 [vlang]

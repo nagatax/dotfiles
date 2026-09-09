@@ -26,6 +26,8 @@ gui:
   nerdFontsVersion: "3"
   # Reserve more vertical space for diffs while keeping the command log visible.
   commandLogSize: 4
+  # Keep the command log focused on commands instead of a changing startup tip.
+  showRandomTip: false
   # Give the focused side panel more height using the default expansion weight.
   expandFocusedSidePanel: true
   # Show change sizes and divergence from the base branch while reviewing.

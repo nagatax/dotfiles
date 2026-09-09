@@ -47,6 +47,8 @@ set smartcase
 
 " Highlight the current cursor line.
 set cursorline
+" Highlight only the current screen line when a long line wraps.
+set cursorlineopt=screenline,number
 
 " Keep context visible above and below the cursor.
 set scrolloff=4

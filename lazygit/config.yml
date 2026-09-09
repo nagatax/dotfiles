@@ -33,6 +33,9 @@ gui:
   # Show change sizes and divergence from the base branch while reviewing.
   showNumstatInFilesView: true
   showDivergenceFromBaseBranch: arrowAndNumber
+  # Identify branch tips directly and match the fuzzy search used by other tools.
+  showBranchCommitHash: true
+  filterMode: fuzzy
   # Use numeric dates and a 24-hour clock, matching the other terminal tools.
   timeFormat: '2006-01-02'
   shortTimeFormat: '15:04'

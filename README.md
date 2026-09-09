@@ -135,9 +135,13 @@ Git log dates use numeric local timestamps such as `2026-09-06 15:26:42 +0900`.
 This affects display only; recorded commit timestamps remain unchanged.
 
 Lazygit shows added/deleted line counts in the Files view and a down arrow with
-the number of commits behind the base branch in the Branches view. It retains the
-default main-branch names, `master` and `main`; these counts are distinct from
-upstream synchronization status.
+the number of commits behind the base branch in the Branches view. Branch names
+also include their shortened tip commit hashes, and list filtering uses fuzzy
+matching. It retains the default main-branch names, `master` and `main`; the
+divergence counts are distinct from upstream synchronization status.
+
+Ordinary Git status output includes the number of saved stashes when any exist,
+keeping shelved work visible during routine checks.
 
 Git diff headers identify the compared sides: `i/` and `w/` for index versus
 worktree, and `c/` and `i/` for commit versus index in staged diffs.

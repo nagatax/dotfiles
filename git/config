@@ -65,6 +65,10 @@
     untracked = "#ef9f76"
     unmerged = "#e78284 bold"
 
+# Keep stashed work visible during routine status checks.
+[status]
+    showStash = true
+
 # Sort tags by version number.
 [tag]
     sort = version:refname

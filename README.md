@@ -258,13 +258,15 @@ Starship automatically reads `~/.config/starship.toml`. Its battery indicator
 stays hidden above 20%, warns
 in yellow at 20%, and turns red at 10%. Repository root names are highlighted
 in mauve, and the right prompt shows local time to the minute with a muted
-Frappe clock icon.
+Frappe clock icon. The right prompt is removed from completed command lines so
+scrollback keeps the command text without repeating its supporting information.
 Continued input uses a muted double-arrow prompt. Zsh refuses to overwrite an
 existing file with `>`; use `>|` when an overwrite is intentional. Append
 redirection with `>>` can still create a missing file. History-listing commands
-are omitted from saved history, and ZLE error bells are disabled. Directory
-changes are recorded in a duplicate-free stack; inspect it with `dirs -v` and
-jump to an older entry with commands such as `cd -2`.
+are omitted from saved history, and quoted arguments retain their word
+boundaries when commands are read back from the history file. ZLE error bells
+are disabled. Directory changes are recorded in a duplicate-free stack; inspect
+it with `dirs -v` and jump to an older entry with commands such as `cd -2`.
 
 ## tmux
 
@@ -323,6 +325,8 @@ while preserving their visual indentation and display a continuation marker;
 only the current screen line is highlighted within a wrapped logical line.
 End-of-buffer tildes are hidden, similar lines in larger diff hunks are aligned,
 and lines missing from one side of a diff use the same `╱` filler as Neovim.
+Quickfix and tag jumps reuse a window or tab that already shows the target
+buffer, with the last-used window as the fallback.
 Unmodified files are reloaded when they change outside Vim. Catppuccin
 Frappe provides full RGB colors for Vim, lightline, and the alternating
 indent-guide backgrounds. Lightline uses rounded separators that match Neovim.
@@ -347,6 +351,8 @@ visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
 window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
 editor splits use restrained background dimming to keep the active split clear.
+Quickfix and tag jumps reuse a window or tab that already shows the target
+buffer, with the last-used window as the fallback.
 Relative line numbers and split boundaries use brighter muted colors.
 Tab, trailing-space, and non-breaking-space markers use Overlay0 for visibility.
 Ordinary search matches use a muted background; current and incremental matches use

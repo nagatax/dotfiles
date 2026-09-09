@@ -56,6 +56,9 @@ SAVEHIST=10000
 # Save additional information, such as timestamps, in the history file.
 setopt extended_history
 
+# Parse quoted arguments accurately when reading commands from the history file.
+setopt hist_lex_words
+
 # Do not save consecutive duplicate commands.
 setopt hist_ignore_dups
 
@@ -272,6 +275,9 @@ bindkey '^X^E' edit-command-line
 # Prompt
 # Configure the shell prompt.
 # ==================================================
+
+# Remove the right prompt from completed command lines to keep scrollback concise.
+setopt transient_rprompt
 
 if type starship &>/dev/null; then
   eval "$(starship init zsh)"

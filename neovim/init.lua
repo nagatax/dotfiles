@@ -33,6 +33,7 @@ vim.opt.virtualedit = "block"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.splitkeep = "screen"
+vim.opt.switchbuf = "useopen,usetab,uselast"
 vim.opt.jumpoptions:append("view")
 vim.opt.winborder = "rounded"
 vim.opt.diffopt:append("algorithm:histogram")

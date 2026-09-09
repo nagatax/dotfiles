@@ -80,6 +80,9 @@ set signcolumn=yes
 set splitbelow
 set splitright
 
+" Reuse an existing window or tab when jumping to an already open buffer.
+set switchbuf=useopen,usetab,uselast
+
 " Align similar lines in larger diff hunks.
 set diffopt+=linematch:60
 

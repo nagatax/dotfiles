@@ -21,6 +21,8 @@ theme = Catppuccin Frappe
 
 # Prevent text from becoming indistinguishable from the background.
 minimum-contrast = 1.1
+# Keep faint text readable while preserving its visual hierarchy.
+faint-opacity = 0.7
 
 # Match search highlights to the Frappe colors used by tmux copy mode.
 search-foreground = #c6d0f5

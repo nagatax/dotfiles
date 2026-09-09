@@ -98,7 +98,8 @@ Dates use `YYYY-MM-DD`, and recent times use a 24-hour `HH:MM` clock.
 The bundled theme files retain their upstream MIT license notices.
 
 Ghostty thickens text strokes at strength 100 on macOS, and tmux uses heavy pane
-borders. Blink limits completion labels, descriptions, and source names to
+borders. Faint terminal text uses 70% opacity so subdued details remain readable.
+Blink limits completion labels, descriptions, and source names to
 40, 20, and 10 columns. Gitsigns uses `+` for additions and `~` for changes,
 including staged changes, which retain their dimmed colors.
 
@@ -145,6 +146,8 @@ run again after the underlying problem is fixed.
 Diff file metadata, hunk headers, and function names use Catppuccin Frappe
 Mauve, Blue, and Lavender, respectively. File metadata and hunk headers are bold.
 Whitespace errors use a Frappe Red background with Base-colored text.
+Log decorations use Mauve for HEAD, Green for local branches, Blue for remote
+branches, Yellow for tags, and Peach for stashes.
 
 ## Ghostty
 
@@ -232,8 +235,10 @@ Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
 highlighting from `sheldon/plugins.toml`. Autosuggestions prefer command history
 and fall back to the completion engine when history has no matching entry.
 Standalone fzf and fzf-tab use the
-official Catppuccin Frappe colors. Shell syntax distinguishes commands, options,
-quoted strings, reserved words, and underlined paths with the same palette.
+official Catppuccin Frappe colors, matching arrow prompts, check-mark selection
+markers, and an inline-right result count. Shell syntax distinguishes commands,
+options, quoted strings, reserved words, underlined paths, errors, separators,
+redirections, assignments, and glob patterns with the same palette.
 Line-editor selections and pasted text use a muted background, while history
 search matches use a yellow background.
 Starship automatically reads `~/.config/starship.toml`. Its battery indicator
@@ -264,7 +269,9 @@ search matches and line numbers use distinct Frappe colors. Rounded session and
 active-window pills frame the status line, while menus, popups, command prompts,
 and the session tree use matching Frappe surfaces and selection colors. Each
 pane border shows its index and current command, with bold text, color, and
-arrow indicators making the active pane easier to identify. The right status area is reserved for the
+arrow indicators making the active pane easier to identify. Copy mode adds a
+one-column Blue-on-Surface scrollbar at the right edge; it remains hidden and
+does not narrow panes during normal operation. The right status area is reserved for the
 date and time because pane commands are displayed on their borders.
 
 Install [TPM](https://github.com/tmux-plugins/tpm) before starting tmux with this

@@ -30,6 +30,14 @@
     current = "#a6d189 bold"
     remote = "#8caaee"
 
+# Match log decorations to the branch, status, and diff palette.
+[color "decorate"]
+    HEAD = "#ca9ee6 bold"
+    branch = "#a6d189"
+    remoteBranch = "#8caaee"
+    tag = "#e5c890"
+    stash = "#ef9f76"
+
 # Distinguish staged, unstaged, untracked, and conflicted files in status output.
 [color "status"]
     added = "#a6d189"

@@ -154,6 +154,10 @@ zstyle ':completion:*' menu no
 # Match standalone fzf and fzf-tab to Catppuccin Frappe.
 typeset -a fzf_catppuccin_frappe=(
   '--border=rounded'
+  '--prompt=❯ '
+  '--pointer=❯'
+  '--marker=✓'
+  '--info=inline-right'
   '--color=bg+:#414559,bg:#303446,spinner:#F2D5CF,hl:#E78284'
   '--color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#F2D5CF'
   '--color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284'
@@ -229,6 +233,11 @@ if (( ${+ZSH_HIGHLIGHT_STYLES} )); then
   ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#e5c890'
   ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#ca9ee6'
   ZSH_HIGHLIGHT_STYLES[path]='fg=#8caaee,underline'
+  ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#e78284,bold'
+  ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#babbf1'
+  ZSH_HIGHLIGHT_STYLES[redirection]='fg=#99d1db'
+  ZSH_HIGHLIGHT_STYLES[assign]='fg=#81c8be'
+  ZSH_HIGHLIGHT_STYLES[globbing]='fg=#f4b8e4'
   # Color nested brackets and emphasize matches without duplicating on reload.
   ZSH_HIGHLIGHT_HIGHLIGHTERS=("${(@)ZSH_HIGHLIGHT_HIGHLIGHTERS:#brackets}" brackets)
   unset 'ZSH_HIGHLIGHT_STYLES[bracket-level-4]' 'ZSH_HIGHLIGHT_STYLES[bracket-level-5]'

@@ -3,7 +3,8 @@
 # Configure the terminal font and text size.
 # ==================================================
 
-font-family = UDEV Gothic NF
+# Use Ghostty's built-in JetBrains Mono and Nerd Font Symbols.
+# Let macOS provide Hiragino Sans for Japanese and Apple Color Emoji for emoji.
 font-size = 18
 # Strengthen text strokes without increasing the font size on macOS.
 font-thicken = true

@@ -38,6 +38,11 @@
     tag = "#e5c890"
     stash = "#ef9f76"
 
+# Include line and column numbers when searching repository contents.
+[grep]
+    lineNumber = true
+    column = true
+
 # Match repository search output to the editor and terminal search palette.
 [color "grep"]
     filename = "#8caaee"

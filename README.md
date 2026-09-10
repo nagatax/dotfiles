@@ -134,6 +134,9 @@ the existing theme stay the same.
 Git log dates use numeric local timestamps such as `2026-09-06 15:26:42 +0900`.
 This affects display only; recorded commit timestamps remain unchanged.
 
+`git grep` includes line and column numbers by default, producing
+`file:line:column:content` results for easier navigation and sharing.
+
 Lazygit shows added/deleted line counts in the Files view and a down arrow with
 the number of commits behind the base branch in the Branches view. Branch names
 also include their shortened tip commit hashes, and list filtering uses fuzzy
@@ -268,6 +271,11 @@ boundaries when commands are read back from the history file. ZLE error bells
 are disabled. Directory changes are recorded in a duplicate-free stack; inspect
 it with `dirs -v` and jump to an older entry with commands such as `cd -2`.
 
+In both Emacs and Vi insert keymaps, typing a space expands history references
+such as `!!` and `!$` so their contents can be reviewed while editing. Ordinary
+spaces still insert normally, and `hist_verify` remains enabled for history
+expansion when accepting a command line.
+
 ## tmux
 
 Panes remain visible when their main process exits with a nonzero status so the
@@ -340,6 +348,10 @@ non-breaking spaces use `␣`. With wrapping disabled, horizontal overflow uses
 `›` and `‹`. The existing trailing-whitespace highlight remains enabled.
 
 ## Neovim
+
+Manual indentation with `>>` and `<<` rounds to multiples of the buffer's
+indent width, including widths supplied by EditorConfig. With a width of four,
+shifting a line indented by six spaces to the right produces eight spaces.
 
 The Neovim configuration requires Neovim 0.12 or later. On the first launch,
 [lazy.nvim](https://github.com/folke/lazy.nvim) bootstraps itself and installs

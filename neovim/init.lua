@@ -65,6 +65,8 @@ vim.opt.confirm = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+-- Round manual indentation shifts to multiples of the buffer's indent width.
+vim.opt.shiftround = true
 vim.opt.autoindent = true
 
 vim.opt.number = true

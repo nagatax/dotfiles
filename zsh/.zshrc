@@ -271,6 +271,10 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
+# Expand history references when typing a space in either insert keymap.
+bindkey -M emacs ' ' magic-space
+bindkey -M viins ' ' magic-space
+
 # ==================================================
 # Prompt
 # Configure the shell prompt.

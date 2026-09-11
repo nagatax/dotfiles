@@ -11,7 +11,7 @@ Ghostty, Herdr, Zsh, Sheldon, Starship, tmux, Vim, Neovim, and Codex.
 | --- | --- |
 | `.gitattributes` | Git-managed text-file line-ending rules |
 | `.editorconfig` | Shared editor formatting rules for this repository |
-| `codex/` | Portable Codex user defaults and task-specific profiles |
+| `codex/` | Portable Codex user defaults, global instructions, profiles, and agents |
 | `git/config` | Shared Git fetch, push, merge, and conflict-resolution settings |
 | `ghostty/config` | Ghostty terminal appearance, integration, and keybindings |
 | `herdr/config.toml` | Herdr workspace, agent, notification, and input settings |
@@ -69,7 +69,7 @@ creating the symbolic links.
 
 ```bash
 mkdir -p ~/.config/ghostty ~/.config/herdr ~/.config/sheldon ~/.config/eza
-mkdir -p ~/.codex
+mkdir -p ~/.codex/agents
 
 ln -s "${DOTFILES_DIR}/ghostty/config" ~/.config/ghostty/config
 ln -s "${DOTFILES_DIR}/herdr/config.toml" ~/.config/herdr/config.toml
@@ -82,11 +82,13 @@ ln -s "${DOTFILES_DIR}/neovim" ~/.config/nvim
 ln -s "${DOTFILES_DIR}/eza/theme.yml" ~/.config/eza/theme.yml
 
 # Codex adds machine-specific state to config.toml, so copy the portable base
-# only when no user configuration exists. Profile files are safe to link.
+# only when no user configuration exists. Other Codex files are safe to link.
 cp -n "${DOTFILES_DIR}/codex/config.toml" ~/.codex/config.toml
+ln -s "${DOTFILES_DIR}/codex/AGENTS.md" ~/.codex/AGENTS.md
 ln -s "${DOTFILES_DIR}/codex/review.config.toml" ~/.codex/review.config.toml
 ln -s "${DOTFILES_DIR}/codex/implement.config.toml" ~/.codex/implement.config.toml
 ln -s "${DOTFILES_DIR}/codex/explore.config.toml" ~/.codex/explore.config.toml
+ln -s "${DOTFILES_DIR}/codex/agents/astra_explorer.toml" ~/.codex/agents/astra_explorer.toml
 
 # Use Lazygit's standard macOS config directory (on Linux: ~/.config/lazygit).
 mkdir -p "${HOME}/Library/Application Support/lazygit"
@@ -101,6 +103,11 @@ If `config.toml` already exists, merge the portable root keys and tables instead
 of replacing it so project trust, plugins, Desktop app preferences, and other
 machine-specific settings remain intact. Authentication files and credentials
 stay under `~/.codex` and are not stored in this repository.
+
+Codex also reads global instructions from `~/.codex/AGENTS.md`. These instructions
+keep routine work on the default Sol model and allow the read-only
+`astra_explorer` agent only for one focused investigation after ordinary
+exploration is blocked. Start a new Codex session after changing `AGENTS.md`.
 
 ## Additional appearance settings
 

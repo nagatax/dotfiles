@@ -3,7 +3,7 @@
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
 
 Personal dotfiles for macOS. This repository contains configuration for Git,
-Ghostty, Herdr, Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
+Ghostty, Herdr, Zsh, Sheldon, Starship, tmux, Vim, Neovim, and Codex.
 
 ## Contents
 
@@ -11,6 +11,7 @@ Ghostty, Herdr, Zsh, Sheldon, Starship, tmux, Vim, and Neovim.
 | --- | --- |
 | `.gitattributes` | Git-managed text-file line-ending rules |
 | `.editorconfig` | Shared editor formatting rules for this repository |
+| `codex/` | Portable Codex user defaults and task-specific profiles |
 | `git/config` | Shared Git fetch, push, merge, and conflict-resolution settings |
 | `ghostty/config` | Ghostty terminal appearance, integration, and keybindings |
 | `herdr/config.toml` | Herdr workspace, agent, notification, and input settings |
@@ -68,6 +69,7 @@ creating the symbolic links.
 
 ```bash
 mkdir -p ~/.config/ghostty ~/.config/herdr ~/.config/sheldon ~/.config/eza
+mkdir -p ~/.codex
 
 ln -s "${DOTFILES_DIR}/ghostty/config" ~/.config/ghostty/config
 ln -s "${DOTFILES_DIR}/herdr/config.toml" ~/.config/herdr/config.toml
@@ -79,12 +81,26 @@ ln -s "${DOTFILES_DIR}/vim/.vimrc" ~/.vimrc
 ln -s "${DOTFILES_DIR}/neovim" ~/.config/nvim
 ln -s "${DOTFILES_DIR}/eza/theme.yml" ~/.config/eza/theme.yml
 
+# Codex adds machine-specific state to config.toml, so copy the portable base
+# only when no user configuration exists. Profile files are safe to link.
+cp -n "${DOTFILES_DIR}/codex/config.toml" ~/.codex/config.toml
+ln -s "${DOTFILES_DIR}/codex/review.config.toml" ~/.codex/review.config.toml
+ln -s "${DOTFILES_DIR}/codex/implement.config.toml" ~/.codex/implement.config.toml
+ln -s "${DOTFILES_DIR}/codex/explore.config.toml" ~/.codex/explore.config.toml
+
 # Use Lazygit's standard macOS config directory (on Linux: ~/.config/lazygit).
 mkdir -p "${HOME}/Library/Application Support/lazygit"
 ln -s "${DOTFILES_DIR}/lazygit/config.yml" "${HOME}/Library/Application Support/lazygit/config.yml"
 
 git config --global --add include.path "${DOTFILES_DIR}/git/config"
 ```
+
+Codex reads shared defaults from `~/.codex/config.toml` and applies a profile
+such as `~/.codex/review.config.toml` when started with `--profile review`.
+If `config.toml` already exists, merge the portable root keys and tables instead
+of replacing it so project trust, plugins, Desktop app preferences, and other
+machine-specific settings remain intact. Authentication files and credentials
+stay under `~/.codex` and are not stored in this repository.
 
 ## Additional appearance settings
 

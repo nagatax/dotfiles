@@ -1,0 +1,5 @@
+# Inspect a project with lightweight reasoning and no write access.
+
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+model_reasoning_effort = "low"

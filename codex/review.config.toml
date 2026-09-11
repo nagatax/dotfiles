@@ -1,0 +1,5 @@
+# Review changes without granting write access.
+
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+model_reasoning_effort = "high"

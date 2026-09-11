@@ -1,0 +1,26 @@
+# Portable user defaults for Codex.
+# Machine-specific state is added to ~/.codex/config.toml by Codex itself.
+
+model = "gpt-5.6-sol"
+model_reasoning_effort = "medium"
+plan_mode_reasoning_effort = "high"
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+
+[sandbox_workspace_write]
+network_access = false
+
+[tui]
+status_line = ["model-with-reasoning", "project-root", "git-branch", "context-used", "five-hour-limit", "weekly-limit", "context-window-size", "thread-title"]
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+[features]
+memories = true
+
+[memories]
+generate_memories = true
+use_memories = true

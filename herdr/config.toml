@@ -18,6 +18,12 @@ accent = "#8caaee"
 shell_mode = "auto"
 new_cwd = "follow"
 
+[update]
+# Rely on Homebrew instead of checking for Herdr releases in the background.
+version_check = false
+# Update agent detection manifests manually when needed.
+manifest_check = false
+
 [server]
 # Use a wider virtual terminal while no client is attached.
 headless_cols = 160

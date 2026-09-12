@@ -12,6 +12,12 @@ web_search = "cached"
 [sandbox_workspace_write]
 network_access = false
 
+[analytics]
+enabled = false
+
+[feedback]
+enabled = false
+
 [tui]
 status_line = ["model-with-reasoning", "project-root", "git-branch", "context-used", "five-hour-limit", "weekly-limit", "context-window-size", "thread-title"]
 

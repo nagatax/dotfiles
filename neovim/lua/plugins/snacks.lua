@@ -171,8 +171,10 @@ return {
       -- Configure search, history, and help keymaps.
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
       { "<leader>w", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
-      { "<leader>c", function() Snacks.picker.commands() end, desc = "Commands" },
       { "<leader>s", function() Snacks.picker.help() end, desc = "Help Pages" },
+      { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumplist" },
+      { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
+      { "<leader>c", "<cmd>changes<cr>", desc = "Changelist" },
       { "<leader>u", function() Snacks.picker.undo() end, desc = "Undo History" },
 
       -- Configure Git keymaps.
@@ -215,7 +217,6 @@ return {
 
       -- Configure window navigation keymaps.
       { "<leader>h", "<C-w>h", desc = "Go to Left Window" },
-      { "<leader>j", "<C-w>j", desc = "Go to Lower Window" },
       { "<leader>k", "<C-w>k", desc = "Go to Upper Window" },
       { "<leader>l", "<C-w>l", desc = "Go to Right Window" },
 

@@ -26,25 +26,27 @@ return {
     },
     sections = {
       lualine_x = {
-        -- Show the active chat's resolved model and reasoning effort.
-        function()
-          local metadata = (_G.codecompanion_chat_metadata or {})[vim.api.nvim_get_current_buf()]
-          if not metadata then
-            return ""
-          end
-          local model_option = metadata.config_options and metadata.config_options.model
-          local model = (model_option and model_option.current)
-            or (metadata.adapter and metadata.adapter.model)
-          if type(model) ~= "string" or model == "" or model == "default" then
-            return ""
-          end
-          local effort_option = metadata.config_options and metadata.config_options.thought_level
-          local effort = effort_option and effort_option.current
-          if type(effort) == "string" and effort ~= "" then
-            return model .. " [" .. effort .. "]"
-          end
-          return model
-        end,
+        {
+          function()
+            local sessions = require("sidekick.status").cli()
+            return " " .. (#sessions > 1 and #sessions or "")
+          end,
+          cond = function() return #require("sidekick.status").cli() > 0 end,
+          color = "Special",
+        },
+        {
+          function() return " " end,
+          cond = function() return require("sidekick.status").get() ~= nil end,
+          color = function()
+            local status = require("sidekick.status").get()
+            if not status then
+              return nil
+            end
+            return status.kind == "Error" and "DiagnosticError"
+              or status.busy and "DiagnosticWarn"
+              or "Special"
+          end,
+        },
         -- Show the current search position while bounding search-count work.
         { "searchcount", maxcount = 999, timeout = 100 },
         -- Show encoding only when it differs from UTF-8 or includes a BOM.

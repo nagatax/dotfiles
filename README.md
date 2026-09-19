@@ -424,25 +424,24 @@ attributes, Git commits, Git ignore files, Go, Go templates, JSON, Lua,
 Markdown, PHP, Python, regular expressions, Rust, Terraform, TOML, Vim, Vim
 documentation, and Zsh.
 
-[GitHub Copilot](https://github.com/github/copilot.vim) provides inline code
-suggestions and requires Node.js with npm available on `PATH`, plus a GitHub
-account with Copilot access. Run `:Copilot setup` once to authenticate, then
-`:Copilot status` to check availability. In Insert mode, `Tab` accepts a visible
-Copilot suggestion; otherwise it advances a snippet or performs normal Tab input.
-`Shift+Tab` moves backward through snippets, and `Enter` retains the existing
-completion behavior. `Ctrl+]` dismisses a suggestion; `Alt+]` and `Alt+[` cycle
-suggestions. Use `:Copilot disable` / `:Copilot enable` to toggle inline suggestions.
+[Sidekick.nvim](https://github.com/folke/sidekick.nvim) integrates Copilot Next
+Edit Suggestions (NES), Neovim's native inline completion, and AI CLI terminals.
+Install the official Copilot language server with
+`npm install -g @github/copilot-language-server`, then run
+`:LspCopilotSignIn` if authentication is required. Copilot model requests remain
+enabled while additional language-server telemetry is disabled.
 
-[CodeCompanion.nvim](https://codecompanion.olimorris.dev/) provides chat through
-Codex using ChatGPT subscription authentication. Install the ACP adapter with
-`npm install -g @agentclientprotocol/codex-acp` and authenticate with
-`codex login` (check with `codex login status`). The adapter includes a compatible
-Codex runtime and reuses the existing ChatGPT login. A ChatGPT plan with Codex
-access is required; usage counts toward that plan's limits. No API key is needed.
-Open a chat with `:CodeCompanionChat`, or show/hide it with
-`:CodeCompanionChat toggle`. The model follows the Codex default. This configures
-CodeCompanion chat only; Copilot continues to provide inline suggestions.
-Run `:checkhealth codecompanion` to check the plugin's requirements.
+In Insert mode, `Tab` first jumps to or applies an active NES, then accepts an
+inline completion, advances a snippet, or performs normal Tab input. `Alt+]` and
+`Alt+[` cycle inline-completion candidates. Leaving Insert mode clears native
+inline completion, and `:Sidekick nes clear` clears an active NES.
+
+Use `<leader>ii` to toggle Codex, `<leader>is` to select an installed AI CLI,
+and `<leader>id` to detach from its session. `<leader>it`, `<leader>if`, and
+`<leader>iv` send the current context, file, or visual selection; `<leader>ip`
+opens the prompt picker. Sidekick keeps CLI sessions in tmux so they can be
+reattached after closing Neovim. Codex uses the existing ChatGPT login; check it
+with `codex login status`. Run `:checkhealth sidekick` to verify the integration.
 
 The following language servers are enabled. Install only the servers needed for
 the languages you use.

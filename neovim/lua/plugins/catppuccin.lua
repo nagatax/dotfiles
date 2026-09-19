@@ -67,7 +67,7 @@ return {
           peach = { "Value", "Constant" },
           mauve = { "Keyword" },
           red = { "Color", "Reference" },
-          teal = { "EnumMember", "Copilot" },
+          teal = { "EnumMember" },
           sky = { "Operator" },
           maroon = { "TypeParameter" },
         }

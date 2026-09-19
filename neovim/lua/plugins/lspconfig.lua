@@ -15,6 +15,13 @@ return {
         },
       },
     })
+    vim.lsp.config("copilot", {
+      settings = {
+        telemetry = {
+          telemetryLevel = "off",
+        },
+      },
+    })
     vim.lsp.config("lua_ls", {
       on_init = function(client)
         if client.workspace_folders then
@@ -57,8 +64,26 @@ return {
       "terraformls",
       "phpantom_lsp",
       "basedpyright",
+      "copilot",
     }
     local enabled_servers = {}
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(args)
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+        if not client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, args.buf) then
+          return
+        end
+
+        vim.lsp.inline_completion.enable(true, { bufnr = args.buf })
+        vim.keymap.set("i", "<M-]>", function()
+          vim.lsp.inline_completion.select({ bufnr = args.buf, count = 1 })
+        end, { buffer = args.buf, desc = "Next Inline Completion" })
+        vim.keymap.set("i", "<M-[>", function()
+          vim.lsp.inline_completion.select({ bufnr = args.buf, count = -1 })
+        end, { buffer = args.buf, desc = "Previous Inline Completion" })
+      end,
+    })
 
     -- Enable only servers whose executables are available.
     for _, server in ipairs(servers) do

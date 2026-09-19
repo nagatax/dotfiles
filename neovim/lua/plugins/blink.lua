@@ -13,11 +13,9 @@ return {
 
       ["<Tab>"] = {
         function()
-          if vim.fn["copilot#GetDisplayedSuggestion"]().text ~= "" then
-            vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](""), "i", false)
-            return true
-          end
+          return require("sidekick").nes_jump_or_apply()
         end,
+        function() return vim.lsp.inline_completion.get() end,
         "snippet_forward",
         "fallback",
       },

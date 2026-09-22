@@ -272,9 +272,10 @@ sheldon lock
 exec zsh
 ```
 
-Sheldon installs completions, `fzf-tab`, autosuggestions, and syntax
-highlighting from `sheldon/plugins.toml`. Autosuggestions prefer command history
-and fall back to the completion engine when history has no matching entry.
+Sheldon installs completions, `fzf-tab`, autosuggestions, `zsh-async`, and
+syntax highlighting from `sheldon/plugins.toml`. Autosuggestions prefer command
+history and fall back to the completion engine when history has no matching
+entry.
 Standalone fzf and fzf-tab use the
 official Catppuccin Frappe colors, matching arrow prompts, check-mark selection
 markers, and an inline-right result count. Shell syntax distinguishes commands,
@@ -288,6 +289,8 @@ in yellow at 20%, and turns red at 10%. Repository root names are highlighted
 in mauve, and the right prompt shows local time to the minute with a muted
 Frappe clock icon. The right prompt is removed from completed command lines so
 scrollback keeps the command text without repeating its supporting information.
+Zsh displays the left prompt first and fills in the Starship right prompt after
+its modules finish loading, keeping command-line input responsive.
 Continued input uses a muted double-arrow prompt. Zsh refuses to overwrite an
 existing file with `>`; use `>|` when an overwrite is intentional. Append
 redirection with `>>` can still create a missing file. History-listing commands

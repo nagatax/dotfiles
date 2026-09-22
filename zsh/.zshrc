@@ -284,5 +284,15 @@ bindkey -M viins ' ' magic-space
 setopt transient_rprompt
 
 if type starship &>/dev/null; then
-  eval "$(starship init zsh)"
+  # Avoid registering Starship hooks and widgets again when reloading this file.
+  if (( ! ${+DOTFILES_STARSHIP_INITIALIZED} )); then
+    eval "$(starship init zsh)"
+    typeset -g DOTFILES_STARSHIP_INITIALIZED=1
+  fi
+
+  starship_async_config="${${(%):-%x}:A:h}/starship-async.zsh"
+  if [[ -r "${starship_async_config}" ]]; then
+    source "${starship_async_config}"
+  fi
+  unset starship_async_config
 fi

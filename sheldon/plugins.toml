@@ -19,5 +19,8 @@ github = 'Aloxaf/fzf-tab'
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
 
+[plugins.zsh-async]
+github = 'mafredri/zsh-async'
+
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'

@@ -4,7 +4,9 @@
 # ==================================================
 
 # Use Ghostty's built-in JetBrains Mono and Nerd Font Symbols.
-# Let macOS provide Hiragino Sans for Japanese and Apple Color Emoji for emoji.
+# The built-in JetBrains Mono cannot be named in font-family, so pin BIZ UDGothic
+# to Japanese ranges instead: CJK symbols, kana, CJK ideographs, and full-width forms.
+font-codepoint-map = U+3000-U+30FF,U+31F0-U+31FF,U+3400-U+4DBF,U+4E00-U+9FFF,U+F900-U+FAFF,U+FF00-U+FFEF=BIZ UDGothic
 font-size = 18
 # Strengthen text strokes without increasing the font size on macOS.
 font-thicken = true

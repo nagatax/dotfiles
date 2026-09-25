@@ -35,7 +35,10 @@ return {
       end
 
       pcall(vim.treesitter.start, bufnr)
-      vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      -- Tree-sitter indentation re-parses on every indent, so large files keep the built-in indent.
+      if vim.api.nvim_buf_line_count(bufnr) <= 5000 then
+        vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
 
       for _, winid in ipairs(vim.fn.win_findbuf(bufnr)) do
         vim.wo[winid].foldexpr = "v:lua.vim.treesitter.foldexpr()"

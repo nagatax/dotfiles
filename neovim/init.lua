@@ -20,7 +20,8 @@ vim.opt.hlsearch = true
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "screenline,number"
 vim.opt.signcolumn = "yes"
-vim.opt.foldcolumn = "auto:1"
+-- Use a fixed width because "auto" rescans every fold in the buffer on each cursor move.
+vim.opt.foldcolumn = "1"
 vim.opt.foldtext = ""
 vim.opt.scrolloff = 4
 vim.opt.updatetime = 1000

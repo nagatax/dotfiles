@@ -1,10 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
+  -- Defer LSP and completion setup until a file buffer is opened.
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = { "saghen/blink.cmp" },
   config = function()
-    -- Enable inlay hints by default for supporting LSP clients.
-    vim.lsp.inlay_hint.enable(true)
-
     vim.lsp.config("terraformls", { filetypes = { "tf", "terraform", "terraform-vars" } })
     vim.lsp.config("gopls", {
       settings = {

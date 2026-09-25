@@ -15,7 +15,10 @@ vim.g.loaded_ruby_provider = 0
 
 vim.opt.whichwrap = "b,s,[,],<,>,~"
 vim.opt.mouse = ""
-vim.opt.clipboard = "unnamedplus"
+-- Defer clipboard provider detection until after startup.
+vim.schedule(function()
+  vim.opt.clipboard = "unnamedplus"
+end)
 
 vim.opt.hlsearch = true
 vim.opt.cursorline = true
@@ -122,13 +125,6 @@ vim.opt.fileencodings = "utf-8,cp932,euc-jp"
 -- ==================================================
 
 vim.opt.undofile = true
-
--- ==================================================
--- Syntax highlighting
--- Enable built-in syntax highlighting.
--- ==================================================
-
-vim.cmd("syntax enable")
 
 -- ==================================================
 -- Plugin manager

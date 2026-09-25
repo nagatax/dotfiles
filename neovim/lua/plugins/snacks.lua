@@ -192,6 +192,11 @@ return {
       { "<leader>a", function() vim.lsp.buf.code_action() end, desc = "Code Action" },
       { "<leader>=", function() vim.lsp.buf.format() end, desc = "Format Buffer" },
       { "<leader>r", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },
+      {
+        "<leader>H",
+        function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
+        desc = "Toggle Inlay Hints",
+      },
       { "<leader>o", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
       { "<leader>O", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 

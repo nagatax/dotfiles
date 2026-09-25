@@ -32,4 +32,10 @@ require("lazy").setup({
   checker = { enabled = false },
   -- Disable LuaRocks because no configured plugin requires it.
   rocks = { enabled = false },
+  performance = {
+    rtp = {
+      -- Skip built-in plugins that are unused or replaced by Snacks.
+      disabled_plugins = { "gzip", "netrwPlugin", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
+    },
+  },
 })

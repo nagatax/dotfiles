@@ -12,13 +12,14 @@ $directory\
 $git_branch\
 $git_commit\
 $git_state\
-$git_metrics\
 $git_status\
 $line_break\
 $character"""
 
-# Display supporting information and active development environments on the right.
+# Display line-change counts, supporting information, and active development
+# environments on the asynchronously rendered right prompt.
 right_format = """
+$git_metrics\
 $cmd_duration\
 $status\
 $jobs\
@@ -42,7 +43,7 @@ $username\
 $hostname"""
 
 # Limit how long slow external commands may delay prompt rendering.
-command_timeout = 2000
+command_timeout = 500
 
 # Insert a blank line before the prompt to make the input area easier to read.
 add_newline = true

@@ -1,7 +1,12 @@
-# Speed up worktree scans with Git's built-in file-system monitor and untracked cache.
+# Cache untracked-file scans. Enable core.fsmonitor per repository only where the
+# worktree is large, so every visited repository does not keep a daemon running.
 [core]
-    fsmonitor = true
     untrackedCache = true
+    commitGraph = true
+
+# Keep the commit graph current so date-sorted branch listings stay fast.
+[gc]
+    writeCommitGraph = true
 
 # Keep remote-tracking branches tidy after fetching.
 [fetch]
@@ -77,6 +82,10 @@
 # Sort tags by version number.
 [tag]
     sort = version:refname
+
+# Print branch listings directly instead of starting a pager.
+[pager]
+    branch = false
 
 # Arrange branch and tag listings into columns only in a terminal.
 [column]

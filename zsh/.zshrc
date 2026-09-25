@@ -17,7 +17,8 @@ typeset -U path fpath
 
 # Configure Homebrew-provided completion and tool paths.
 if type brew &>/dev/null; then
-  brew_prefix="$(brew --prefix)"
+  # Reuse the prefix exported by brew shellenv to avoid starting Homebrew.
+  brew_prefix="${HOMEBREW_PREFIX:-$(brew --prefix)}"
 
   # Make Homebrew-installed Zsh completion functions available.
   FPATH="${brew_prefix}/share/zsh/site-functions:${FPATH}"

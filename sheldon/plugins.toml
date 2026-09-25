@@ -10,8 +10,25 @@ shell = "zsh"
 [plugins.zsh-completions]
 github = 'zsh-users/zsh-completions'
 
+# Run the full security audit at most once a day and reuse the dump otherwise.
 [plugins.compinit]
-inline = 'autoload -Uz compinit && compinit'
+inline = '''
+autoload -Uz compinit
+() {
+  setopt local_options extended_glob
+  local dump="${ZDOTDIR:-$HOME}/.zcompdump"
+  if [[ -n ${dump}(#qN.mh+24) || ! -e ${dump} ]]; then
+    compinit -d "${dump}"
+    # compinit keeps an unchanged dump, so record when the audit last ran.
+    touch "${dump}"
+  else
+    compinit -C -d "${dump}"
+  fi
+  if [[ ! -e ${dump}.zwc || ${dump} -nt ${dump}.zwc ]]; then
+    zcompile "${dump}"
+  fi
+}
+'''
 
 [plugins.fzf-tab]
 github = 'Aloxaf/fzf-tab'

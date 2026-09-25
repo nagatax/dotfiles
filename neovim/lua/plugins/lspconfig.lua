@@ -4,6 +4,9 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = { "saghen/blink.cmp" },
   config = function()
+    -- Log only errors so chatty servers do not keep appending warnings to lsp.log.
+    vim.lsp.log.set_level(vim.log.levels.ERROR)
+
     vim.lsp.config("terraformls", { filetypes = { "tf", "terraform", "terraform-vars" } })
     vim.lsp.config("gopls", {
       settings = {

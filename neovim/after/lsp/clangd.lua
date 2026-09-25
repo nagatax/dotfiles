@@ -2,6 +2,8 @@ return {
   cmd = {
     "clangd",
     "--background-index",
+    -- Keep background indexing from competing with interactive requests.
+    "--background-index-priority=low",
   },
 
   filetypes = {

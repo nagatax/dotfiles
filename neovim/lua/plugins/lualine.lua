@@ -22,6 +22,20 @@ return {
       globalstatus = true,
       -- Keep the tabline hidden until multiple tab pages are open.
       always_show_tabline = false,
+      refresh = {
+        -- Match lualine's defaults without CursorMovedI to avoid re-evaluating every component on each keystroke.
+        events = {
+          "WinEnter",
+          "BufEnter",
+          "BufWritePost",
+          "SessionLoadPost",
+          "FileChangedShellPost",
+          "VimResized",
+          "Filetype",
+          "CursorMoved",
+          "ModeChanged",
+        },
+      },
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
     },
@@ -49,7 +63,7 @@ return {
           end,
         },
         -- Show the current search position while bounding search-count work.
-        { "searchcount", maxcount = 999, timeout = 100 },
+        { "searchcount", maxcount = 99, timeout = 20 },
         -- Show encoding only when it differs from UTF-8 or includes a BOM.
         function()
           local encoding = vim.bo.fileencoding ~= "" and vim.bo.fileencoding or vim.o.encoding

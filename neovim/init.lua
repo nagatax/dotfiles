@@ -15,10 +15,6 @@ vim.g.loaded_ruby_provider = 0
 
 vim.opt.whichwrap = "b,s,[,],<,>,~"
 vim.opt.mouse = ""
--- Defer clipboard provider detection until after startup.
-vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
-end)
 
 vim.opt.hlsearch = true
 vim.opt.cursorline = true
@@ -73,7 +69,10 @@ vim.opt.shiftround = true
 vim.opt.autoindent = true
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+
+-- Bound bracket-matching searches so cursor movement stays responsive on long lines.
+vim.g.matchparen_timeout = 20
+vim.g.matchparen_insert_timeout = 20
 
 -- Configure command-line completion behavior.
 vim.opt.inccommand = "split"
@@ -90,6 +89,57 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.hl.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
 })
+
+-- ==================================================
+-- Clipboard
+-- Sync with the macOS clipboard asynchronously instead of blocking every
+-- yank, delete, and paste on pbcopy/pbpaste.
+-- ==================================================
+
+local clipboard_group = vim.api.nvim_create_augroup("user-clipboard", { clear = true })
+-- Track the last text exchanged with the system clipboard so unchanged
+-- clipboard contents never overwrite text deleted inside Neovim.
+local last_clipboard = nil
+
+-- Send plain yanks to the system clipboard; deletes and changes stay local.
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = clipboard_group,
+  callback = function()
+    local event = vim.v.event
+    if event.operator ~= "y" or event.regname ~= "" then
+      return
+    end
+
+    local text = table.concat(event.regcontents, "\n")
+    if event.regtype == "V" then
+      text = text .. "\n"
+    end
+    last_clipboard = text
+    vim.system({ "pbcopy" }, { stdin = text })
+  end,
+})
+
+-- Load text copied in other applications into the unnamed register.
+local function import_clipboard()
+  vim.system({ "pbpaste" }, { text = true }, function(out)
+    if out.code ~= 0 or out.stdout == "" then
+      return
+    end
+    vim.schedule(function()
+      if out.stdout == last_clipboard then
+        return
+      end
+      last_clipboard = out.stdout
+      vim.fn.setreg('"', out.stdout)
+    end)
+  end)
+end
+
+vim.api.nvim_create_autocmd("FocusGained", {
+  group = clipboard_group,
+  callback = import_clipboard,
+})
+vim.schedule(import_clipboard)
 
 -- ==================================================
 -- File types

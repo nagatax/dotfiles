@@ -7,6 +7,17 @@ return {
   opts = {
     flavour = "frappe",
     term_colors = true,
+    -- List integrations explicitly to skip plugin detection on every startup.
+    auto_integrations = false,
+    integrations = {
+      blink_cmp = { enabled = true, style = "bordered" },
+      dap = true,
+      dap_ui = true,
+      flash = true,
+      nvim_surround = true,
+      snacks = true,
+      which_key = true,
+    },
     float = {
       solid = true,
     },

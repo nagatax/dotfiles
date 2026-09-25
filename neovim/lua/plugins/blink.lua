@@ -3,6 +3,8 @@ return {
 
   -- Use a release tag to download pre-built binaries.
   version = "1.*",
+  -- Load on first completion use; lspconfig loads it earlier when a file is opened.
+  event = { "InsertEnter", "CmdlineEnter" },
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config

@@ -186,6 +186,7 @@ vim.opt.undofile = true
 -- ==================================================
 
 require("config.lazy")
+require("config.lsp").setup()
 require("config.statusline").setup()
 
 -- ==================================================

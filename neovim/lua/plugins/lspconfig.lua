@@ -69,7 +69,7 @@ return {
       "copilot",
     }
     local enabled_servers = {}
-    local group = vim.api.nvim_create_augroup("user-lspconfig", { clear = true })
+    local group = vim.api.nvim_create_augroup("user.lspconfig", { clear = true })
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = group,

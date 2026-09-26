@@ -47,7 +47,7 @@ return {
       end
     end
 
-    local group = vim.api.nvim_create_augroup("nvim-treesitter", { clear = true })
+    local group = vim.api.nvim_create_augroup("user.treesitter", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
       pattern = languages,

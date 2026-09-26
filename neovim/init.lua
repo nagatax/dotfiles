@@ -73,7 +73,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Show absolute numbers while inserting and relative numbers for counted motions elsewhere.
-local relativenumber_group = vim.api.nvim_create_augroup("user-relativenumber", { clear = true })
+local relativenumber_group = vim.api.nvim_create_augroup("user.relativenumber", { clear = true })
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = relativenumber_group,
   callback = function()
@@ -101,7 +101,7 @@ vim.opt.showmode = false
 
 -- Briefly highlight copied text to make the yank range visible.
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = vim.api.nvim_create_augroup("user-yank-highlight", { clear = true }),
+  group = vim.api.nvim_create_augroup("user.yank-highlight", { clear = true }),
   callback = function()
     vim.hl.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
@@ -113,7 +113,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- yank, delete, and paste on pbcopy/pbpaste.
 -- ==================================================
 
-local clipboard_group = vim.api.nvim_create_augroup("user-clipboard", { clear = true })
+local clipboard_group = vim.api.nvim_create_augroup("user.clipboard", { clear = true })
 -- Track the last text exchanged with the system clipboard so unchanged
 -- clipboard contents never overwrite text deleted inside Neovim.
 local last_clipboard = nil
@@ -170,7 +170,7 @@ vim.filetype.add({
 })
 
 -- Avoid continuing comment leaders automatically in Lua and Rust files.
-local formatoptions_group = vim.api.nvim_create_augroup("user-formatoptions", { clear = true })
+local formatoptions_group = vim.api.nvim_create_augroup("user.formatoptions", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   group = formatoptions_group,
   pattern = { "lua", "rust" },

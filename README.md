@@ -132,16 +132,13 @@ including staged changes, which retain their dimmed colors.
 
 Lazygit also displays Nerd Font v3 icons outside Neovim and keeps its command
 log free of random startup tips. The `ll` listing uses gradients for file sizes
-and timestamps. WhichKey emphasizes keys in bold Mauve
-and keeps descriptions in Subtext1. The built-in statusline shows encoding only
+and timestamps. The built-in statusline shows encoding only
 for non-UTF-8 files or files with a BOM, and shows line endings only when they
 are not Unix; the file type remains visible. Picker paths can truncate down to
 20 columns, while retaining filename-first display.
 
 Diagnostic floats show source names only when the buffer contains diagnostics
-from multiple sources. DAP displays variable values as commented virtual text
-at the end of the line (for example, `# x = 42` in Python), without editing the
-file. Snacks notifications use the fancy style with a title, timestamp, and
+from multiple sources. Snacks notifications use the fancy style with a title, timestamp, and
 separator above the body. They retain a one-line gap and use more vertical space
 than the compact style.
 
@@ -409,8 +406,7 @@ visible elsewhere. Errors and warnings use curly underlines on supporting
 terminals; information and hints retain straight underlines.
 Completion labels use Tree-sitter colors, and kind icons use padded badges with
 their existing kind colors as backgrounds. Indent guides are drawn natively
-with `listchars` every four columns. Python debugging uses Catppuccin-aware
-breakpoint and log-point symbols plus rounded floating windows.
+with `listchars` every four columns.
 Starting Neovim without a file opens a single-column Snacks dashboard with
 keymaps, recent files, projects, repository status, and startup time. Neovim
 started from Zsh writes its general log to
@@ -475,7 +471,7 @@ indentation changes, such as in Python; diff highlighting remains unchanged.
 
 ### Keybindings
 
-The following 54 shortcuts are explicitly configured in `neovim/lua/plugins/`.
+The following 59 shortcuts are explicitly configured in `neovim/lua/plugins/`.
 `Space` is the leader key. Keys are case-sensitive and run in Normal mode unless
 noted otherwise. Plugin defaults and Neovim's built-in mappings are not included.
 The `Enter` completion binding extends blink.cmp's `default` preset.
@@ -485,9 +481,8 @@ search, `Space ,` for buffers, `Space /` for grep, and `Space s` for help. Repla
 `Space o` / `Space O` list document/workspace symbols, and `Space x` / `Space X`
 list current-buffer/all-buffer diagnostics. Uppercase keys require Shift.
 
-which-key groups the remaining related bindings under `Space D` (Debug) and
-`Space g` (Git). Other Space-led bindings execute directly. `Space m` opens a
-repeatable debug menu; see Debugging below.
+Git bindings share the `Space g` prefix, and AI CLI bindings share `Space i`.
+Other Space-led bindings execute directly.
 
 #### Files and buffers
 
@@ -579,35 +574,6 @@ repeatable debug menu; see Debugging below.
 | --- | --- |
 | `Space q` | Quit all windows |
 | `Space Q` | Save all buffers and quit |
-
-#### Debugging
-
-The configured debugger targets Python. It loads on the first `Space D…`
-binding rather than when a Python file opens.
-
-Press `Space m` in Normal mode to open the repeatable debug menu. Use the final
-key from the bindings below (`b`, `B`, `c`, `i`, `o`, `O`, `p`, `e`, `r`, `u`, or
-`t`) to execute an action and keep the menu open. Press `Esc` to leave the menu
-before editing code or typing into the REPL. For example, `Space m`, then `o`
-five times, then `Esc` performs five step-over actions.
-
-The regular `Space D…` bindings remain available. Evaluate a Visual selection
-with `Space De`; the repeatable menu is Normal-mode only.
-
-| Key | Action |
-| --- | --- |
-| `Space m` | Open the repeatable debug menu (Esc to exit) |
-| `Space Db` | Toggle a breakpoint |
-| `Space DB` | Set a conditional breakpoint |
-| `Space Dc` | Start or continue debugging |
-| `Space Di` | Step into a function |
-| `Space Do` | Step over a function |
-| `Space DO` | Step out of a function |
-| `Space Dp` | Pause execution |
-| `Space De` | Evaluate an expression (also Visual) |
-| `Space Dr` | Toggle the debug REPL |
-| `Space Du` | Toggle the debug UI |
-| `Space Dt` | Terminate debugging |
 
 #### Completion
 

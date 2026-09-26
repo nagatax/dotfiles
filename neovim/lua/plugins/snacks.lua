@@ -167,11 +167,13 @@ return {
       { "<leader>y", function() copy_file_reference() end, desc = "Copy File Path" },
       { "<leader>Y", function() copy_file_reference("cursor") end, desc = "Copy File Reference" },
       { "<leader>Y", function() copy_file_reference("visual") end, desc = "Copy File Range", mode = "x" },
+      { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+      { "<leader>s", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
 
       -- Configure search, history, and help keymaps.
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
       { "<leader>w", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
-      { "<leader>s", function() Snacks.picker.help() end, desc = "Help Pages" },
+      { "<leader>?", function() Snacks.picker.help() end, desc = "Help Pages" },
       { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumplist" },
       { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
       { "<leader>c", "<cmd>changes<cr>", desc = "Changelist" },

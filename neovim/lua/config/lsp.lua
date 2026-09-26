@@ -12,6 +12,85 @@ local servers = {
   "copilot",
 }
 
+-- Inline completion ranges are computed when requested, so text deleted before accepting can leave them past the line end.
+-- Clamp the range to the current buffer, and drop the item when its start no longer exists.
+local function clamp_inline_completion(item)
+  local range = item.range
+  if not range then
+    return item
+  end
+
+  local buf = range.buf
+  local start_row, start_col, end_row, end_col = range:to_extmark()
+  local last_row = vim.api.nvim_buf_line_count(buf) - 1
+  local start_line = vim.api.nvim_buf_get_lines(buf, start_row, start_row + 1, false)[1]
+  if not start_line or start_col > #start_line then
+    return nil
+  end
+
+  end_row = math.min(end_row, last_row)
+  local end_line = vim.api.nvim_buf_get_lines(buf, end_row, end_row + 1, false)[1]
+  end_col = math.min(end_col, #end_line)
+  item.range = vim.range.extmark(buf, start_row, start_col, end_row, end_col)
+  return item
+end
+
+local function enable_completion(group)
+  -- Omit "popup" so moving through candidates does not send completionItem/resolve on every selection change.
+  vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = group,
+    callback = function(args)
+      local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+      if not client:supports_method(vim.lsp.protocol.Methods.textDocument_completion, args.buf) then
+        return
+      end
+
+      -- autotrigger covers server trigger characters and refreshes incomplete results while the menu is open.
+      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+
+      -- Also open the menu on identifier characters, as blink.cmp did; one autocmd per buffer serves every client.
+      if #vim.api.nvim_get_autocmds({ group = group, event = "InsertCharPre", buffer = args.buf }) > 0 then
+        return
+      end
+      vim.api.nvim_create_autocmd("InsertCharPre", {
+        group = group,
+        buffer = args.buf,
+        callback = function()
+          if vim.fn.pumvisible() == 0 and vim.v.char:match("[%w_]") then
+            -- Request after the typed character is inserted; a newer request cancels a pending one.
+            vim.schedule(vim.lsp.completion.get)
+          end
+        end,
+      })
+    end,
+  })
+
+  -- Not an expr mapping: accepting inline completion edits the buffer, which textlock forbids during expr evaluation.
+  vim.keymap.set("i", "<Tab>", function()
+    if vim.lsp.inline_completion.get({ on_accept = clamp_inline_completion }) then
+      return
+    end
+    if vim.snippet.active({ direction = 1 }) then
+      vim.snippet.jump(1)
+      return
+    end
+    vim.api.nvim_feedkeys(vim.keycode("<Tab>"), "n", false)
+  end, { desc = "Accept Inline Completion or Next Snippet Field" })
+
+  -- Accept only an explicitly selected candidate; otherwise Enter inserts a newline.
+  vim.keymap.set("i", "<CR>", function()
+    if vim.fn.pumvisible() == 1 and vim.fn.complete_info({ "selected" }).selected ~= -1 then
+      return "<C-y>"
+    end
+    return "<CR>"
+  end, { expr = true, desc = "Accept Completion" })
+
+  vim.keymap.set("i", "<C-Space>", vim.lsp.completion.get, { desc = "Show Completion" })
+  vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+end
+
 local function enable_inline_completion(group)
   vim.api.nvim_create_autocmd("LspAttach", {
     group = group,
@@ -104,13 +183,11 @@ local function format_on_save(group)
 end
 
 local function start()
-  -- Load blink.cmp first so its plugin file registers completion capabilities for every server.
-  require("lazy").load({ plugins = { "blink.cmp" } })
-
   -- Log only errors so chatty servers do not keep appending warnings to lsp.log.
   vim.lsp.log.set_level(vim.log.levels.ERROR)
 
   local group = vim.api.nvim_create_augroup("user.lsp", { clear = true })
+  enable_completion(group)
   enable_inline_completion(group)
   format_on_save(group)
 

@@ -23,7 +23,8 @@ return {
       -- Keep the tabline hidden until multiple tab pages are open.
       always_show_tabline = false,
       refresh = {
-        -- Match lualine's defaults without CursorMovedI to avoid re-evaluating every component on each keystroke.
+        -- Match lualine's defaults without CursorMoved/CursorMovedI to avoid re-evaluating every component on each
+        -- cursor move; cursor position is rendered by native statusline items instead.
         events = {
           "WinEnter",
           "BufEnter",
@@ -32,7 +33,6 @@ return {
           "FileChangedShellPost",
           "VimResized",
           "Filetype",
-          "CursorMoved",
           "ModeChanged",
         },
       },
@@ -40,6 +40,10 @@ return {
       section_separators = { left = "", right = "" },
     },
     sections = {
+      -- Use native statusline items so cursor position updates on redraw without a lualine refresh.
+      -- The search count is shown by Neovim's built-in [n/m] message instead of a lualine component.
+      lualine_y = { "%3P" },
+      lualine_z = { "%3l:%-2v" },
       lualine_x = {
         {
           function()
@@ -62,8 +66,6 @@ return {
               or "Special"
           end,
         },
-        -- Show the current search position while bounding search-count work.
-        { "searchcount", maxcount = 99, timeout = 20 },
         -- Show encoding only when it differs from UTF-8 or includes a BOM.
         function()
           local encoding = vim.bo.fileencoding ~= "" and vim.bo.fileencoding or vim.o.encoding

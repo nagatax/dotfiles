@@ -145,6 +145,9 @@ return {
         enabled = true, -- Combine line numbers, signs, folds, and Git status.
         folds = { git_hl = true },
       },
+      styles = {
+        scratch = { width = 0.8, height = 0.8, max_width = 160 }, -- Scale scratch windows with the editor size.
+      },
       words = { enabled = true }, -- Highlight references reported by attached LSP clients.
     },
     keys = {

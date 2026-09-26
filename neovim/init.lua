@@ -44,6 +44,8 @@ vim.opt.listchars = {
   tab = "» ",
   trail = "·",
   nbsp = "␣",
+  -- Draw indent guides natively instead of recomputing them in Lua on every redraw.
+  leadmultispace = "│   ",
   extends = "›",
   precedes = "‹",
 }
@@ -54,6 +56,8 @@ vim.opt.fillchars:append({
   foldopen = "",
   foldclose = "",
   foldsep = " ",
+  -- Hide nesting-depth digits in the one-column fold gutter.
+  foldinner = " ",
 })
 
 vim.opt.ignorecase = true
@@ -97,7 +101,6 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = "list:longest,full"
 
 vim.opt.laststatus = 3
-vim.opt.showmode = false
 
 -- Briefly highlight copied text to make the yank range visible.
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -199,6 +202,7 @@ vim.opt.undofile = true
 -- ==================================================
 
 require("config.lazy")
+require("config.statusline").setup()
 
 -- ==================================================
 -- Built-in plugins

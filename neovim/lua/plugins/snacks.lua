@@ -85,22 +85,6 @@ return {
         replace_netrw = true, -- Replace netrw with the Snacks explorer.
         trash = true, -- Move deleted files to the system trash.
       },
-      indent = {
-        enabled = true, -- Visualize indentation and the current scope.
-        animate = { enabled = false },
-        scope = { only_current = true },
-        chunk = {
-          enabled = true,
-          only_current = true,
-          char = {
-            corner_top = "╭",
-            corner_bottom = "╰",
-            horizontal = "─",
-            vertical = "│",
-            arrow = ">",
-          },
-        },
-      },
       input = { enabled = true }, -- Replace vim.ui.input with a floating input window.
       lazygit = {
         config = {
@@ -141,14 +125,9 @@ return {
       notifier = { gap = 1, style = "fancy" }, -- Separate notifications and expose history through <leader>n.
       quickfile = { enabled = true }, -- Render files before the remaining plugins finish loading.
       scope = { enabled = true }, -- Add scope-aware text objects and navigation.
-      statuscolumn = {
-        enabled = true, -- Combine line numbers, signs, folds, and Git status.
-        folds = { git_hl = true },
-      },
       styles = {
         scratch = { width = 0.8, height = 0.8, max_width = 160 }, -- Scale scratch windows with the editor size.
       },
-      words = { enabled = true }, -- Highlight references reported by attached LSP clients.
     },
     keys = {
       -- Configure file and buffer keymaps.

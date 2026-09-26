@@ -133,13 +133,10 @@ including staged changes, which retain their dimmed colors.
 Lazygit also displays Nerd Font v3 icons outside Neovim and keeps its command
 log free of random startup tips. The `ll` listing uses gradients for file sizes
 and timestamps. WhichKey emphasizes keys in bold Mauve
-and keeps descriptions in Subtext1. lualine shows encoding only for non-UTF-8
-files or files with a BOM, and shows line endings only when they are not Unix;
-the file type remains visible. During highlighted searches, lualine shows the
-current match and total (for example, `[3/12]`), capped at 999 with a 100 ms
-search-count timeout. Picker paths can truncate down to 20 columns,
-while retaining filename-first display. Flash colors Treesitter selection labels
-individually; ordinary jumps keep their existing colors.
+and keeps descriptions in Subtext1. The built-in statusline shows encoding only
+for non-UTF-8 files or files with a BOM, and shows line endings only when they
+are not Unix; the file type remains visible. Picker paths can truncate down to
+20 columns, while retaining filename-first display.
 
 Diagnostic floats show source names only when the buffer contains diagnostics
 from multiple sources. DAP displays variable values as commented virtual text
@@ -389,8 +386,7 @@ numbers use a hybrid display: the current line is absolute and surrounding
 lines are relative. Long lines wrap at word boundaries while preserving their
 visual indentation and display a continuation marker. End-of-buffer tildes are
 hidden, and diff mode uses histogram matching with a larger line-alignment
-window. Embedded terminals use the Catppuccin Frappe ANSI palette, and inactive
-editor splits use restrained background dimming to keep the active split clear.
+window. Embedded terminals use the Catppuccin Frappe ANSI palette.
 Quickfix and tag jumps reuse a window or tab that already shows the target
 buffer, with the last-used window as the fallback.
 Relative line numbers and split boundaries use brighter muted colors.
@@ -398,9 +394,12 @@ Tab, trailing-space, and non-breaking-space markers use Overlay0 for visibility.
 Ordinary search matches use a muted background; current and incremental matches use
 yellow, matching Ghostty and tmux. The brief yank highlight also uses yellow.
 Ordinary editing buffers show their relative path in a winbar, with inactive paths dimmed.
-When multiple tab pages are open, a matching lualine tabline identifies each by
-number and filename; it remains hidden for a single tab page.
-Rounded floating windows with muted outlines, rounded lualine separators, and
+The statusline and winbar are rendered natively by `neovim/lua/config/statusline.lua`
+without re-evaluating plugin components on every cursor move. The statusline shows
+the Git branch, diagnostics, filename, and cursor position; the branch is read
+asynchronously and cached. The built-in tabline appears only when multiple tab
+pages are open.
+Rounded floating windows with muted outlines and
 Nerd Font fold markers keep editor chrome visually consistent. The Lazy window
 also uses a rounded border. Unsaved filenames stand out in bold peach, and
 notifications have a one-line gap between them. LSP inlay hints retain their
@@ -409,8 +408,8 @@ virtual text appears only on the cursor line, while signs and underlines remain
 visible elsewhere. Errors and warnings use curly underlines on supporting
 terminals; information and hints retain straight underlines.
 Completion labels use Tree-sitter colors, and kind icons use padded badges with
-their existing kind colors as backgrounds. The active indent scope uses blue
-lines and rounded chunk markers. Python debugging uses Catppuccin-aware
+their existing kind colors as backgrounds. Indent guides are drawn natively
+with `listchars` every four columns. Python debugging uses Catppuccin-aware
 breakpoint and log-point symbols plus rounded floating windows.
 Starting Neovim without a file opens a single-column Snacks dashboard with
 keymaps, recent files, projects, repository status, and startup time. Neovim
@@ -476,14 +475,13 @@ indentation changes, such as in Python; diff highlighting remains unchanged.
 
 ### Keybindings
 
-The following 56 shortcuts are explicitly configured in `neovim/lua/plugins/`.
+The following 54 shortcuts are explicitly configured in `neovim/lua/plugins/`.
 `Space` is the leader key. Keys are case-sensitive and run in Normal mode unless
 noted otherwise. Plugin defaults and Neovim's built-in mappings are not included.
 The `Enter` completion binding extends blink.cmp's `default` preset.
 
 Frequent actions use `Space` followed by one key: `Space Space` for smart file
-search, `Space ,` for buffers, `Space /` for grep, `Space s` for help, and
-`Space f` / `Space F` for Flash. Replaced bindings are not retained as aliases.
+search, `Space ,` for buffers, `Space /` for grep, and `Space s` for help. Replaced bindings are not retained as aliases.
 `Space o` / `Space O` list document/workspace symbols, and `Space x` / `Space X`
 list current-buffer/all-buffer diagnostics. Uppercase keys require Shift.
 
@@ -582,20 +580,10 @@ repeatable debug menu; see Debugging below.
 | `Space q` | Quit all windows |
 | `Space Q` | Save all buffers and quit |
 
-#### Flash
-
-| Key | Action | Modes |
-| --- | --- | --- |
-| `Space f` | Jump using search labels | Normal, Visual, Operator-pending |
-| `Space F` | Select a syntax node | Normal, Visual, Operator-pending |
-
-Operator-pending is the state after an operator such as `d` or `y`, while Neovim
-waits for the target motion or selection. Flash's existing character-motion and
-search integrations are unchanged.
-
 #### Debugging
 
-The configured debugger targets Python.
+The configured debugger targets Python. It loads on the first `Space D…`
+binding rather than when a Python file opens.
 
 Press `Space m` in Normal mode to open the repeatable debug menu. Use the final
 key from the bindings below (`b`, `B`, `c`, `i`, `o`, `O`, `p`, `e`, `r`, `u`, or
@@ -629,7 +617,9 @@ with `Space De`; the repeatable menu is Normal-mode only.
 
 Path completion includes hidden files before a dot is explicitly typed. Unlike
 file search, path completion does not apply Git ignore rules, so directories
-with many hidden entries can produce more candidates. Signature help displays
+with many hidden entries can produce more candidates. Documentation and
+signature help open only on demand, with `Ctrl-Space` and `Ctrl-k`, to avoid
+LSP requests on every keystroke. Signature help displays
 function documentation when supplied by the language server; longer descriptions
 occupy more space, within the existing window size limits. The existing maximum
 width is 100 columns, so long descriptions may not fit in an 80-column terminal.

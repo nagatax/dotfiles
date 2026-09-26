@@ -13,18 +13,11 @@ return {
       blink_cmp = { enabled = true, style = "bordered" },
       dap = true,
       dap_ui = true,
-      flash = true,
-      nvim_surround = true,
       snacks = true,
       which_key = true,
     },
     float = {
       solid = true,
-    },
-    dim_inactive = {
-      enabled = true,
-      shade = "dark",
-      percentage = 0.10,
     },
     lsp_styles = {
       underlines = {
@@ -49,6 +42,12 @@ return {
           DiagnosticVirtualTextWarn = { fg = colors.yellow, bg = "NONE", italic = true },
           DiagnosticVirtualTextInfo = { fg = colors.sky, bg = "NONE", italic = true },
           DiagnosticVirtualTextHint = { fg = colors.teal, bg = "NONE", italic = true },
+          -- Color statusline and winbar parts rendered by config.statusline.
+          UserStatusBranch = { fg = colors.mauve, bold = true },
+          UserStatusModified = { fg = colors.peach, bold = true },
+          UserStatusPosition = { fg = colors.base, bg = colors.blue, bold = true },
+          WinBar = { fg = colors.text },
+          WinBarNC = { fg = colors.overlay1 },
           WhichKey = { fg = colors.mauve, bold = true },
           WhichKeyDesc = { fg = colors.subtext1 },
           LineNr = { fg = colors.overlay0 },
@@ -57,8 +56,6 @@ return {
           FloatBorder = { fg = colors.surface2, bg = colors.mantle },
           BlinkCmpLabel = { fg = colors.text },
           SnacksPickerMatch = { fg = colors.blue, bold = true, underline = true },
-          SnacksIndentScope = { fg = colors.blue },
-          SnacksIndentChunk = { fg = colors.blue },
           DapStopped = { fg = colors.yellow, bold = true },
           DapStoppedLine = { bg = colors.surface0 },
           SnacksDashboardHeader = { fg = colors.mauve },

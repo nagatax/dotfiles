@@ -69,8 +69,10 @@ return {
       "copilot",
     }
     local enabled_servers = {}
+    local group = vim.api.nvim_create_augroup("user-lspconfig", { clear = true })
 
     vim.api.nvim_create_autocmd("LspAttach", {
+      group = group,
       callback = function(args)
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
         if not client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, args.buf) then
@@ -117,6 +119,7 @@ return {
     -- Re-evaluate the initial buffer after startup because its FileType event may run before this plugin loads.
     if vim.v.vim_did_enter == 0 then
       vim.api.nvim_create_autocmd("VimEnter", {
+        group = group,
         once = true,
         callback = function()
           vim.schedule(function()
@@ -150,6 +153,7 @@ return {
 
     -- Format Rust files with rustfmt before saving.
     vim.api.nvim_create_autocmd("BufWritePre", {
+      group = group,
       pattern = "*.rs",
       callback = function(args)
         local clients = vim.lsp.get_clients({
@@ -173,6 +177,7 @@ return {
 
     -- Organize imports and format Go files with gopls before saving.
     vim.api.nvim_create_autocmd("BufWritePre", {
+      group = group,
       pattern = "*.go",
       callback = function(args)
         local clients = vim.lsp.get_clients({

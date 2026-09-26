@@ -70,6 +70,22 @@ vim.opt.shiftround = true
 vim.opt.autoindent = true
 
 vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Show absolute numbers while inserting and relative numbers for counted motions elsewhere.
+local relativenumber_group = vim.api.nvim_create_augroup("user-relativenumber", { clear = true })
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = relativenumber_group,
+  callback = function()
+    if vim.wo.number then vim.wo.relativenumber = false end
+  end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = relativenumber_group,
+  callback = function()
+    if vim.wo.number then vim.wo.relativenumber = true end
+  end,
+})
 
 -- Bound bracket-matching searches so cursor movement stays responsive on long lines.
 vim.g.matchparen_timeout = 20

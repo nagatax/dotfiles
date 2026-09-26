@@ -1,9 +1,32 @@
+-- Inline completion ranges are computed when requested, so text deleted before accepting can leave them past the line end.
+-- Clamp the range to the current buffer, and drop the item when its start no longer exists.
+local function clamp_inline_completion(item)
+  local range = item.range
+  if not range then
+    return item
+  end
+
+  local buf = range.buf
+  local start_row, start_col, end_row, end_col = range:to_extmark()
+  local last_row = vim.api.nvim_buf_line_count(buf) - 1
+  local start_line = vim.api.nvim_buf_get_lines(buf, start_row, start_row + 1, false)[1]
+  if not start_line or start_col > #start_line then
+    return nil
+  end
+
+  end_row = math.min(end_row, last_row)
+  local end_line = vim.api.nvim_buf_get_lines(buf, end_row, end_row + 1, false)[1]
+  end_col = math.min(end_col, #end_line)
+  item.range = vim.range.extmark(buf, start_row, start_col, end_row, end_col)
+  return item
+end
+
 return {
   "saghen/blink.cmp",
 
   -- Use a release tag to download pre-built binaries.
   version = "1.*",
-  -- Load on first completion use; lspconfig loads it earlier when a file is opened.
+  -- Load on first completion use; config.lsp loads it earlier when a file is opened.
   event = "InsertEnter",
 
   ---@module 'blink.cmp'
@@ -14,7 +37,7 @@ return {
       preset = "default",
 
       ["<Tab>"] = {
-        function() return vim.lsp.inline_completion.get() end,
+        function() return vim.lsp.inline_completion.get({ on_accept = clamp_inline_completion }) end,
         "snippet_forward",
         "fallback",
       },

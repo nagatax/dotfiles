@@ -4,7 +4,7 @@ return {
   -- Use a release tag to download pre-built binaries.
   version = "1.*",
   -- Load on first completion use; lspconfig loads it earlier when a file is opened.
-  event = { "InsertEnter", "CmdlineEnter" },
+  event = "InsertEnter",
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -26,8 +26,9 @@ return {
     },
 
     -- Declare default providers here so opts_extend can extend them elsewhere.
+    -- Skip the buffer source, which rescans buffer words on every keystroke.
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets" },
       providers = {
         -- Include dotfiles before a dot is explicitly typed in a path.
         path = { opts = { show_hidden_files_by_default = true } },
@@ -42,7 +43,6 @@ return {
       },
       menu = {
         draw = {
-          treesitter = { "lsp" },
           padding = { 0, 1 },
           -- Keep long completion items compact in split windows.
           components = {
@@ -66,6 +66,9 @@ return {
         auto_show = false,
       },
     },
+
+    -- Keep the command line on built-in completion to avoid work on every ":" keystroke.
+    cmdline = { enabled = false },
 
     signature = {
       enabled = true,

@@ -37,9 +37,12 @@ return {
         end
 
         local library = { vim.env.VIMRUNTIME }
-        local lspconfig_library = vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1]
-        if lspconfig_library then
-          table.insert(library, lspconfig_library)
+        -- Include snacks.nvim so the Snacks global resolves without lazydev.nvim.
+        for _, module in ipairs({ "lua/lspconfig", "lua/snacks" }) do
+          local module_library = vim.api.nvim_get_runtime_file(module, false)[1]
+          if module_library then
+            table.insert(library, module_library)
+          end
         end
 
         client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {

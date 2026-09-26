@@ -31,17 +31,9 @@ return {
     -- Declare default providers here so opts_extend can extend them elsewhere.
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
-      per_filetype = {
-        lua = { inherit_defaults = true, "lazydev" },
-      },
       providers = {
         -- Include dotfiles before a dot is explicitly typed in a path.
         path = { opts = { show_hidden_files_by_default = true } },
-        lazydev = {
-          name = "LazyDev",
-          module = "lazydev.integrations.blink",
-          score_offset = 100,
-        },
       },
     },
 
@@ -72,14 +64,16 @@ return {
           },
         },
       },
+      -- Show documentation only on demand with <C-space> to avoid a request on every selection change.
       documentation = {
-        auto_show = true,
-        auto_show_delay_ms = 500,
+        auto_show = false,
       },
     },
 
     signature = {
       enabled = true,
+      -- Show signatures only on demand with <C-k> to avoid a request on every trigger character.
+      trigger = { enabled = false },
       -- Include documentation supplied by the language server.
       window = { show_documentation = true },
     },

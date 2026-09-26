@@ -1,6 +1,5 @@
 return {
   "mfussenegger/nvim-dap",
-  ft = "python",
   dependencies = {
     "mfussenegger/nvim-dap-python",
     "nvim-neotest/nvim-nio",

@@ -2,6 +2,8 @@ return {
   "folke/sidekick.nvim",
   version = "^2.0.0",
   opts = {
+    -- Keep Copilot suggestions to built-in inline completion; NES requests after every normal-mode edit.
+    nes = { enabled = false },
     cli = {
       mux = {
         backend = "tmux",

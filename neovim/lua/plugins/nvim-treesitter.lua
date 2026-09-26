@@ -1,52 +1,53 @@
+local languages = {
+  "c",
+  "cpp",
+  "gitattributes",
+  "gitcommit",
+  "gitignore",
+  "go",
+  "gotmpl",
+  "json",
+  "lua",
+  "markdown",
+  "php",
+  "python",
+  "regex",
+  "rust",
+  "terraform",
+  "toml",
+  "vim",
+  "vimdoc",
+  "zsh",
+}
+
+-- Highlighting and folding use built-in APIs with the installed parsers, so this runs without loading the plugin.
+local function enable_treesitter(bufnr)
+  if not vim.list_contains(languages, vim.bo[bufnr].filetype) then
+    return
+  end
+  if not pcall(vim.treesitter.start, bufnr) then
+    return
+  end
+
+  -- Tree-sitter indentation and folding re-parse the buffer, so large files keep the built-in behavior.
+  if vim.api.nvim_buf_line_count(bufnr) > 5000 then
+    return
+  end
+  -- Requiring nvim-treesitter from indentexpr loads the plugin on the first indent.
+  vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  for _, winid in ipairs(vim.fn.win_findbuf(bufnr)) do
+    vim.wo[winid].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo[winid].foldmethod = "expr"
+    vim.wo[winid].foldlevel = 99
+  end
+end
+
 return {
   "nvim-treesitter/nvim-treesitter",
-  lazy = false,
+  -- Load only for parser management or tree-sitter indentation instead of at startup.
+  cmd = { "TSInstall", "TSUpdate", "TSUninstall", "TSLog" },
   build = ":TSUpdate",
-  config = function()
-    local languages = {
-      "c",
-      "cpp",
-      "gitattributes",
-      "gitcommit",
-      "gitignore",
-      "go",
-      "gotmpl",
-      "json",
-      "lua",
-      "markdown",
-      "php",
-      "python",
-      "regex",
-      "rust",
-      "terraform",
-      "toml",
-      "vim",
-      "vimdoc",
-      "zsh",
-    }
-    local treesitter = require("nvim-treesitter")
-
-    treesitter.setup()
-    treesitter.install(languages)
-
-    local function enable_treesitter(bufnr)
-      if not vim.list_contains(languages, vim.bo[bufnr].filetype) then
-        return
-      end
-
-      pcall(vim.treesitter.start, bufnr)
-      -- Tree-sitter indentation re-parses on every indent, so large files keep the built-in indent.
-      if vim.api.nvim_buf_line_count(bufnr) <= 5000 then
-        vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-      end
-
-      for _, winid in ipairs(vim.fn.win_findbuf(bufnr)) do
-        vim.wo[winid].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-        vim.wo[winid].foldmethod = "expr"
-        vim.wo[winid].foldlevel = 99
-      end
-    end
-
+  init = function()
     local group = vim.api.nvim_create_augroup("user.treesitter", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
@@ -64,5 +65,11 @@ return {
         end
       end,
     })
+  end,
+  config = function()
+    local treesitter = require("nvim-treesitter")
+
+    treesitter.setup()
+    treesitter.install(languages)
   end,
 }

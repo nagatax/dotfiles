@@ -252,7 +252,9 @@ herdr integration status
 ```
 
 Run `herdr` to start or attach to the persistent session. Reload configuration
-changes in a running session with `herdr server reload-config`.
+changes in a running session with `herdr server reload-config`. Leave with
+`Ctrl-b`, then `q` to detach and keep the server running; the next `herdr`
+attaches without restoring panes or resuming agents again.
 
 ## Zsh, Sheldon, and Starship
 

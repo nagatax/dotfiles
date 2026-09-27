@@ -17,6 +17,8 @@ accent = "#8caaee"
 # Start a login shell on macOS and inherit the source pane's directory.
 shell_mode = "auto"
 new_cwd = "follow"
+# Skip image rendering, which these panes do not use.
+kitty_graphics = false
 
 [update]
 # Rely on Homebrew instead of checking for Herdr releases in the background.
@@ -60,6 +62,8 @@ hide_tab_bar_when_single_tab = true
 agent_panel_sort = "priority"
 status_indicators = "symbols"
 window_title = "{workspace}: {tab}"
+# Avoid a full redraw each time Ghostty regains focus.
+redraw_on_focus_gained = false
 tab_bar_right = [
   { type = "zoom" },
   { type = "datetime", format = "%H:%M" },
@@ -105,5 +109,5 @@ cjk_ime_agents = ["codex", "claude"]
 cjk_ime_cursor_shape = "steady_block"
 
 [advanced]
-# Match the scrollback capacity configured in Ghostty.
-scrollback_limit_bytes = 20000000
+# Keep the default per-pane scrollback to limit memory and output processing.
+scrollback_limit_bytes = 10000000

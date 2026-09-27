@@ -110,6 +110,9 @@ setopt complete_in_word
 # Keep ZLE errors and exhausted history navigation silent.
 setopt no_beep
 
+# Switch to vi command mode immediately after Esc instead of waiting 0.4s.
+KEYTIMEOUT=1
+
 # Keep a quiet, duplicate-free history of visited directories.
 setopt auto_pushd
 setopt pushd_ignore_dups

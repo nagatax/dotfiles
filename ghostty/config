@@ -56,6 +56,9 @@ window-padding-balance = true
 # Extend full-screen application backgrounds into the balanced padding.
 window-padding-color = extend
 
+# Present frames immediately to reduce input latency.
+window-vsync = false
+
 # Restore the previous window state when Ghostty starts.
 window-save-state = always
 # Keep resize feedback away from the center of the terminal and dismiss it quickly.

@@ -6,15 +6,14 @@ palette = 'catppuccin_frappe'
 # Distinguish continued input with a muted Frappe double arrow.
 continuation_prompt = '[❯❯](overlay0) '
 
-# Display the main prompt components on the left.
+# Display the main prompt components on the left. The Zsh integration appends
+# git_status asynchronously and draws the prompt character itself, so switching
+# vi modes does not rerun Starship.
 format = """
 $directory\
 $git_branch\
 $git_commit\
-$git_state\
-$git_status\
-$line_break\
-$character"""
+$git_state"""
 
 # Display line-change counts, supporting information, and active development
 # environments on the asynchronously rendered right prompt.

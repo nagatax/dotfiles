@@ -42,6 +42,11 @@ last_pane = "prefix+backtick"
 open_worktree = "prefix+alt+w"
 remove_worktree = "prefix+alt+shift+w"
 
+[keys.indexed]
+# Switch tabs with Alt+1..9 and workspaces with Alt+Shift+1..9 without the prefix.
+tabs = "alt"
+workspaces = "alt+shift"
+
 [[keys.command]]
 # Open repository Git operations without changing the tab layout.
 key = "prefix+alt+g"
@@ -64,6 +69,8 @@ status_indicators = "symbols"
 window_title = "{workspace}: {tab}"
 # Avoid a full redraw each time Ghostty regains focus.
 redraw_on_focus_gained = false
+# Open new tabs immediately; rename them later with prefix+shift+t when needed.
+prompt_new_tab_name = false
 tab_bar_right = [
   { type = "zoom" },
   { type = "datetime", format = "%H:%M" },

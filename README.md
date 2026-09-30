@@ -126,7 +126,8 @@ Underlines are thickened by one pixel so paths, matches, and emphasis remain
 legible beside the heavier text.
 Resize feedback appears at the top right for 500 ms instead of covering the
 center of the terminal.
-Gitsigns uses `+` for additions and `~` for changes,
+Blink limits completion labels, descriptions, and source names to
+40, 20, and 10 columns. Gitsigns uses `+` for additions and `~` for changes,
 including staged changes, which retain their dimmed colors.
 
 Lazygit also displays Nerd Font v3 icons outside Neovim and keeps its command
@@ -406,7 +407,8 @@ muted text color without drawing a background block over the code. Diagnostic
 virtual text appears only on the cursor line, while signs and underlines remain
 visible elsewhere. Errors and warnings use curly underlines on supporting
 terminals; information and hints retain straight underlines.
-Indent guides are drawn natively
+Completion labels use Tree-sitter colors, and kind icons use padded badges with
+their existing kind colors as backgrounds. Indent guides are drawn natively
 with `listchars` every four columns.
 Starting Neovim without a file opens a single-column Snacks dashboard with
 keymaps, recent files, projects, repository status, and startup time. Neovim
@@ -472,10 +474,10 @@ indentation changes, such as in Python; diff highlighting remains unchanged.
 
 ### Keybindings
 
-The following 59 shortcuts are explicitly configured in `neovim/lua/plugins/`.
+The following 61 shortcuts are explicitly configured in `neovim/lua/plugins/`.
 `Space` is the leader key. Keys are case-sensitive and run in Normal mode unless
 noted otherwise. Plugin defaults and Neovim's built-in mappings are not included.
-Insert-mode completion bindings are defined in `neovim/lua/config/lsp.lua`.
+The `Enter` completion binding extends blink.cmp's `default` preset.
 
 Frequent actions use `Space` followed by one key: `Space Space` for smart file
 search, `Space ,` for buffers, `Space /` for grep, and `Space s` for help. Replaced bindings are not retained as aliases.
@@ -576,22 +578,31 @@ Other Space-led bindings execute directly.
 | `Space q` | Quit all windows |
 | `Space Q` | Save all buffers and quit |
 
+#### Jump
+
+| Key | Action |
+| --- | --- |
+| `Space f` | Jump to a labeled location with Flash (also Visual and Operator-pending) |
+| `Space F` | Select a Tree-sitter node with Flash (also Visual and Operator-pending) |
+
 #### Completion
 
 | Key | Action |
 | --- | --- |
-| `Enter` | Accept the selected completion candidate; insert a newline when none is selected (Insert) |
-| `Ctrl-Space` | Request LSP completion (Insert) |
-| `Ctrl-k` | Show signature help (Insert) |
+| `Enter` | Select and accept a completion candidate; fall back to normal Enter when not applicable |
 
-Completion uses Neovim's built-in LSP completion instead of a plugin. The menu
-opens while typing identifiers and on server trigger characters, and candidates
-are fuzzy-matched. Candidates are not preselected. `Down` and `Up` browse
-without changing the buffer, while `Ctrl-n` and `Ctrl-p` preview the candidate
-in the buffer; Vim does not apply mappings to these keys while the menu is open.
-`Ctrl-e` closes the menu and restores the typed text. Item documentation is not
-requested while browsing, to avoid an LSP request on every selection change.
-Use `Ctrl-x Ctrl-f` for file path completion.
+Path completion includes hidden files before a dot is explicitly typed. Unlike
+file search, path completion does not apply Git ignore rules, so directories
+with many hidden entries can produce more candidates. Documentation and
+signature help open only on demand, with `Ctrl-Space` and `Ctrl-k`, to avoid
+LSP requests on every keystroke. Signature help displays
+function documentation when supplied by the language server; longer descriptions
+occupy more space, within the existing window size limits. The existing maximum
+width is 100 columns, so long descriptions may not fit in an 80-column terminal.
+
+Completion candidates are not preselected. Browsing candidates leaves the buffer
+unchanged until a candidate is accepted with Enter. Canceling closes the menu
+without inserting the selected candidate.
 
 ## License
 

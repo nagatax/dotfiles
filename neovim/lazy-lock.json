@@ -10,5 +10,6 @@
   "nvim-web-devicons": { "branch": "master", "commit": "58447c1fca354bbf184425e4a8d01deecbd6f3c4" },
   "sidekick.nvim": { "branch": "main", "commit": "53a2d3afa61e5fd2e17b270b5fa72e5493808304" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
-  "vscode-php-debug": { "branch": "main", "commit": "5cee2626f227e0ebe88df2c03a1a88b4b4295173" }
+  "vscode-php-debug": { "branch": "main", "commit": "5cee2626f227e0ebe88df2c03a1a88b4b4295173" },
+  "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }

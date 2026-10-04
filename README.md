@@ -132,7 +132,8 @@ including staged changes, which retain their dimmed colors.
 
 Lazygit also displays Nerd Font v3 icons outside Neovim and keeps its command
 log free of random startup tips. The `ll` listing uses gradients for file sizes
-and timestamps. The built-in statusline shows encoding only
+and timestamps. WhichKey emphasizes keys in bold Mauve
+and keeps descriptions in Subtext1. The built-in statusline shows encoding only
 for non-UTF-8 files or files with a BOM, and shows line endings only when they
 are not Unix; the file type remains visible. Picker paths can truncate down to
 20 columns, while retaining filename-first display.
@@ -484,8 +485,10 @@ search, `Space ,` for buffers, `Space /` for grep, and `Space s` for help. Repla
 `Space o` / `Space O` list document/workspace symbols, and `Space x` / `Space X`
 list current-buffer/all-buffer diagnostics. Uppercase keys require Shift.
 
-Git bindings share the `Space g` prefix, and AI CLI bindings share `Space i`.
-Other Space-led bindings execute directly.
+Pausing after `Space` opens a which-key popup listing the available bindings.
+which-key hooks only `Space`; `g`, `z`, `d`, `y`, and other prefixes stay native.
+It groups related bindings under `Space d` (Debug), `Space g` (Git), and
+`Space i` (AI). Other Space-led bindings execute directly.
 
 #### Files and buffers
 

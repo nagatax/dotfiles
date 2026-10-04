@@ -12,6 +12,7 @@ return {
     integrations = {
       blink_cmp = { enabled = true, style = "bordered" },
       snacks = true,
+      which_key = true,
     },
     float = {
       solid = true,
@@ -45,6 +46,8 @@ return {
           UserStatusPosition = { fg = colors.base, bg = colors.blue, bold = true },
           WinBar = { fg = colors.text },
           WinBarNC = { fg = colors.overlay1 },
+          WhichKey = { fg = colors.mauve, bold = true },
+          WhichKeyDesc = { fg = colors.subtext1 },
           LineNr = { fg = colors.overlay0 },
           Whitespace = { fg = colors.overlay0 },
           WinSeparator = { fg = colors.surface2 },

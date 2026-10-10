@@ -248,6 +248,9 @@ The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 | Focus the last pane | `Ctrl-b`, then backtick |
 | Create a tab without a name prompt | `Ctrl-b`, then `c` |
 | Open Lazygit popup | `Ctrl-b`, then `Alt+g` |
+| Open Claude Code/Codex popup | `Ctrl-b`, then `Alt+c/x` |
+| Open the current branch's pull request in the browser | `Ctrl-b`, then `Alt+o` |
+| Open Neovim in a temporary pane | `Ctrl-b`, then `Alt+e` |
 | Open an existing Git worktree | `Ctrl-b`, then `Alt+w` |
 | Remove the selected Git worktree after confirmation | `Ctrl-b`, then `Alt+Shift+w` |
 

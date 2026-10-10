@@ -35,6 +35,8 @@ headless_rows = 50
 # Keep the tmux-style prefix and add indexed and sequential agent, workspace, and tab navigation.
 prefix = "ctrl+b"
 switch_workspace = "prefix+shift+1..9"
+# Focus agents directly with alt+1..9, which Ghostty leaves unbound.
+focus_agent = "alt+1..9"
 # Avoid alt+n/alt+p, which Ghostty consumes for split navigation before Herdr sees them.
 previous_agent = "prefix+["
 next_agent = "prefix+]"
@@ -59,10 +61,6 @@ last_pane = "prefix+backtick"
 open_worktree = "prefix+alt+w"
 remove_worktree = "prefix+alt+shift+w"
 
-[keys.indexed]
-# Focus agents directly with alt+1..9, which Ghostty leaves unbound.
-agents = "alt"
-
 [[keys.command]]
 # Open repository Git operations without changing the tab layout.
 key = "prefix+alt+g"
@@ -71,6 +69,38 @@ command = "lazygit"
 description = "Open Lazygit"
 width = "80%"
 height = "80%"
+
+[[keys.command]]
+# Ask Claude Code a quick question without changing the tab layout.
+key = "prefix+alt+c"
+type = "popup"
+command = "claude"
+description = "Open Claude Code"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Ask Codex a quick question without changing the tab layout.
+key = "prefix+alt+x"
+type = "popup"
+command = "codex"
+description = "Open Codex"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Open the current branch's pull request in the browser.
+key = "prefix+alt+o"
+type = "shell"
+command = "gh pr view --web"
+description = "Open pull request in browser"
+
+[[keys.command]]
+# Edit files in a temporary pane that closes when Neovim exits.
+key = "prefix+alt+e"
+type = "pane"
+command = "nvim"
+description = "Open Neovim"
 
 [ui]
 # Match the existing selection behavior and prioritize agent supervision.

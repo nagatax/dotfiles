@@ -7,17 +7,14 @@ local function clamp_inline_completion(item)
   end
 
   local buf = range.buf
-  local start_row, start_col, end_row, end_col = range:to_extmark()
-  local last_row = vim.api.nvim_buf_line_count(buf) - 1
-  local start_line = vim.api.nvim_buf_get_lines(buf, start_row, start_row + 1, false)[1]
-  if not start_line or start_col > #start_line then
+  local start_line = vim.api.nvim_buf_get_lines(buf, range.start_row, range.start_row + 1, false)[1]
+  if not start_line or range.start_col > #start_line then
     return nil
   end
 
-  end_row = math.min(end_row, last_row)
-  local end_line = vim.api.nvim_buf_get_lines(buf, end_row, end_row + 1, false)[1]
-  end_col = math.min(end_col, #end_line)
-  item.range = vim.range.extmark(buf, start_row, start_col, end_row, end_col)
+  range.end_row = math.min(range.end_row, vim.api.nvim_buf_line_count(buf) - 1)
+  local end_line = vim.api.nvim_buf_get_lines(buf, range.end_row, range.end_row + 1, false)[1]
+  range.end_col = math.min(range.end_col, #end_line)
   return item
 end
 

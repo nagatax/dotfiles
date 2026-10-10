@@ -237,8 +237,11 @@ The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 | Toggle zoom | `Ctrl-b`, then `z` |
 | Switch tab 1–9 | `Ctrl-b`, then `1–9` |
 | Switch workspace 1–9 | `Ctrl-b`, then `Shift+1–9` |
-| Focus agent 1–9 | `Ctrl-b`, then `Alt+1–9` |
-| Focus previous/next agent | `Ctrl-b`, then `Alt+p/n` |
+| Focus previous/next workspace | `Ctrl-b`, then `(`/`)` |
+| Focus agent 1–9 | `Alt+1–9`, or `Ctrl-b`, then `Alt+1–9` |
+| Focus previous/next agent | `Ctrl-b`, then `[`/`]` |
+| Move tab toward the front/back | `Ctrl-b`, then `<`/`>` |
+| Clear the pane | `Ctrl-b`, then `Ctrl-k` |
 | Focus the last pane | `Ctrl-b`, then backtick |
 | Create a tab without a name prompt | `Ctrl-b`, then `c` |
 | Open Lazygit popup | `Ctrl-b`, then `Alt+g` |

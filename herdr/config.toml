@@ -32,15 +32,25 @@ headless_cols = 160
 headless_rows = 50
 
 [keys]
-# Keep the tmux-style prefix and add indexed and sequential agent switching.
+# Keep the tmux-style prefix and add indexed and sequential agent, workspace, and tab navigation.
 prefix = "ctrl+b"
 switch_workspace = "prefix+shift+1..9"
 focus_agent = "prefix+alt+1..9"
-previous_agent = "prefix+alt+p"
-next_agent = "prefix+alt+n"
+# Avoid alt+n/alt+p, which Ghostty consumes for split navigation before Herdr sees them.
+previous_agent = "prefix+["
+next_agent = "prefix+]"
+previous_workspace = "prefix+("
+next_workspace = "prefix+)"
+move_tab_previous = "prefix+<"
+move_tab_next = "prefix+>"
+clear_pane = "prefix+ctrl+k"
 last_pane = "prefix+backtick"
 open_worktree = "prefix+alt+w"
 remove_worktree = "prefix+alt+shift+w"
+
+[keys.indexed]
+# Focus agents directly with alt+1..9, which Ghostty leaves unbound.
+agents = "alt"
 
 [[keys.command]]
 # Open repository Git operations without changing the tab layout.

@@ -233,12 +233,15 @@ The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 | --- | --- |
 | Focus left/down/up/right | `Ctrl-b`, then `h/j/k/l` |
 | Split right/down | `Ctrl-b`, then `v/-` |
+| Swap with the pane left/down/up/right | `Ctrl-b`, then `Shift+h/j/k/l` |
 | Resize left/down/up/right | `Ctrl-b`, then `r`, then `h/j/k/l` |
+| Resize directly | `Ctrl+Shift+Alt+Arrow` |
+| Enter copy mode | `Ctrl-b`, then `y` |
 | Toggle zoom | `Ctrl-b`, then `z` |
 | Switch tab 1–9 | `Ctrl-b`, then `1–9` |
 | Switch workspace 1–9 | `Ctrl-b`, then `Shift+1–9` |
 | Focus previous/next workspace | `Ctrl-b`, then `(`/`)` |
-| Focus agent 1–9 | `Alt+1–9`, or `Ctrl-b`, then `Alt+1–9` |
+| Focus agent 1–9 | `Alt+1–9` |
 | Focus previous/next agent | `Ctrl-b`, then `[`/`]` |
 | Move tab toward the front/back | `Ctrl-b`, then `<`/`>` |
 | Clear the pane | `Ctrl-b`, then `Ctrl-k` |

@@ -35,7 +35,6 @@ headless_rows = 50
 # Keep the tmux-style prefix and add indexed and sequential agent, workspace, and tab navigation.
 prefix = "ctrl+b"
 switch_workspace = "prefix+shift+1..9"
-focus_agent = "prefix+alt+1..9"
 # Avoid alt+n/alt+p, which Ghostty consumes for split navigation before Herdr sees them.
 previous_agent = "prefix+["
 next_agent = "prefix+]"
@@ -44,6 +43,18 @@ next_workspace = "prefix+)"
 move_tab_previous = "prefix+<"
 move_tab_next = "prefix+>"
 clear_pane = "prefix+ctrl+k"
+# Pair pane swapping with prefix+h/j/k/l focus movement.
+swap_pane_left = "prefix+shift+h"
+swap_pane_down = "prefix+shift+j"
+swap_pane_up = "prefix+shift+k"
+swap_pane_right = "prefix+shift+l"
+# Select scrollback from the keyboard because mouse capture is disabled.
+copy_mode = "prefix+y"
+# Resize without entering resize mode; Ghostty leaves these chords unbound.
+resize_pane_left = "ctrl+shift+alt+left"
+resize_pane_down = "ctrl+shift+alt+down"
+resize_pane_up = "ctrl+shift+alt+up"
+resize_pane_right = "ctrl+shift+alt+right"
 last_pane = "prefix+backtick"
 open_worktree = "prefix+alt+w"
 remove_worktree = "prefix+alt+shift+w"

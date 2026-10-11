@@ -231,26 +231,35 @@ The default <kbd>Ctrl-b</kbd> prefix keeps pane navigation consistent with tmux:
 
 | Action | Herdr |
 | --- | --- |
-| Focus left/down/up/right | `Ctrl-b`, then `h/j/k/l` |
-| Split right/down | `Ctrl-b`, then `v/-` |
+| Focus left/down/up/right | `Ctrl-b`, then `h/j/k/l`, or `Ctrl+Alt+h/j/k/l` |
+| Cycle to the next/previous pane | `Ctrl-b`, then `Tab`/`Shift+Tab` |
+| Split right/down | `Ctrl-b`, then `v/-`, or `Ctrl+Alt+d`/`Ctrl+Alt+Shift+d` |
 | Swap with the pane left/down/up/right | `Ctrl-b`, then `Shift+h/j/k/l` |
 | Resize left/down/up/right | `Ctrl-b`, then `r`, then `h/j/k/l` |
 | Resize directly | `Ctrl+Shift+Alt+Arrow` |
 | Enter copy mode | `Ctrl-b`, then `y` |
-| Toggle zoom | `Ctrl-b`, then `z` |
-| Switch tab 1–9 | `Ctrl-b`, then `1–9` |
+| Edit the scrollback in `$EDITOR` | `Ctrl-b`, then `e` |
+| Toggle zoom | `Ctrl-b`, then `z`, or `Ctrl+Alt+z` |
+| Switch tab 1–9 | `Ctrl-b`, then `1–9`, or `Ctrl+Alt+1–9` |
+| Focus previous/next tab | `Ctrl-b`, then `p`/`n`, or `Ctrl+Alt+[`/`]` |
 | Switch workspace 1–9 | `Ctrl-b`, then `Shift+1–9` |
+| Open the workspace picker | `Ctrl-b`, then `w` |
 | Focus previous/next workspace | `Ctrl-b`, then `(`/`)` |
 | Focus agent 1–9 | `Alt+1–9` |
 | Focus previous/next agent | `Ctrl-b`, then `[`/`]` |
+| Jump to the agent that sent the latest notification | `Ctrl-b`, then `o` |
 | Move tab toward the front/back | `Ctrl-b`, then `<`/`>` |
 | Clear the pane | `Ctrl-b`, then `Ctrl-k` |
 | Focus the last pane | `Ctrl-b`, then backtick |
-| Create a tab without a name prompt | `Ctrl-b`, then `c` |
+| Create a tab without a name prompt | `Ctrl-b`, then `c`, or `Ctrl+Alt+c` |
 | Open Lazygit popup | `Ctrl-b`, then `Alt+g` |
 | Open Claude Code/Codex popup | `Ctrl-b`, then `Alt+c/x` |
+| Open a shell popup | `Ctrl-b`, then `Alt+s` |
 | Open the current branch's pull request in the browser | `Ctrl-b`, then `Alt+o` |
+| Watch the current pull request's checks | `Ctrl-b`, then `Alt+r` |
+| Show pull request status | `Ctrl-b`, then `Alt+i` |
 | Open Neovim in a temporary pane | `Ctrl-b`, then `Alt+e` |
+| Open the pane's directory in Finder | `Ctrl-b`, then `Alt+f` |
 | Open an existing Git worktree | `Ctrl-b`, then `Alt+w` |
 | Remove the selected Git worktree after confirmation | `Ctrl-b`, then `Alt+Shift+w` |
 

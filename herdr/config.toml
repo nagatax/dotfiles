@@ -45,11 +45,18 @@ next_workspace = "prefix+)"
 move_tab_previous = "prefix+<"
 move_tab_next = "prefix+>"
 clear_pane = "prefix+ctrl+k"
-# Pair pane swapping with prefix+h/j/k/l focus movement.
-swap_pane_left = "prefix+shift+h"
-swap_pane_down = "prefix+shift+j"
-swap_pane_up = "prefix+shift+k"
-swap_pane_right = "prefix+shift+l"
+# Add prefix-free ctrl+alt chords for frequent actions; Ghostty leaves this family unbound.
+focus_pane_left = ["prefix+h", "ctrl+alt+h"]
+focus_pane_down = ["prefix+j", "ctrl+alt+j"]
+focus_pane_up = ["prefix+k", "ctrl+alt+k"]
+focus_pane_right = ["prefix+l", "ctrl+alt+l"]
+previous_tab = ["prefix+p", "ctrl+alt+["]
+next_tab = ["prefix+n", "ctrl+alt+]"]
+switch_tab = ["prefix+1..9", "ctrl+alt+1..9"]
+new_tab = ["prefix+c", "ctrl+alt+c"]
+split_vertical = ["prefix+v", "ctrl+alt+d"]
+split_horizontal = ["prefix+minus", "ctrl+alt+shift+d"]
+zoom = ["prefix+z", "ctrl+alt+z"]
 # Select scrollback from the keyboard because mouse capture is disabled.
 copy_mode = "prefix+y"
 # Resize without entering resize mode; Ghostty leaves these chords unbound.
@@ -101,6 +108,40 @@ key = "prefix+alt+e"
 type = "pane"
 command = "nvim"
 description = "Open Neovim"
+
+[[keys.command]]
+# Run one-off shell commands without changing the tab layout.
+key = "prefix+alt+s"
+type = "popup"
+command = "exec \"${SHELL:-/bin/zsh}\" -l"
+description = "Open shell"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Reveal the focused pane's directory in Finder.
+key = "prefix+alt+f"
+type = "shell"
+command = "open \"${HERDR_ACTIVE_PANE_CWD:-.}\""
+description = "Open directory in Finder"
+
+[[keys.command]]
+# Watch the current branch's pull request checks; wait for Enter so the result stays visible.
+key = "prefix+alt+r"
+type = "popup"
+command = "gh pr checks --watch; read -r _"
+description = "Watch pull request checks"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Review pull requests relevant to me; the pager keeps the popup open.
+key = "prefix+alt+i"
+type = "popup"
+command = "GH_FORCE_TTY=1 gh pr status | less -R"
+description = "Show pull request status"
+width = "80%"
+height = "80%"
 
 [ui]
 # Match the existing selection behavior and prioritize agent supervision.

@@ -74,10 +74,18 @@ rename_pane = ["prefix+shift+p", "ctrl+alt+shift+r"]
 copy_mode = ["prefix+y", "ctrl+alt+y"]
 edit_scrollback = ["prefix+e", "ctrl+alt+e"]
 # Resize without entering resize mode; Ghostty leaves these chords unbound.
-resize_pane_left = ["ctrl+shift+alt+left", "ctrl+shift+alt+h"]
-resize_pane_down = ["ctrl+shift+alt+down", "ctrl+shift+alt+j"]
-resize_pane_up = ["ctrl+shift+alt+up", "ctrl+shift+alt+k"]
-resize_pane_right = ["ctrl+shift+alt+right", "ctrl+shift+alt+l"]
+resize_pane_left = "ctrl+shift+alt+left"
+resize_pane_down = "ctrl+shift+alt+down"
+resize_pane_up = "ctrl+shift+alt+up"
+resize_pane_right = "ctrl+shift+alt+right"
+resize_mode = ["prefix+r", "ctrl+alt+shift+e"]
+# Swap panes with hjkl, mirroring ctrl+alt+h/j/k/l focus movement.
+swap_pane_left = ["prefix+shift+h", "ctrl+alt+shift+h"]
+swap_pane_down = ["prefix+shift+j", "ctrl+alt+shift+j"]
+swap_pane_up = ["prefix+shift+k", "ctrl+alt+shift+k"]
+swap_pane_right = ["prefix+shift+l", "ctrl+alt+shift+l"]
+close_tab = ["prefix+shift+x", "ctrl+alt+shift+x"]
+help = ["prefix+?", "ctrl+alt+slash"]
 last_pane = ["prefix+backtick", "ctrl+alt+backtick"]
 open_worktree = "prefix+alt+w"
 remove_worktree = "prefix+alt+shift+w"
@@ -224,6 +232,20 @@ command = "GH_FORCE_TTY=1 gh issue list | less -R"
 description = "List issues"
 width = "80%"
 height = "80%"
+
+[[keys.command]]
+# Break the focused pane out into its own tab, like tmux break-pane.
+key = "prefix+!"
+type = "shell"
+command = "herdr pane move \"$HERDR_ACTIVE_PANE_ID\" --new-tab"
+description = "Move pane to new tab"
+
+[[keys.command]]
+# Keep a Claude Code session in its own tab instead of a popup.
+key = "prefix+alt+shift+c"
+type = "shell"
+command = "p=$(herdr tab create --cwd \"${HERDR_ACTIVE_PANE_CWD:-$PWD}\" --label claude --focus | jq -r '.result.root_pane.pane_id') && herdr pane run \"$p\" claude"
+description = "Open Claude Code in new tab"
 
 [ui]
 # Match the existing selection behavior and prioritize agent supervision.

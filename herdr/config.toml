@@ -37,13 +37,13 @@ prefix = "ctrl+b"
 switch_workspace = "prefix+shift+1..9"
 # Focus agents directly with alt+1..9, which Ghostty leaves unbound.
 focus_agent = "alt+1..9"
-# Avoid alt+n/alt+p, which Ghostty consumes for split navigation before Herdr sees them.
-previous_agent = "prefix+["
-next_agent = "prefix+]"
+# Use ctrl+alt+n/p instead of alt+n/alt+p, which Ghostty consumes for split navigation.
+previous_agent = ["prefix+[", "ctrl+alt+p"]
+next_agent = ["prefix+]", "ctrl+alt+n"]
 previous_workspace = ["prefix+(", "ctrl+alt+shift+["]
 next_workspace = ["prefix+)", "ctrl+alt+shift+]"]
-move_tab_previous = "prefix+<"
-move_tab_next = "prefix+>"
+move_tab_previous = ["prefix+<", "ctrl+alt+shift+comma"]
+move_tab_next = ["prefix+>", "ctrl+alt+shift+period"]
 clear_pane = "prefix+ctrl+k"
 # Add prefix-free ctrl+alt chords for frequent actions; Ghostty leaves this family unbound.
 focus_pane_left = ["prefix+h", "ctrl+alt+h"]
@@ -63,8 +63,16 @@ toggle_sidebar = ["prefix+b", "ctrl+alt+b"]
 open_notification_target = ["prefix+o", "ctrl+alt+o"]
 workspace_picker = ["prefix+w", "ctrl+alt+w"]
 goto = ["prefix+g", "ctrl+alt+g"]
+cycle_pane_next = ["prefix+tab", "ctrl+alt+tab"]
+cycle_pane_previous = ["prefix+shift+tab", "ctrl+alt+shift+tab"]
+# Create and rename without the prefix.
+new_workspace = ["prefix+shift+n", "ctrl+alt+shift+n"]
+new_worktree = ["prefix+shift+g", "ctrl+alt+shift+g"]
+rename_tab = ["prefix+shift+t", "ctrl+alt+r"]
+rename_pane = ["prefix+shift+p", "ctrl+alt+shift+r"]
 # Select scrollback from the keyboard because mouse capture is disabled.
-copy_mode = "prefix+y"
+copy_mode = ["prefix+y", "ctrl+alt+y"]
+edit_scrollback = ["prefix+e", "ctrl+alt+e"]
 # Resize without entering resize mode; Ghostty leaves these chords unbound.
 resize_pane_left = ["ctrl+shift+alt+left", "ctrl+shift+alt+h"]
 resize_pane_down = ["ctrl+shift+alt+down", "ctrl+shift+alt+j"]
@@ -180,6 +188,40 @@ key = "prefix+alt+n"
 type = "popup"
 command = "mkdir -p ~/notes && nvim ~/notes/scratch.md"
 description = "Open scratch notes"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Browse recent history as a graph.
+key = "prefix+alt+l"
+type = "popup"
+command = "git log --graph --oneline --decorate --color=always | less -R"
+description = "Show Git log graph"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Pick a file with a preview and edit it in Neovim.
+key = "prefix+alt+t"
+type = "popup"
+command = "f=$(rg --files | fzf --preview 'bat --color=always {}') && nvim \"$f\""
+description = "Find and open file"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Create a pull request for the current branch in the browser.
+key = "prefix+alt+shift+o"
+type = "shell"
+command = "gh pr create --web"
+description = "Create pull request in browser"
+
+[[keys.command]]
+# List open issues; the pager keeps the popup open.
+key = "prefix+alt+shift+i"
+type = "popup"
+command = "GH_FORCE_TTY=1 gh issue list | less -R"
+description = "List issues"
 width = "80%"
 height = "80%"
 

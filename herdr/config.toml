@@ -92,10 +92,12 @@ open_worktree = ["prefix+alt+w", "ctrl+alt+shift+o"]
 remove_worktree = "prefix+alt+shift+w"
 # Open settings like cmd+comma; keep close_workspace prefix-only to avoid accidents.
 settings = ["prefix+s", "ctrl+alt+comma"]
+# Reload without the prefix after editing this file outside Herdr.
+reload_config = ["prefix+shift+r", "ctrl+alt+shift+s"]
 
 [[keys.command]]
 # Open repository Git operations without changing the tab layout.
-key = "prefix+alt+g"
+key = ["prefix+alt+g", "ctrl+alt+v"]
 type = "popup"
 command = "lazygit"
 description = "Open Lazygit"
@@ -104,7 +106,7 @@ height = "80%"
 
 [[keys.command]]
 # Ask Claude Code a quick question without changing the tab layout.
-key = "prefix+alt+c"
+key = ["prefix+alt+c", "ctrl+alt+a"]
 type = "popup"
 command = "claude"
 description = "Open Claude Code"
@@ -136,7 +138,7 @@ description = "Open Neovim"
 
 [[keys.command]]
 # Run one-off shell commands without changing the tab layout.
-key = "prefix+alt+s"
+key = ["prefix+alt+s", "ctrl+alt+s"]
 type = "popup"
 command = "exec \"${SHELL:-/bin/zsh}\" -l"
 description = "Open shell"
@@ -195,7 +197,7 @@ height = "80%"
 
 [[keys.command]]
 # Jot down notes in a shared scratch file.
-key = "prefix+alt+n"
+key = ["prefix+alt+n", "ctrl+alt+semicolon"]
 type = "popup"
 command = "mkdir -p ~/notes && nvim ~/notes/scratch.md"
 description = "Open scratch notes"
@@ -213,7 +215,7 @@ height = "80%"
 
 [[keys.command]]
 # Pick a file with a preview and edit it in Neovim.
-key = "prefix+alt+t"
+key = ["prefix+alt+t", "ctrl+alt+f"]
 type = "popup"
 command = "f=$(rg --files | fzf --preview 'bat --color=always {}') && nvim \"$f\""
 description = "Find and open file"
@@ -299,6 +301,51 @@ key = "prefix+alt+comma"
 type = "popup"
 command = "nvim ~/.config/herdr/config.toml && herdr server reload-config"
 description = "Edit and reload config"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Switch to a recently used branch.
+key = "prefix+alt+shift+b"
+type = "popup"
+command = "b=$(git branch --sort=-committerdate --format='%(refname:short)' | fzf) && git switch \"$b\""
+description = "Switch branch"
+width = "60%"
+height = "60%"
+
+[[keys.command]]
+# Check out a pull request to review it locally.
+key = "prefix+alt+k"
+type = "popup"
+command = '''n=$(gh pr list --json number,title,headRefName --jq '.[] | "\(.number)\t\(.title) (\(.headRefName))"' | fzf --delimiter='\t' --with-nth=2.. | cut -f1) && gh pr checkout "$n"'''
+description = "Check out pull request"
+width = "60%"
+height = "60%"
+
+[[keys.command]]
+# Search file contents with a preview and open the match in Neovim.
+key = "prefix+alt+shift+t"
+type = "popup"
+command = '''m=$(rg --line-number --color=never '' | fzf --delimiter=: --nth=3.. --preview 'bat --color=always --highlight-line {2} {1}' --preview-window '+{2}/2') && nvim "+$(echo "$m" | cut -d: -f2)" "$(echo "$m" | cut -d: -f1)"'''
+description = "Search text and open match"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Review the current branch's pull request diff; the pager keeps the popup open.
+key = "prefix+alt+shift+p"
+type = "popup"
+command = "gh pr diff --color=always | less -R"
+description = "Show pull request diff"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Resume a previous Codex session without changing the tab layout.
+key = "prefix+alt+u"
+type = "popup"
+command = "codex resume"
+description = "Resume Codex"
 width = "80%"
 height = "80%"
 

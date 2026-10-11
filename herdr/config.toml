@@ -68,7 +68,8 @@ cycle_pane_previous = ["prefix+shift+tab", "ctrl+alt+shift+tab"]
 # Create and rename without the prefix.
 new_workspace = ["prefix+shift+n", "ctrl+alt+shift+n"]
 new_worktree = ["prefix+shift+g", "ctrl+alt+shift+g"]
-rename_tab = ["prefix+shift+t", "ctrl+alt+r"]
+rename_workspace = ["prefix+shift+w", "ctrl+alt+shift+w"]
+rename_tab = ["prefix+shift+t", "prefix+comma", "ctrl+alt+r"]
 rename_pane = ["prefix+shift+p", "ctrl+alt+shift+r"]
 # Select scrollback from the keyboard because mouse capture is disabled.
 copy_mode = ["prefix+y", "ctrl+alt+y"]
@@ -78,7 +79,7 @@ resize_pane_left = "ctrl+shift+alt+left"
 resize_pane_down = "ctrl+shift+alt+down"
 resize_pane_up = "ctrl+shift+alt+up"
 resize_pane_right = "ctrl+shift+alt+right"
-resize_mode = ["prefix+r", "ctrl+alt+shift+e"]
+resize_mode = ["prefix+r", "ctrl+alt+m"]
 # Swap panes with hjkl, mirroring ctrl+alt+h/j/k/l focus movement.
 swap_pane_left = ["prefix+shift+h", "ctrl+alt+shift+h"]
 swap_pane_down = ["prefix+shift+j", "ctrl+alt+shift+j"]
@@ -87,8 +88,10 @@ swap_pane_right = ["prefix+shift+l", "ctrl+alt+shift+l"]
 close_tab = ["prefix+shift+x", "ctrl+alt+shift+x"]
 help = ["prefix+?", "ctrl+alt+slash"]
 last_pane = ["prefix+backtick", "ctrl+alt+backtick"]
-open_worktree = "prefix+alt+w"
+open_worktree = ["prefix+alt+w", "ctrl+alt+shift+o"]
 remove_worktree = "prefix+alt+shift+w"
+# Open settings like cmd+comma; keep close_workspace prefix-only to avoid accidents.
+settings = ["prefix+s", "ctrl+alt+comma"]
 
 [[keys.command]]
 # Open repository Git operations without changing the tab layout.
@@ -246,6 +249,58 @@ key = "prefix+alt+shift+c"
 type = "shell"
 command = "p=$(herdr tab create --cwd \"${HERDR_ACTIVE_PANE_CWD:-$PWD}\" --label claude --focus | jq -r '.result.root_pane.pane_id') && herdr pane run \"$p\" claude"
 description = "Open Claude Code in new tab"
+
+[[keys.command]]
+# Keep a Codex session in its own tab instead of a popup.
+key = "prefix+alt+shift+x"
+type = "shell"
+command = "p=$(herdr tab create --cwd \"${HERDR_ACTIVE_PANE_CWD:-$PWD}\" --label codex --focus | jq -r '.result.root_pane.pane_id') && herdr pane run \"$p\" codex"
+description = "Open Codex in new tab"
+
+[[keys.command]]
+# Pull the focused pane into another tab of this workspace, like tmux join-pane.
+key = "prefix+@"
+type = "popup"
+command = '''t=$(herdr tab list --workspace "$HERDR_ACTIVE_WORKSPACE_ID" | jq -r --arg cur "$HERDR_ACTIVE_TAB_ID" '.result.tabs[] | select(.tab_id != $cur) | "\(.tab_id)\t\(.number): \(.label)"' | fzf --delimiter='\t' --with-nth=2.. | cut -f1) && herdr pane move "$HERDR_ACTIVE_PANE_ID" --tab "$t" --split right'''
+description = "Move pane to another tab"
+width = "60%"
+height = "40%"
+
+[[keys.command]]
+# Resume a previous Claude Code conversation without changing the tab layout.
+key = "prefix+alt+shift+r"
+type = "popup"
+command = "claude --resume"
+description = "Resume Claude Code"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Open a repository under ~/Documents as a new workspace.
+key = "prefix+alt+j"
+type = "popup"
+command = '''d=$(find ~/Documents -maxdepth 3 -name .git -prune | sed 's|/\.git$||' | fzf) && herdr workspace create --cwd "$d" --label "$(basename "$d")" --focus'''
+description = "Open repository as workspace"
+width = "60%"
+height = "60%"
+
+[[keys.command]]
+# Review staged changes before committing.
+key = "prefix+alt+shift+d"
+type = "popup"
+command = "git -c color.ui=always diff --cached | less -R"
+description = "Show staged diff"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+# Edit this config and apply it to the running server.
+key = "prefix+alt+comma"
+type = "popup"
+command = "nvim ~/.config/herdr/config.toml && herdr server reload-config"
+description = "Edit and reload config"
+width = "80%"
+height = "80%"
 
 [ui]
 # Match the existing selection behavior and prioritize agent supervision.

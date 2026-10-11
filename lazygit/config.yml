@@ -65,18 +65,14 @@ gui:
       - '#e78284'
     defaultFgColor:
       - '#c6d0f5'
-
-  authorColors:
-    '*': '#babbf1'
-
+    authorColors:
+      '*': '#babbf1'
 git:
   # Keep remote state fresh without fetching every minute.
   autoFetch: true
-
 refresher:
   # Fetch remotes every 15 minutes.
   fetchInterval: 900
-
 update:
   # Rely on Homebrew instead of checking for updates in Lazygit.
   method: never

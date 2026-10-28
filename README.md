@@ -94,7 +94,26 @@ ln -s "${DOTFILES_DIR}/codex/agents/astra_explorer.toml" ~/.codex/agents/astra_e
 mkdir -p "${HOME}/Library/Application Support/lazygit"
 ln -s "${DOTFILES_DIR}/lazygit/config.yml" "${HOME}/Library/Application Support/lazygit/config.yml"
 
-git config --global --add include.path "${DOTFILES_DIR}/git/config"
+# Homebrew's download sandbox must be able to read Git's included settings.
+mkdir -p "${HOME}/.config/git"
+cp "${DOTFILES_DIR}/git/config" "${HOME}/.config/git/dotfiles.conf"
+git config --global --add include.path "${HOME}/.config/git/dotfiles.conf"
+```
+
+Git uses a real copy because Homebrew's download sandbox blocks reads from
+`~/Documents`, including through symbolic links. If your global Git configuration
+already includes `${DOTFILES_DIR}/git/config`, replace that include instead of
+running the `--add` command above:
+
+```bash
+git config --global --fixed-value --replace-all include.path \
+  "${HOME}/.config/git/dotfiles.conf" "${DOTFILES_DIR}/git/config"
+```
+
+After updating this repository's `git/config`, manually sync the installed copy:
+
+```bash
+cp "${DOTFILES_DIR}/git/config" "${HOME}/.config/git/dotfiles.conf"
 ```
 
 Codex reads shared defaults from `~/.codex/config.toml` and applies a profile

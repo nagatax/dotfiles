@@ -56,8 +56,8 @@ window-padding-balance = true
 # Extend full-screen application backgrounds into the balanced padding.
 window-padding-color = extend
 
-# Present frames immediately to reduce input latency.
-window-vsync = false
+# Synchronize rendering with the display refresh rate to reduce tearing.
+window-vsync = true
 
 # Restore the previous window state when Ghostty starts.
 window-save-state = always
@@ -77,6 +77,8 @@ split-divider-color = #626880
 # ==================================================
 
 copy-on-select = clipboard
+# Paste from the system clipboard with the middle mouse button.
+middle-click-action = clipboard-paste
 
 
 # ==================================================
@@ -84,7 +86,7 @@ copy-on-select = clipboard
 # Configure terminal history and shell-provided features.
 # ==================================================
 
-scrollback-limit = 20000000
+scrollback-limit-bytes = 50000000
 
 # Enable prompt navigation, sudo terminfo preservation, titles, and SSH integration.
 shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo,path
